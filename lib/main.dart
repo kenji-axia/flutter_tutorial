@@ -36,12 +36,12 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            MyElevatedButton(
+          children: const <Widget>[
+            TransitionScreenButton(
               'Tutorial1',
               BuildingLayoutScreen(),
             ),
-            const MyElevatedButton(
+            TransitionScreenButton(
               'Tutorial1.1',
               AnimationScreen(),
             ),
@@ -52,8 +52,8 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class MyElevatedButton extends StatelessWidget {
-  const MyElevatedButton(this.text, this.newScreen, {Key? key})
+class TransitionScreenButton extends StatelessWidget {
+  const TransitionScreenButton(this.text, this.newScreen, {Key? key})
       : super(key: key);
   final String text;
   final Widget newScreen;
