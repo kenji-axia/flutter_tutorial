@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'building/building_layout_screen.dart';
+import 'animation/animation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,10 +35,16 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _buildElevatedButton(context, 'Tutorial1', BuildingLayoutScreen()),
+          children: const <Widget>[
+            TransitionScreenButton(
+              'Tutorial1',
+              BuildingLayoutScreen(),
+            ),
+            TransitionScreenButton(
+              'Tutorial1.1',
+              AnimationScreen(),
+            ),
           ],
         ),
       ),
@@ -45,15 +52,23 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-ElevatedButton _buildElevatedButton(BuildContext context, String text, Widget newScreen) {
-  return ElevatedButton(
-    onPressed: () {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => newScreen,
-        ),
-      );
-    },
-    child: Text(text),
-  );
+class TransitionScreenButton extends StatelessWidget {
+  const TransitionScreenButton(this.text, this.newScreen, {Key? key})
+      : super(key: key);
+  final String text;
+  final Widget newScreen;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => newScreen,
+          ),
+        );
+      },
+      child: Text(text),
+    );
+  }
 }
