@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'components/youtube_app_bar.dart';
 import 'components/youtube_bottom_navigation_bar_items.dart';
 import 'components/youtube_categories_section.dart';
+import 'components/youtube_videos_section_title.dart';
 
 class YoutubeScreen extends StatelessWidget {
   const YoutubeScreen({Key? key}) : super(key: key);
@@ -26,6 +27,7 @@ class YoutubeScreen extends StatelessWidget {
         children: const [
           YoutubeAppBar(),
           YoutubeCategoriesSection(),
+          YoutubeVideosSectionTitle('急上昇動画'),
         ],
       ),
     );
