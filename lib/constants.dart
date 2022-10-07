@@ -1,0 +1,11 @@
+const double spacing0 = 0;
+const double spacingMin = 2;
+const double spacingHalf = 4;
+const double spacing1 = 8;
+const double spacing2 = 16;
+const double spacing3 = 24;
+const double spacing4 = 32;
+const double spacing5 = 48;
+const double spacing6 = 64;
+const double spacing7 = 96;
+const double spacing8 = 128;

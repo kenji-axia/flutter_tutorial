@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/constants.dart';
 
 class YoutubeCategoriesSection extends StatelessWidget {
   const YoutubeCategoriesSection({Key? key}) : super(key: key);
@@ -13,9 +14,9 @@ class YoutubeCategoriesSection extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         primary: false,
-        padding: const EdgeInsets.all(15),
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 12,
+        padding: const EdgeInsets.all(spacing2),
+        crossAxisSpacing: spacing2,
+        mainAxisSpacing: spacing1,
         crossAxisCount: 2,
         childAspectRatio: 4,
         children: const <Widget>[
@@ -80,7 +81,7 @@ class CategoryButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: _categoryColor,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: spacing1),
       child: Row(
         children: [
           Icon(
@@ -88,7 +89,7 @@ class CategoryButton extends StatelessWidget {
             color: Colors.white,
             size: _categoryIconSize,
           ),
-          const SizedBox(width: 7),
+          const SizedBox(width: spacing1),
           Text(
             _categoryText,
             style: TextStyle(

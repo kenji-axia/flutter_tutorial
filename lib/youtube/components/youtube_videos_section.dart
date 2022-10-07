@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/constants.dart';
 
 class YoutubeVideosSection extends StatelessWidget {
   const YoutubeVideosSection({Key? key}) : super(key: key);
@@ -25,10 +26,7 @@ class YoutubeVideosSectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 20,
-        horizontal: 20,
-      ),
+      padding: const EdgeInsets.all(spacing2),
       child: Text(
         title,
         textAlign: TextAlign.start,
@@ -58,7 +56,7 @@ class VideoThumbnail extends StatelessWidget {
           children: [
             Image.asset(_thumbnailPath),
             Container(
-              padding: const EdgeInsets.only(right: 8, bottom: 8),
+              padding: const EdgeInsets.only(right: spacing1, bottom: spacing1),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -72,8 +70,8 @@ class VideoThumbnail extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    padding: const EdgeInsets.all(4),
+                    margin: const EdgeInsets.only(left: spacing1),
+                    padding: const EdgeInsets.all(spacingHalf),
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(5),
@@ -102,7 +100,7 @@ class VideoThumbnail extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 10,
+                width: spacing1,
               ),
               Expanded(
                 child: Column(
@@ -115,7 +113,7 @@ class VideoThumbnail extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 3,
+                      height: spacingMin,
                     ),
                     Text(
                       _videoInfo,
@@ -151,7 +149,7 @@ class PlayIndicatorPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 2),
+      margin: const EdgeInsets.only(left: spacingMin),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.9),
         borderRadius: const BorderRadius.only(
@@ -159,7 +157,7 @@ class PlayIndicatorPart extends StatelessWidget {
           topRight: Radius.circular(2),
         ),
       ),
-      width: 8,
+      width: spacing1,
       height: height,
     );
   }

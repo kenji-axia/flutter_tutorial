@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_tutorial/constants.dart';
 
 class YoutubeAppBar extends StatelessWidget {
   const YoutubeAppBar({Key? key}) : super(key: key);
@@ -8,7 +8,8 @@ class YoutubeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(7, 0, 7, 7),
+      padding:
+          const EdgeInsets.fromLTRB(spacing1, spacing0, spacing1, spacing1),
       child: Row(
         children: const [
           YoutubeLogo(),
@@ -33,7 +34,7 @@ class YoutubeLogo extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
+              padding: const EdgeInsets.symmetric(horizontal: spacingHalf),
               child: SizedBox(
                 width: 30,
                 height: 30,
