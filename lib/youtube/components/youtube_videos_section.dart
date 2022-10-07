@@ -66,9 +66,9 @@ class VideoThumbnail extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: const <Widget>[
-                      PlayIndicatorPart(13),
-                      PlayIndicatorPart(20),
-                      PlayIndicatorPart(5)
+                      PlayIndicatorPart(height: 13),
+                      PlayIndicatorPart(height: 20),
+                      PlayIndicatorPart(height: 5),
                     ],
                   ),
                   Container(
@@ -141,12 +141,12 @@ class VideoThumbnail extends StatelessWidget {
 }
 
 class PlayIndicatorPart extends StatelessWidget {
-  const PlayIndicatorPart(
-    this._height, {
+  const PlayIndicatorPart({
+    required this.height,
     Key? key,
   }) : super(key: key);
 
-  final double _height;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +160,7 @@ class PlayIndicatorPart extends StatelessWidget {
         ),
       ),
       width: 8,
-      height: _height,
+      height: height,
     );
   }
 }
