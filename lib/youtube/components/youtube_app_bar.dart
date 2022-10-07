@@ -10,33 +10,12 @@ class YoutubeAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(7, 0, 7, 7),
       child: Row(
-        children: const <Widget>[
+        children: const [
           YoutubeLogo(),
-          SizedBox(
-            width: 40,
-            height: 40,
-            child: Icon(
-              Icons.cast,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(
-            width: 40,
-            height: 40,
-            child: Icon(
-              Icons.notifications_none_sharp,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(
-            width: 40,
-            height: 40,
-            child: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-          ),
-          YoutubeUerIcon(),
+          YoutubeAppBarIcon(Icons.cast),
+          YoutubeAppBarIcon(Icons.notifications_none_sharp),
+          YoutubeAppBarIcon(Icons.search),
+          YoutubeAppBarUserIcon(),
         ],
       ),
     );
@@ -75,8 +54,25 @@ class YoutubeLogo extends StatelessWidget {
   }
 }
 
-class YoutubeUerIcon extends StatelessWidget {
-  const YoutubeUerIcon({Key? key}) : super(key: key);
+class YoutubeAppBarIcon extends StatelessWidget {
+  const YoutubeAppBarIcon(this._iconData, {Key? key}) : super(key: key);
+
+  final IconData _iconData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Icon(
+        _iconData,
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class YoutubeAppBarUserIcon extends StatelessWidget {
+  const YoutubeAppBarUserIcon({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +87,7 @@ class YoutubeUerIcon extends StatelessWidget {
             color: Colors.deepPurpleAccent,
             size: 35,
           ),
-          Text(
-            'K',
-            style: TextStyle(color: Colors.white),
-          ),
+          Text('K'),
         ],
       ),
     );
