@@ -8,7 +8,7 @@ class YoutubeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7),
+      padding: const EdgeInsets.fromLTRB(7, 0, 7, 7),
       child: Row(
         children: const <Widget>[
           YoutubeLogo(),
@@ -54,7 +54,7 @@ class YoutubeLogo extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.only(left: 5, right: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: SizedBox(
                 width: 30,
                 height: 30,
@@ -64,9 +64,9 @@ class YoutubeLogo extends StatelessWidget {
             const Text(
               'Youtube',
               style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18),
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
             ),
           ],
         ),

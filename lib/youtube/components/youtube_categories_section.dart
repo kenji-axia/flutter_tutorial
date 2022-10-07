@@ -17,7 +17,7 @@ class YoutubeCategoriesSection extends StatelessWidget {
         crossAxisSpacing: 15,
         mainAxisSpacing: 12,
         crossAxisCount: 2,
-        childAspectRatio: 3.7,
+        childAspectRatio: 4,
         children: const <Widget>[
           CategoryButton(
             '急上昇',
@@ -92,7 +92,6 @@ class CategoryButton extends StatelessWidget {
           Text(
             _categoryText,
             style: TextStyle(
-              color: Colors.white,
               fontSize: _categoryTextSize,
             ),
           ),

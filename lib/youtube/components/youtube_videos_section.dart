@@ -6,11 +6,36 @@ class YoutubeVideosSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
+        YoutubeVideosSectionTitle(),
         VideoThumbnail(),
         VideoThumbnail(),
         VideoThumbnail(),
       ],
+    );
+  }
+}
+
+class YoutubeVideosSectionTitle extends StatelessWidget {
+  const YoutubeVideosSectionTitle({Key? key}) : super(key: key);
+
+  final String title = '急上昇動画';
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 20,
+        horizontal: 20,
+      ),
+      child: Text(
+        title,
+        textAlign: TextAlign.start,
+        style: const TextStyle(
+          fontSize: 18,
+        ),
+      ),
     );
   }
 }
@@ -53,10 +78,7 @@ class VideoThumbnail extends StatelessWidget {
                       color: Colors.black.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Text(
-                      _duration,
-                      style: const TextStyle(color: Colors.white),
-                    ),
+                    child: Text(_duration),
                   ),
                 ],
               ),
@@ -89,7 +111,6 @@ class VideoThumbnail extends StatelessWidget {
                     Text(
                       _videoTitle,
                       style: const TextStyle(
-                        color: Colors.white,
                         fontSize: 17,
                       ),
                     ),

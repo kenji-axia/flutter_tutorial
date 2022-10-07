@@ -1,36 +1,39 @@
 import 'package:flutter/material.dart';
 
 import 'components/youtube_app_bar.dart';
-import 'components/youtube_bottom_navigation_bar_items.dart';
 import 'components/youtube_categories_section.dart';
 import 'components/youtube_videos_section.dart';
-import 'components/youtube_videos_section_title.dart';
+import 'components/youtube_bottom_navigation_bar_items.dart';
 
 class YoutubeScreen extends StatelessWidget {
   const YoutubeScreen({Key? key}) : super(key: key);
 
-  final mainBackgroundColor = const Color.fromRGBO(42, 39, 44, 1);
+  final _mainBackgroundColor = const Color.fromRGBO(42, 39, 44, 1);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mainBackgroundColor,
+      backgroundColor: _mainBackgroundColor,
+      body: SafeArea(
+        child: DefaultTextStyle(
+          style: const TextStyle(color: Colors.white),
+          child: ListView(
+            children: const [
+              YoutubeAppBar(),
+              YoutubeCategoriesSection(),
+              YoutubeVideosSection(),
+            ],
+          ),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.white,
         selectedItemColor: Colors.white,
         selectedFontSize: 9,
         unselectedFontSize: 9,
-        backgroundColor: mainBackgroundColor,
+        backgroundColor: _mainBackgroundColor,
         items: youtubeBottomNavigationBarItems,
-      ),
-      body: ListView(
-        children: const [
-          YoutubeAppBar(),
-          YoutubeCategoriesSection(),
-          YoutubeVideosSectionTitle('急上昇動画'),
-          YoutubeVideosSection(),
-        ],
       ),
     );
   }
