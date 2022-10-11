@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
+import 'youtube/youtube_screen.dart';
 import 'residence/residence_screen.dart';
 
 void main() {
@@ -45,6 +46,10 @@ class MyHomePage extends StatelessWidget {
             TransitionScreenButton(
               'Tutorial1.1',
               AnimationScreen(),
+            ),
+            TransitionScreenButton(
+              'Youtube',
+              YoutubeScreen(),
             ),
             TransitionScreenButton(
               'Tutorial2.2',
