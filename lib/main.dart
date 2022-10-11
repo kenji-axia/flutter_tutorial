@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
+import 'residence/residence_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,6 +45,10 @@ class MyHomePage extends StatelessWidget {
             TransitionScreenButton(
               'Tutorial1.1',
               AnimationScreen(),
+            ),
+            TransitionScreenButton(
+              'Tutorial2.2',
+              ResidenceScreen(),
             ),
           ],
         ),
