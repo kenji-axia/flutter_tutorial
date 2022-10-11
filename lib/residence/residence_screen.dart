@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'components/residence_app_bar.dart';
+import 'components/residence_floating_action_button.dart';
 import 'components/residence_bottom_navigation_bar.dart';
 
 class ResidenceScreen extends StatelessWidget {
@@ -16,6 +17,7 @@ class ResidenceScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(),
       ),
+      floatingActionButton: ResidenceFloatingActionButton(_mainAccentColor),
       bottomNavigationBar: ResidenceBottomNavigationBar(_mainAccentColor),
     );
   }
