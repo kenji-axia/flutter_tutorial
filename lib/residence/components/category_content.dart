@@ -87,10 +87,7 @@ class CategoryContent extends StatelessWidget {
                       color: Colors.grey[600],
                     ),
                     sizedBox8,
-                    Text(
-                      place,
-                      style: fontSize11,
-                    )
+                    Text(place),
                   ],
                 ),
                 sizedBox4,
@@ -102,10 +99,7 @@ class CategoryContent extends StatelessWidget {
                       color: Colors.grey[600],
                     ),
                     sizedBox8,
-                    Text(
-                      size,
-                      style: fontSize11,
-                    )
+                    Text(size),
                   ],
                 ),
                 sizedBox4,
@@ -117,10 +111,7 @@ class CategoryContent extends StatelessWidget {
                       color: Colors.grey[600],
                     ),
                     sizedBox8,
-                    Text(
-                      buildingInfo,
-                      style: fontSize11,
-                    )
+                    Text(buildingInfo),
                   ],
                 ),
                 sizedBox16,

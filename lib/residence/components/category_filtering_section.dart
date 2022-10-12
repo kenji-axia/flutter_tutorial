@@ -90,10 +90,7 @@ class CategoryFilteringSection extends StatelessWidget {
                       color: Colors.grey[700],
                     ),
                     sizedBox8,
-                    Text(
-                      _trainInfo,
-                      style: fontSize11,
-                    )
+                    Text(_trainInfo),
                   ],
                 ),
                 sizedBox4,
@@ -105,10 +102,7 @@ class CategoryFilteringSection extends StatelessWidget {
                       color: Colors.grey[700],
                     ),
                     sizedBox8,
-                    Text(
-                      _priceInfo,
-                      style: fontSize11,
-                    )
+                    Text(_priceInfo),
                   ],
                 ),
                 sizedBox4,
@@ -120,10 +114,7 @@ class CategoryFilteringSection extends StatelessWidget {
                       color: Colors.grey[700],
                     ),
                     sizedBox8,
-                    Text(
-                      _anotherInfo,
-                      style: fontSize11,
-                    )
+                    Text(_anotherInfo),
                   ],
                 ),
                 sizedBox4,

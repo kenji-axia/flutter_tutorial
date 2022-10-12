@@ -17,28 +17,34 @@ class ResidenceScreen extends StatelessWidget {
       backgroundColor: residenceMainBackgroundColor,
       appBar: const ResidenceAppBar(),
       body: SafeArea(
-        child: ListView(
-          children: const [
-            CategoryFilteringSection(),
-            CategoryContent(
-              name: 'Rising place川崎',
-              price: '2,000万円',
-              place: '京急本線 京急川崎駅 より 徒歩9分',
-              size: '1K / 21.24㎡ 南西向き',
-              buildingInfo: '2階/15階建 築5年',
-              residenceInsideImagePath: 'images/residence_inside.jpg',
-              residenceOutsideImagePath: 'images/residence_outside.jpg',
-            ),
-            CategoryContent(
-              name: 'Rising place川崎 2',
-              price: '2,000万円',
-              place: '京急本線 京急川崎駅 より 徒歩9分',
-              size: '1K / 21.24㎡ 南西向き',
-              buildingInfo: '2階/15階建 築5年',
-              residenceInsideImagePath: 'images/residence_inside.jpg',
-              residenceOutsideImagePath: 'images/residence_outside.jpg',
-            ),
-          ],
+        child: DefaultTextStyle(
+          style: const TextStyle(
+            fontSize: 11,
+            color: Colors.black87,
+          ),
+          child: ListView(
+            children: const [
+              CategoryFilteringSection(),
+              CategoryContent(
+                name: 'Rising place川崎',
+                price: '2,000万円',
+                place: '京急本線 京急川崎駅 より 徒歩9分',
+                size: '1K / 21.24㎡ 南西向き',
+                buildingInfo: '2階/15階建 築5年',
+                residenceInsideImagePath: 'images/residence_inside.jpg',
+                residenceOutsideImagePath: 'images/residence_outside.jpg',
+              ),
+              CategoryContent(
+                name: 'Rising place川崎 2',
+                price: '2,000万円',
+                place: '京急本線 京急川崎駅 より 徒歩9分',
+                size: '1K / 21.24㎡ 南西向き',
+                buildingInfo: '2階/15階建 築5年',
+                residenceInsideImagePath: 'images/residence_inside.jpg',
+                residenceOutsideImagePath: 'images/residence_outside.jpg',
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: const ResidenceFloatingActionButton(),

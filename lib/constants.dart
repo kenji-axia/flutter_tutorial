@@ -18,7 +18,6 @@ const sizedBox16 = SizedBox(height: 16, width: 16);
 
 final borderRadius10 = BorderRadius.circular(10);
 
-const fontSize11 = TextStyle(fontSize: 11);
 const fontSize14 = TextStyle(fontSize: 14);
 
 const residenceMainBackgroundColor = Color.fromRGBO(250, 248, 245, 1);
