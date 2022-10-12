@@ -15,6 +15,8 @@ const double spacing8 = 128;
 const sizedBox4 = SizedBox(height: 4, width: 4);
 const sizedBox8 = SizedBox(height: 8, width: 8);
 const sizedBox16 = SizedBox(height: 16, width: 16);
+const sizedBox24 = SizedBox(height: 24, width: 24);
+const sizedBox32 = SizedBox(height: 32, width: 32);
 
 final borderRadius10 = BorderRadius.circular(10);
 
