@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
 import 'youtube/youtube_screen.dart';
+import 'free_market/free_market_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,6 +50,10 @@ class MyHomePage extends StatelessWidget {
             TransitionScreenButton(
               'Youtube',
               YoutubeScreen(),
+            ),
+            TransitionScreenButton(
+              'Free Market',
+              FreeMarketScreen(),
             ),
           ],
         ),
