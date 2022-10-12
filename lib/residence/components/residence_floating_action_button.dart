@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ResidenceFloatingActionButton extends StatelessWidget {
-  const ResidenceFloatingActionButton(this._mainAccentColor, {Key? key})
-      : super(key: key);
+import 'package:flutter_tutorial/constants.dart';
 
-  final Color _mainAccentColor;
+class ResidenceFloatingActionButton extends StatelessWidget {
+  const ResidenceFloatingActionButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,7 @@ class ResidenceFloatingActionButton extends StatelessWidget {
       height: 72,
       child: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: _mainAccentColor,
+        backgroundColor: residenceMainAccentColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [

@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart';
 
-class ResidenceBottomNavigationBar extends StatelessWidget {
-  const ResidenceBottomNavigationBar(this._mainAccentColor, {Key? key})
-      : super(key: key);
+import 'package:flutter_tutorial/constants.dart';
 
-  final Color _mainAccentColor;
+class ResidenceBottomNavigationBar extends StatelessWidget {
+  const ResidenceBottomNavigationBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       unselectedItemColor: Colors.grey,
-      selectedItemColor: _mainAccentColor,
+      selectedItemColor: residenceMainAccentColor,
       iconSize: 30,
       selectedFontSize: 10,
       unselectedFontSize: 10,

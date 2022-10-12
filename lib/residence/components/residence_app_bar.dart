@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart';
 
-class ResidenceAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ResidenceAppBar(this._mainAccentColor, {Key? key}) : super(key: key);
+import 'package:flutter_tutorial/constants.dart';
 
-  final Color _mainAccentColor;
+class ResidenceAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const ResidenceAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 64,
       backgroundColor: Colors.white,
-      titleSpacing: 0,
-      iconTheme: IconThemeData(
-        color: _mainAccentColor,
+      titleSpacing: spacing0,
+      iconTheme: const IconThemeData(
+        color: residenceMainAccentColor,
       ),
       title: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -35,7 +34,7 @@ class ResidenceAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Container(
-          margin: const EdgeInsets.only(right: 16),
+          margin: const EdgeInsets.only(right: spacing2),
           child: const Icon(
             Icons.add_circle,
             size: 40,
@@ -72,36 +71,35 @@ class CategoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: 8),
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Badge(
-        showBadge: notificationNum == 0 ? false : true,
-        position: BadgePosition.topEnd(end: 0),
-        badgeContent: Text(
-          notificationNum.toString(),
-          style: const TextStyle(color: Colors.white),
+    return Badge(
+      showBadge: notificationNum != 0 ? true : false,
+      position: BadgePosition.topEnd(end: 0),
+      badgeContent: Text(
+        notificationNum.toString(),
+        style: const TextStyle(color: Colors.white),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color:
+              isHighlight ? _highlightBackgroundColor : _normalBackgroundColor,
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: isHighlight
-                ? _highlightBackgroundColor
-                : _normalBackgroundColor,
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            children: [
-              Text(
-                categoryText,
-                style: TextStyle(
-                  fontSize: _categoryTextSize,
-                  color: isHighlight ? _highlightTextColor : _normalTextColor,
-                  fontWeight: isHighlight ? FontWeight.bold : FontWeight.normal,
-                ),
+        margin: const EdgeInsets.only(right: spacing1),
+        padding: const EdgeInsets.symmetric(
+          horizontal: spacing2,
+          vertical: spacing1,
+        ),
+        child: Row(
+          children: [
+            Text(
+              categoryText,
+              style: TextStyle(
+                fontSize: _categoryTextSize,
+                color: isHighlight ? _highlightTextColor : _normalTextColor,
+                fontWeight: isHighlight ? FontWeight.bold : FontWeight.normal,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

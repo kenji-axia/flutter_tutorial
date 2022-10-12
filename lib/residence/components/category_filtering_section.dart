@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CategoryFilteringSection extends StatelessWidget {
-  const CategoryFilteringSection(
-      this._mainAccentColor, this._mainBackgroundColor,
-      {Key? key})
-      : super(key: key);
+import 'package:flutter_tutorial/constants.dart';
 
-  final Color _mainAccentColor;
-  final Color _mainBackgroundColor;
+class CategoryFilteringSection extends StatelessWidget {
+  const CategoryFilteringSection({Key? key}) : super(key: key);
 
   final String _trainInfo = '東京駅・品川駅・川崎駅・横浜駅・目黒駅・恵比寿駅・渋谷駅・';
   final String _priceInfo = '下限なし 〜 2,000万円';
@@ -16,11 +12,11 @@ class CategoryFilteringSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+      margin: const EdgeInsets.all(spacing1),
+      padding: const EdgeInsets.all(spacing1),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: borderRadius10,
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,
@@ -37,7 +33,7 @@ class CategoryFilteringSection extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(width: 8),
+                  sizedBox8,
                   Text(
                     '〇〇のおすすめ',
                     style: TextStyle(
@@ -46,7 +42,7 @@ class CategoryFilteringSection extends StatelessWidget {
                       color: Colors.black87,
                     ),
                   ),
-                  SizedBox(width: 8),
+                  sizedBox8,
                   Text(
                     '新着3件',
                     style: TextStyle(
@@ -58,18 +54,18 @@ class CategoryFilteringSection extends StatelessWidget {
                 ],
               ),
               Row(
-                children: [
+                children: const [
                   Text(
                     '編集',
                     style: TextStyle(
                       fontSize: 12,
-                      color: _mainAccentColor,
+                      color: residenceMainAccentColor,
                     ),
                   ),
-                  SizedBox(width: 4),
+                  sizedBox4,
                   Icon(
                     Icons.edit,
-                    color: _mainAccentColor,
+                    color: residenceMainAccentColor,
                     size: 30,
                   ),
                 ],
@@ -77,15 +73,15 @@ class CategoryFilteringSection extends StatelessWidget {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 8),
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+            margin: const EdgeInsets.only(top: spacing1),
+            padding: const EdgeInsets.all(spacing1),
             decoration: BoxDecoration(
-              color: _mainBackgroundColor,
+              color: residenceMainBackgroundColor,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Column(
               children: [
-                SizedBox(height: 4),
+                sizedBox4,
                 Row(
                   children: [
                     Icon(
@@ -93,14 +89,14 @@ class CategoryFilteringSection extends StatelessWidget {
                       size: 15,
                       color: Colors.grey[700],
                     ),
-                    const SizedBox(width: 8),
+                    sizedBox8,
                     Text(
                       _trainInfo,
-                      style: const TextStyle(fontSize: 11),
+                      style: fontSize11,
                     )
                   ],
                 ),
-                const SizedBox(height: 4),
+                sizedBox4,
                 Row(
                   children: [
                     Icon(
@@ -108,14 +104,14 @@ class CategoryFilteringSection extends StatelessWidget {
                       size: 15,
                       color: Colors.grey[700],
                     ),
-                    const SizedBox(width: 8),
+                    sizedBox8,
                     Text(
                       _priceInfo,
-                      style: const TextStyle(fontSize: 11),
+                      style: fontSize11,
                     )
                   ],
                 ),
-                const SizedBox(height: 4),
+                sizedBox4,
                 Row(
                   children: [
                     Icon(
@@ -123,14 +119,14 @@ class CategoryFilteringSection extends StatelessWidget {
                       size: 15,
                       color: Colors.grey[700],
                     ),
-                    const SizedBox(width: 8),
+                    sizedBox8,
                     Text(
                       _anotherInfo,
-                      style: const TextStyle(fontSize: 11),
+                      style: fontSize11,
                     )
                   ],
                 ),
-                const SizedBox(height: 4),
+                sizedBox4,
               ],
             ),
           ),
