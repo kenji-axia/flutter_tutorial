@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'components/free_market_bottom_navigation_bar.dart';
+
 class FreeMarketScreen extends StatelessWidget {
   const FreeMarketScreen({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class FreeMarketScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color.fromRGBO(254, 254, 254, 1),
+        backgroundColor: Colors.white,
         title: const Text('出品'),
         titleTextStyle: const TextStyle(
           fontWeight: FontWeight.bold,
@@ -25,6 +27,7 @@ class FreeMarketScreen extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: const FreeMarketBottomNavigationBar(),
     );
   }
 }
