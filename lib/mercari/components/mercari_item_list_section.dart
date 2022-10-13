@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_tutorial/constants.dart';
 
-class ItemListSection extends StatelessWidget {
-  const ItemListSection({Key? key}) : super(key: key);
+class MercariItemListSection extends StatelessWidget {
+  const MercariItemListSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +20,19 @@ class ItemListSection extends StatelessWidget {
             itemName: 'NikonD5500',
             itemPrice: '¥51,000',
             searchingNum: '446人',
-            imagePath: 'images/freemarket_sample.jpg',
+            imagePath: 'images/mercari_sample.jpg',
           ),
           Item(
             itemName: 'NikonD5500',
             itemPrice: '¥51,000',
             searchingNum: '446人',
-            imagePath: 'images/freemarket_sample.jpg',
+            imagePath: 'images/mercari_sample.jpg',
           ),
           Item(
             itemName: 'NikonD5500',
             itemPrice: '¥51,000',
             searchingNum: '446人',
-            imagePath: 'images/freemarket_sample.jpg',
+            imagePath: 'images/mercari_sample.jpg',
           ),
         ],
       ),

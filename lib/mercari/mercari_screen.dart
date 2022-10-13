@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
-import 'components/shortcut_buttons_section.dart';
-import 'components/item_list_section.dart';
-import 'components/free_market_bottom_navigation_bar.dart';
+import 'components/mercari_shortcut_buttons_section.dart';
+import 'components/mercari_item_list_section.dart';
+import 'components/mercari_bottom_navigation_bar.dart';
 
-class FreeMarketScreen extends StatelessWidget {
-  const FreeMarketScreen({Key? key}) : super(key: key);
+class MercariScreen extends StatelessWidget {
+  const MercariScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class FreeMarketScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: Image.asset('images/freemarket_guide.jpg'),
+                      child: Image.asset('images/mercari_guide.jpg'),
                     ),
                     sizedBox24,
                     Text(
@@ -54,12 +54,12 @@ class FreeMarketScreen extends StatelessWidget {
                       ),
                     ),
                     sizedBox16,
-                    ShortcutButtonsSection(),
+                    MercariShortcutButtonsSection(),
                   ],
                 ),
               ),
               // Body下部の作成　「売れやすい持ち物」リストの表示
-              ItemListSection(),
+              MercariItemListSection(),
             ],
           ),
         ),
@@ -88,7 +88,7 @@ class FreeMarketScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const FreeMarketBottomNavigationBar(),
+      bottomNavigationBar: const MercariBottomNavigationBar(),
     );
   }
 }

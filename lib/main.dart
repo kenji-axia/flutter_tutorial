@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
 import 'youtube/youtube_screen.dart';
-import 'free_market/free_market_screen.dart';
+import 'mercari/mercari_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,8 +52,8 @@ class MyHomePage extends StatelessWidget {
               YoutubeScreen(),
             ),
             TransitionScreenButton(
-              'Free Market',
-              FreeMarketScreen(),
+              'Mercari',
+              MercariScreen(),
             ),
           ],
         ),

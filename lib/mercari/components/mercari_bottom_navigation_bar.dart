@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_tutorial/constants.dart';
 
-class FreeMarketBottomNavigationBar extends StatelessWidget {
-  const FreeMarketBottomNavigationBar({Key? key}) : super(key: key);
+class MercariBottomNavigationBar extends StatelessWidget {
+  const MercariBottomNavigationBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

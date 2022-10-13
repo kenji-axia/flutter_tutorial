@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_tutorial/constants.dart';
 
-class ShortcutButtonsSection extends StatelessWidget {
-  const ShortcutButtonsSection({Key? key}) : super(key: key);
+class MercariShortcutButtonsSection extends StatelessWidget {
+  const MercariShortcutButtonsSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
