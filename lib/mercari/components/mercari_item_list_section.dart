@@ -17,20 +17,20 @@ class MercariItemListSection extends StatelessWidget {
           ItemListSectionHeader(),
           sizedBox8,
           Item(
-            itemName: 'NikonD5500',
-            itemPrice: '¥51,000',
+            name: 'NikonD5500',
+            price: '¥51,000',
             searchingNum: '446人',
             imagePath: 'images/mercari_sample.jpg',
           ),
           Item(
-            itemName: 'NikonD5500',
-            itemPrice: '¥51,000',
+            name: 'NikonD5500',
+            price: '¥51,000',
             searchingNum: '446人',
             imagePath: 'images/mercari_sample.jpg',
           ),
           Item(
-            itemName: 'NikonD5500',
-            itemPrice: '¥51,000',
+            name: 'NikonD5500',
+            price: '¥51,000',
             searchingNum: '446人',
             imagePath: 'images/mercari_sample.jpg',
           ),
@@ -55,13 +55,15 @@ class ItemListSectionHeader extends StatelessWidget {
                 '売れやすい持ち物',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 15,
                 ),
               ),
               sizedBox2,
               Text(
                 '使わないモノを出品してみよう！',
-                style: TextStyle(color: Colors.grey[600]),
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 12,
+                ),
               ),
             ],
           ),
@@ -93,15 +95,15 @@ class ItemListSectionHeader extends StatelessWidget {
 
 class Item extends StatelessWidget {
   const Item(
-      {required this.itemName,
-      required this.itemPrice,
+      {required this.name,
+      required this.price,
       required this.searchingNum,
       required this.imagePath,
       Key? key})
       : super(key: key);
 
-  final String itemName;
-  final String itemPrice;
+  final String name;
+  final String price;
   final String searchingNum;
   final String imagePath;
 
@@ -133,18 +135,16 @@ class Item extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    itemName,
+                    name,
                     style: const TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 15,
                     ),
                   ),
                   sizedBox4,
                   Text(
-                    itemPrice,
+                    price,
                     style: const TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 15,
                     ),
                   ),
                   sizedBox4,
@@ -158,7 +158,10 @@ class Item extends StatelessWidget {
                       sizedBox4,
                       Text(
                         '$searchingNumが探しています',
-                        style: TextStyle(color: Colors.grey[700]),
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                          fontSize: 11,
+                        ),
                       ),
                     ],
                   )

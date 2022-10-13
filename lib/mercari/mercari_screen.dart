@@ -26,7 +26,7 @@ class MercariScreen extends StatelessWidget {
         child: DefaultTextStyle(
           style: const TextStyle(
             color: Colors.black87,
-            fontSize: 11,
+            fontSize: 15,
           ),
           child: ListView(
             children: [

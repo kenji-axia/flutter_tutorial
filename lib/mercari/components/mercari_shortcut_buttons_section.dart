@@ -7,32 +7,26 @@ class MercariShortcutButtonsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: const [
-          ShortCutButton(
-            iconData: Icons.camera_alt_outlined,
-            iconLabel: '写真を撮る',
-          ),
-          sizedBox8,
-          ShortCutButton(
-            iconData: Icons.collections_outlined,
-            iconLabel: 'アルバム',
-          ),
-          sizedBox8,
-          ShortCutButton(
-            iconData: Icons.screenshot,
-            iconLabel: 'バーコード\n(本・コスメ)',
-          ),
-          sizedBox8,
-          ShortCutButton(
-            iconData: Icons.text_snippet_outlined,
-            iconLabel: '下書き一覧',
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: const [
+        ShortCutButton(
+          iconData: Icons.camera_alt_outlined,
+          iconLabel: '写真を撮る',
+        ),
+        ShortCutButton(
+          iconData: Icons.collections_outlined,
+          iconLabel: 'アルバム',
+        ),
+        ShortCutButton(
+          iconData: Icons.screenshot,
+          iconLabel: 'バーコード\n(本・コスメ)',
+        ),
+        ShortCutButton(
+          iconData: Icons.text_snippet_outlined,
+          iconLabel: '下書き一覧',
+        ),
+      ],
     );
   }
 }
@@ -49,6 +43,7 @@ class ShortCutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 80,
+      height: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
         color: Colors.white,
@@ -57,7 +52,6 @@ class ShortCutButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: spacing2),
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               iconData,
@@ -72,6 +66,7 @@ class ShortCutButton extends StatelessWidget {
                   style: const TextStyle(
                     letterSpacing: 0.4,
                     height: 1,
+                    fontSize: 11,
                   ),
                 ),
               ),
