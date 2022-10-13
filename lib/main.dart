@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'async_screen.dart';
 import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
 import 'youtube/youtube_screen.dart';
@@ -59,6 +60,10 @@ class MyHomePage extends StatelessWidget {
             TransitionScreenButton(
               'Mercari',
               MercariScreen(),
+            ),
+            TransitionScreenButton(
+              'Async',
+              AsyncScreen(),
             ),
           ],
         ),
