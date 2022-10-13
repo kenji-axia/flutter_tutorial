@@ -12,6 +12,7 @@ const double spacing6 = 64;
 const double spacing7 = 96;
 const double spacing8 = 128;
 
+const sizedBox2 = SizedBox(height: 2, width: 2);
 const sizedBox4 = SizedBox(height: 4, width: 4);
 const sizedBox8 = SizedBox(height: 8, width: 8);
 const sizedBox16 = SizedBox(height: 16, width: 16);
@@ -26,3 +27,4 @@ const residenceMainBackgroundColor = Color.fromRGBO(250, 248, 245, 1);
 const residenceMainAccentColor = Color.fromRGBO(82, 164, 154, 1);
 
 const freeMarketMainAccentColor = Color.fromRGBO(34, 34, 34, 1);
+const freeMarketRedAccentColor = Color.fromRGBO(210, 82, 68, 1);

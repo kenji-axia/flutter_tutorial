@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
-import 'components/free_market_bottom_navigation_bar.dart';
 import 'components/shortcut_buttons_section.dart';
+import 'components/item_list_section.dart';
+import 'components/free_market_bottom_navigation_bar.dart';
 
 class FreeMarketScreen extends StatelessWidget {
   const FreeMarketScreen({Key? key}) : super(key: key);
@@ -29,6 +30,7 @@ class FreeMarketScreen extends StatelessWidget {
           ),
           child: ListView(
             children: [
+              // Body上部の作成　画像とショートカットボタン
               Container(
                 padding: const EdgeInsets.all(spacing2),
                 color: const Color.fromRGBO(239, 239, 239, 1),
@@ -54,6 +56,32 @@ class FreeMarketScreen extends StatelessWidget {
                     sizedBox16,
                     ShortcutButtonsSection(),
                   ],
+                ),
+              ),
+              // Body下部の作成　「売れやすい持ち物」リストの表示
+              ItemListSection(),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: SizedBox(
+        width: 70,
+        height: 70,
+        child: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: freeMarketRedAccentColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(
+                Icons.camera_alt,
+                size: 24,
+              ),
+              Text(
+                '出品',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
