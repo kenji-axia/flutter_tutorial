@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorial/constants.dart';
 
-import 'components/mercari_shortcut_buttons_section.dart';
-import 'components/mercari_item_list_section.dart';
+import 'components/mercari_body_top.dart';
+import 'components/mercari_body_bottom.dart';
+import 'components/mercari_floating_action_button.dart';
 import 'components/mercari_bottom_navigation_bar.dart';
 
 class MercariScreen extends StatelessWidget {
@@ -29,65 +29,16 @@ class MercariScreen extends StatelessWidget {
             fontSize: 15,
           ),
           child: ListView(
-            children: [
-              // Body上部の作成　画像とショートカットボタン
-              Container(
-                padding: const EdgeInsets.all(spacing2),
-                color: const Color.fromRGBO(239, 239, 239, 1),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Image.asset('images/mercari_guide.jpg'),
-                    ),
-                    sizedBox24,
-                    Text(
-                      '出品へのショートカット',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.grey[700],
-                      ),
-                    ),
-                    sizedBox16,
-                    MercariShortcutButtonsSection(),
-                  ],
-                ),
-              ),
-              // Body下部の作成　「売れやすい持ち物」リストの表示
-              MercariItemListSection(),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: SizedBox(
-        width: 70,
-        height: 70,
-        child: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: freeMarketRedAccentColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(
-                Icons.camera_alt,
-                size: 24,
-              ),
-              Text(
-                '出品',
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              // Body上部の作成　画像と複数のショートカットボタンを表示
+              MercariBodyTop(),
+              // Body下部の作成「売れやすい持ち物」リストを表示
+              MercariBodyBottom(),
             ],
           ),
         ),
       ),
+      floatingActionButton: const MercariFloatingActionButton(),
       bottomNavigationBar: const MercariBottomNavigationBar(),
     );
   }

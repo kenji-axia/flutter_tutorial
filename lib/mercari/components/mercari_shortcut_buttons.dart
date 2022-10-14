@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_tutorial/constants.dart';
 
-class MercariShortcutButtonsSection extends StatelessWidget {
-  const MercariShortcutButtonsSection({Key? key}) : super(key: key);
+class MercariShortcutButtons extends StatelessWidget {
+  const MercariShortcutButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: const [
-        ShortCutButton(
+        ShortcutButton(
           iconData: Icons.camera_alt_outlined,
           iconLabel: '写真を撮る',
         ),
-        ShortCutButton(
+        ShortcutButton(
           iconData: Icons.collections_outlined,
           iconLabel: 'アルバム',
         ),
-        ShortCutButton(
+        ShortcutButton(
           iconData: Icons.screenshot,
           iconLabel: 'バーコード\n(本・コスメ)',
         ),
-        ShortCutButton(
+        ShortcutButton(
           iconData: Icons.text_snippet_outlined,
           iconLabel: '下書き一覧',
         ),
@@ -31,8 +31,8 @@ class MercariShortcutButtonsSection extends StatelessWidget {
   }
 }
 
-class ShortCutButton extends StatelessWidget {
-  const ShortCutButton(
+class ShortcutButton extends StatelessWidget {
+  const ShortcutButton(
       {required this.iconData, required this.iconLabel, Key? key})
       : super(key: key);
 
