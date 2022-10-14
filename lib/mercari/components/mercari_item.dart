@@ -32,8 +32,7 @@ class MercariItem extends StatelessWidget {
           children: [
             // 商品写真の表示
             ItemImage(imagePath: imagePath),
-            sizedBox8,
-            sizedBox4,
+            sizedBox12,
             Expanded(
               // 商品名・商品価格・その商品を探している人の数を表示
               child: ItemInfo(

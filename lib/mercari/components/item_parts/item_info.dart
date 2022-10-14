@@ -23,16 +23,12 @@ class ItemInfo extends StatelessWidget {
       children: [
         Text(
           name,
-          style: const TextStyle(
-            fontWeight: FontWeight.w600,
-          ),
+          style: fontWeight600,
         ),
         sizedBox4,
         Text(
           price,
-          style: const TextStyle(
-            fontWeight: FontWeight.w600,
-          ),
+          style: fontWeight600,
         ),
         sizedBox4,
         Row(

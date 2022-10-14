@@ -15,6 +15,7 @@ const double spacing8 = 128;
 const sizedBox2 = SizedBox(height: 2, width: 2);
 const sizedBox4 = SizedBox(height: 4, width: 4);
 const sizedBox8 = SizedBox(height: 8, width: 8);
+const sizedBox12 = SizedBox(height: 12, width: 12);
 const sizedBox16 = SizedBox(height: 16, width: 16);
 const sizedBox24 = SizedBox(height: 24, width: 24);
 const sizedBox32 = SizedBox(height: 32, width: 32);
@@ -22,6 +23,10 @@ const sizedBox32 = SizedBox(height: 32, width: 32);
 final borderRadius10 = BorderRadius.circular(10);
 
 const fontSize14 = TextStyle(fontSize: 14);
+
+const fontWeight600 = TextStyle(
+  fontWeight: FontWeight.w600,
+);
 
 const residenceMainBackgroundColor = Color.fromRGBO(250, 248, 245, 1);
 const residenceMainAccentColor = Color.fromRGBO(82, 164, 154, 1);
