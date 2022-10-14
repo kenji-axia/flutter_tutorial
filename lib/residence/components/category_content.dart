@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
+import 'category_content_parts/category_content_images.dart';
+import 'category_content_parts/category_content_texts.dart';
+import 'category_content_parts/category_content_buttons.dart';
+
 class CategoryContent extends StatelessWidget {
   const CategoryContent({
     required this.name,
@@ -22,9 +26,6 @@ class CategoryContent extends StatelessWidget {
   final String residenceInsideImagePath;
   final String residenceOutsideImagePath;
 
-  final String _unlikeButtonText = '興味なし';
-  final String _favoriteButtonText = 'お気に入り';
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,15 +44,10 @@ class CategoryContent extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Image.asset(residenceOutsideImagePath),
-              ),
-              Expanded(
-                child: Image.asset(residenceInsideImagePath),
-              ),
-            ],
+          // 写真2枚(建物外観・見取り図)を横並べに表示
+          CategoryContentImages(
+            residenceOutsideImagePath: residenceOutsideImagePath,
+            residenceInsideImagePath: residenceInsideImagePath,
           ),
           Container(
             padding: const EdgeInsets.symmetric(
@@ -62,116 +58,17 @@ class CategoryContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 sizedBox4,
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-                sizedBox4,
-                Text(
-                  price,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red[300],
-                  ),
-                ),
-                sizedBox4,
-                Row(
-                  children: [
-                    Icon(
-                      Icons.train,
-                      size: 15,
-                      color: Colors.grey[600],
-                    ),
-                    sizedBox8,
-                    Text(place),
-                  ],
-                ),
-                sizedBox4,
-                Row(
-                  children: [
-                    Icon(
-                      Icons.grid_view_rounded,
-                      size: 15,
-                      color: Colors.grey[600],
-                    ),
-                    sizedBox8,
-                    Text(size),
-                  ],
-                ),
-                sizedBox4,
-                Row(
-                  children: [
-                    Icon(
-                      Icons.business,
-                      size: 15,
-                      color: Colors.grey[600],
-                    ),
-                    sizedBox8,
-                    Text(buildingInfo),
-                  ],
+                // 建物情報を表示
+                CategoryContentTexts(
+                  residenceName: name,
+                  residencePrice: price,
+                  residencePlace: place,
+                  residenceSize: size,
+                  residenceInfo: buildingInfo,
                 ),
                 sizedBox16,
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: borderRadius10,
-                          border: Border.all(color: Colors.grey.shade400),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: spacing2,
-                          vertical: spacingHalf,
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.delete,
-                              color: Colors.grey.shade400,
-                              size: 25,
-                            ),
-                            sizedBox16,
-                            Text(
-                              _unlikeButtonText,
-                              style: fontSize14,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    sizedBox8,
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: borderRadius10,
-                          border: Border.all(color: Colors.grey.shade400),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: spacing2,
-                          vertical: spacingHalf,
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.favorite_border,
-                              color: Colors.grey.shade400,
-                              size: 25,
-                            ),
-                            sizedBox16,
-                            Text(
-                              _favoriteButtonText,
-                              style: fontSize14,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                // 興味なし / お気に入り ボタンを横並びに表示
+                CategoryContentButtons(),
                 sizedBox4,
               ],
             ),
