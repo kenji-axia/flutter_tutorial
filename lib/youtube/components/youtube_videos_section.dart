@@ -1,18 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
+import 'package:flutter_tutorial/youtube/data_class/movie_info.dart';
+
 class YoutubeVideosSection extends StatelessWidget {
-  const YoutubeVideosSection({Key? key}) : super(key: key);
+  YoutubeVideosSection({Key? key}) : super(key: key);
+
+  final List<MovieInfo> _dummyMovieInfo = [
+    MovieInfo(
+      imagePath: 'images/youtube_video_thumbnail.jpg',
+      iconPath: 'images/youtube_channel_icon.jpg',
+      title: '今週のウィジェットが登場！',
+      subTitle: 'Flutter・48万 回視聴・3年前',
+      duration: '0:56',
+    ),
+    MovieInfo(
+      imagePath: 'images/youtube_video_thumbnail.jpg',
+      iconPath: 'images/youtube_channel_icon.jpg',
+      title: '今週のウィジェットが登場！',
+      subTitle: 'Flutter・48万 回視聴・3年前',
+      duration: '0:56',
+    ),
+    MovieInfo(
+      imagePath: 'images/youtube_video_thumbnail.jpg',
+      iconPath: 'images/youtube_channel_icon.jpg',
+      title: '今週のウィジェットが登場！',
+      subTitle: 'Flutter・48万 回視聴・3年前',
+      duration: '0:56',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         YoutubeVideosSectionTitle(),
-        VideoThumbnail(),
-        VideoThumbnail(),
-        VideoThumbnail(),
+        for (MovieInfo movieInfo in _dummyMovieInfo) ...{
+          VideoThumbnail(
+            imagePath: movieInfo.imagePath,
+            iconPath: movieInfo.iconPath,
+            title: movieInfo.title,
+            subTitle: movieInfo.subTitle,
+            duration: movieInfo.duration,
+          )
+        }
       ],
     );
   }
@@ -39,13 +71,20 @@ class YoutubeVideosSectionTitle extends StatelessWidget {
 }
 
 class VideoThumbnail extends StatelessWidget {
-  const VideoThumbnail({Key? key}) : super(key: key);
+  const VideoThumbnail(
+      {required this.imagePath,
+      required this.iconPath,
+      required this.title,
+      required this.subTitle,
+      required this.duration,
+      Key? key})
+      : super(key: key);
 
-  final _thumbnailPath = 'images/youtube_video_thumbnail.jpg';
-  final _channelIconPath = 'images/youtube_channel_icon.jpg';
-  final _duration = '0:56';
-  final _videoTitle = '今週のウィジェットが登場！';
-  final _videoInfo = 'Flutter・48万 回視聴・3年前';
+  final String imagePath;
+  final String iconPath;
+  final String title;
+  final String subTitle;
+  final String duration;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +93,7 @@ class VideoThumbnail extends StatelessWidget {
         Stack(
           alignment: AlignmentDirectional.bottomEnd,
           children: [
-            Image.asset(_thumbnailPath),
+            Image.asset(imagePath),
             Container(
               padding: const EdgeInsets.only(right: spacing1, bottom: spacing1),
               child: Row(
@@ -76,7 +115,7 @@ class VideoThumbnail extends StatelessWidget {
                       color: Colors.black.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Text(_duration),
+                    child: Text(duration),
                   ),
                 ],
               ),
@@ -95,7 +134,7 @@ class VideoThumbnail extends StatelessWidget {
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage(_channelIconPath),
+                    image: AssetImage(iconPath),
                   ),
                 ),
               ),
@@ -107,7 +146,7 @@ class VideoThumbnail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      _videoTitle,
+                      title,
                       style: const TextStyle(
                         fontSize: 17,
                       ),
@@ -116,7 +155,7 @@ class VideoThumbnail extends StatelessWidget {
                       height: spacingMin,
                     ),
                     Text(
-                      _videoInfo,
+                      subTitle,
                       style: const TextStyle(
                         color: Colors.white60,
                         fontSize: 12,
