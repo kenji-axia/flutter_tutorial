@@ -45,8 +45,8 @@ class ShortcutButton extends StatelessWidget {
       width: 80,
       height: 100,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
-        color: Colors.white,
+        borderRadius: borderRadius4,
+        color: white,
         border: Border.all(color: Colors.grey.shade300),
       ),
       padding: const EdgeInsets.symmetric(vertical: spacing2),

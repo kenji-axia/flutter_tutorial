@@ -9,10 +9,10 @@ class ItemButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: freeMarketRedAccentColor,
-        onPrimary: Colors.white,
+        primary: mercariRedAccentColor,
+        onPrimary: white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: borderRadius4,
         ),
       ),
       onPressed: () {},

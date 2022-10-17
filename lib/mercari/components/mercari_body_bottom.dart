@@ -55,15 +55,13 @@ class ItemListHeader extends StatelessWidget {
             children: [
               const Text(
                 '売れやすい持ち物',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: fontWeightBoldTextStyle,
               ),
               sizedBox2,
               Text(
                 '使わないモノを出品してみよう！',
                 style: TextStyle(
-                  color: Colors.grey[600],
+                  color: grey600,
                   fontSize: 12,
                 ),
               ),
@@ -79,13 +77,13 @@ class ItemListHeader extends StatelessWidget {
                 'すべて見る',
                 style: TextStyle(
                   fontSize: 13,
-                  color: Colors.blueAccent,
+                  color: blueAccent,
                 ),
               ),
               Icon(
                 Icons.arrow_forward_ios,
                 size: 18,
-                color: Colors.blueAccent,
+                color: blueAccent,
               )
             ],
           ),

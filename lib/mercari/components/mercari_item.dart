@@ -25,7 +25,7 @@ class MercariItem extends StatelessWidget {
     return Column(
       children: [
         Divider(
-          color: Colors.grey[400],
+          color: grey400,
         ),
         sizedBox8,
         Row(

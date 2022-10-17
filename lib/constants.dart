@@ -20,16 +20,31 @@ const sizedBox16 = SizedBox(height: 16, width: 16);
 const sizedBox24 = SizedBox(height: 24, width: 24);
 const sizedBox32 = SizedBox(height: 32, width: 32);
 
+final borderRadius4 = BorderRadius.circular(4);
+final borderRadius6 = BorderRadius.circular(6);
 final borderRadius10 = BorderRadius.circular(10);
 
-const fontSize14 = TextStyle(fontSize: 14);
-
-const fontWeight600 = TextStyle(
+// TextStyle
+const fontSize14TextStyle = TextStyle(
+  fontSize: 14,
+);
+const fontWeight600TextStyle = TextStyle(
   fontWeight: FontWeight.w600,
 );
+const fontWeightBoldTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+);
+
+const blueAccent = Colors.blueAccent;
+const black87 = Colors.black87;
+const white = Colors.white;
+var grey400 = Colors.grey[400];
+var grey600 = Colors.grey[600];
+var grey700 = Colors.grey[700];
 
 const residenceMainBackgroundColor = Color.fromRGBO(250, 248, 245, 1);
 const residenceMainAccentColor = Color.fromRGBO(82, 164, 154, 1);
 
-const freeMarketMainAccentColor = Color.fromRGBO(34, 34, 34, 1);
-const freeMarketRedAccentColor = Color.fromRGBO(210, 82, 68, 1);
+const mercariMainAccentColor = Color.fromRGBO(34, 34, 34, 1);
+const mercariRedAccentColor = Color.fromRGBO(210, 82, 68, 1);
+const mercariBodyTopBackgroundColor = Color.fromRGBO(239, 239, 239, 1);

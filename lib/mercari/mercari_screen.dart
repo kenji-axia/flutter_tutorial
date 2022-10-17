@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_tutorial/constants.dart';
+
 import 'components/mercari_body_top.dart';
 import 'components/mercari_body_bottom.dart';
 import 'components/mercari_floating_action_button.dart';
@@ -11,21 +13,21 @@ class MercariScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: white,
         title: const Text('出品'),
         titleTextStyle: const TextStyle(
           fontWeight: FontWeight.bold,
-          color: Colors.black87,
+          color: black87,
           fontSize: 18,
         ),
       ),
       body: SafeArea(
         child: DefaultTextStyle(
           style: const TextStyle(
-            color: Colors.black87,
+            color: black87,
             fontSize: 15,
           ),
           child: ListView(

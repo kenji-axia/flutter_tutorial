@@ -11,14 +11,14 @@ class MercariBodyTop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(spacing2),
-      color: const Color.fromRGBO(239, 239, 239, 1),
+      color: mercariBodyTopBackgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: borderRadius4,
             ),
             child: Image.asset('images/mercari_guide.jpg'),
           ),
@@ -28,7 +28,7 @@ class MercariBodyTop extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 15,
-              color: Colors.grey[700],
+              color: grey700,
             ),
           ),
           sizedBox16,

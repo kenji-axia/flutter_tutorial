@@ -9,19 +9,15 @@ class MercariBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      unselectedItemColor: freeMarketMainAccentColor,
-      selectedItemColor: freeMarketMainAccentColor,
+      unselectedItemColor: mercariMainAccentColor,
+      selectedItemColor: mercariMainAccentColor,
       iconSize: 30,
       selectedFontSize: 10,
       unselectedFontSize: 10,
       currentIndex: 2,
-      backgroundColor: Colors.white,
-      selectedLabelStyle: const TextStyle(
-        fontWeight: FontWeight.bold,
-      ),
-      unselectedLabelStyle: const TextStyle(
-        fontWeight: FontWeight.bold,
-      ),
+      backgroundColor: white,
+      selectedLabelStyle: fontWeightBoldTextStyle,
+      unselectedLabelStyle: fontWeightBoldTextStyle,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),

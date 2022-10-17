@@ -12,7 +12,7 @@ class MercariFloatingActionButton extends StatelessWidget {
       height: 70,
       child: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: freeMarketRedAccentColor,
+        backgroundColor: mercariRedAccentColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
