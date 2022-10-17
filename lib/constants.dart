@@ -58,3 +58,9 @@ const residenceMainAccentColor = Color.fromRGBO(82, 164, 154, 1);
 const mercariMainAccentColor = Color.fromRGBO(34, 34, 34, 1);
 const mercariRedAccentColor = Color.fromRGBO(210, 82, 68, 1);
 const mercariBodyTopBackgroundColor = Color.fromRGBO(239, 239, 239, 1);
+
+// 以下 Tutorial2.2以前で使用
+const sizedBox4 = SizedBox(height: 4, width: 4);
+const sizedBox8 = SizedBox(height: 8, width: 8);
+const sizedBox16 = SizedBox(height: 16, width: 16);
+const fontSize14 = TextStyle(fontSize: 14);
