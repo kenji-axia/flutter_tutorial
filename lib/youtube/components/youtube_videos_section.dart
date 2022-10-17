@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
-import 'package:flutter_tutorial/youtube/data_class/movie_info.dart';
+import 'package:flutter_tutorial/youtube/data_class/movie_metadata.dart';
 
 class YoutubeVideosSection extends StatelessWidget {
   YoutubeVideosSection({Key? key}) : super(key: key);
 
-  final List<MovieInfo> _dummyMovieInfo = [
-    MovieInfo(
+  final List<MovieMetadata> _dummyMovieMetadata = [
+    MovieMetadata(
       imagePath: 'images/youtube_video_thumbnail.jpg',
       iconPath: 'images/youtube_channel_icon.jpg',
       title: '今週のウィジェットが登場！',
       subTitle: 'Flutter・48万 回視聴・3年前',
       duration: '0:56',
     ),
-    MovieInfo(
+    MovieMetadata(
       imagePath: 'images/youtube_video_thumbnail.jpg',
       iconPath: 'images/youtube_channel_icon.jpg',
       title: '今週のウィジェットが登場！',
       subTitle: 'Flutter・48万 回視聴・3年前',
       duration: '0:56',
     ),
-    MovieInfo(
+    MovieMetadata(
       imagePath: 'images/youtube_video_thumbnail.jpg',
       iconPath: 'images/youtube_channel_icon.jpg',
       title: '今週のウィジェットが登場！',
@@ -36,13 +36,13 @@ class YoutubeVideosSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         YoutubeVideosSectionTitle(),
-        for (MovieInfo movieInfo in _dummyMovieInfo) ...{
+        for (MovieMetadata movieMetadata in _dummyMovieMetadata) ...{
           VideoThumbnail(
-            imagePath: movieInfo.imagePath,
-            iconPath: movieInfo.iconPath,
-            title: movieInfo.title,
-            subTitle: movieInfo.subTitle,
-            duration: movieInfo.duration,
+            imagePath: movieMetadata.imagePath,
+            iconPath: movieMetadata.iconPath,
+            title: movieMetadata.title,
+            subTitle: movieMetadata.subTitle,
+            duration: movieMetadata.duration,
           )
         }
       ],
