@@ -9,7 +9,7 @@ class MercariBodyBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.only(
         top: spacing2,
         left: spacing2,
