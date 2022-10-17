@@ -27,12 +27,12 @@ class MercariItem extends StatelessWidget {
         Divider(
           color: grey400,
         ),
-        sizedBox8,
+        sizedBoxH8,
         Row(
           children: [
             // 商品写真の表示
             ItemImage(imagePath: imagePath),
-            sizedBox12,
+            sizedBoxW12,
             Expanded(
               // 商品名・商品価格・その商品を探している人の数を表示
               child: ItemDescription(
@@ -42,10 +42,10 @@ class MercariItem extends StatelessWidget {
               ),
             ),
             const ItemButton(),
-            sizedBox16,
+            sizedBoxW16,
           ],
         ),
-        sizedBox8,
+        sizedBoxH8,
       ],
     );
   }

@@ -22,7 +22,7 @@ class MercariBodyTop extends StatelessWidget {
             ),
             child: Image.asset('images/mercari_guide.jpg'),
           ),
-          sizedBox24,
+          sizedBoxH24,
           Text(
             '出品へのショートカット',
             style: TextStyle(
@@ -31,7 +31,7 @@ class MercariBodyTop extends StatelessWidget {
               color: grey700,
             ),
           ),
-          sizedBox16,
+          sizedBoxH16,
           const MercariShortcutButtons(),
         ],
       ),

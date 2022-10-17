@@ -12,13 +12,23 @@ const double spacing6 = 64;
 const double spacing7 = 96;
 const double spacing8 = 128;
 
-const sizedBox2 = SizedBox(height: 2, width: 2);
-const sizedBox4 = SizedBox(height: 4, width: 4);
-const sizedBox8 = SizedBox(height: 8, width: 8);
-const sizedBox12 = SizedBox(height: 12, width: 12);
-const sizedBox16 = SizedBox(height: 16, width: 16);
-const sizedBox24 = SizedBox(height: 24, width: 24);
-const sizedBox32 = SizedBox(height: 32, width: 32);
+// Column等でスペース（高さ）を作るときに使用
+const sizedBoxH2 = SizedBox(height: 2);
+const sizedBoxH4 = SizedBox(height: 4);
+const sizedBoxH8 = SizedBox(height: 8);
+const sizedBoxH12 = SizedBox(height: 12);
+const sizedBoxH16 = SizedBox(height: 16);
+const sizedBoxH24 = SizedBox(height: 24);
+const sizedBoxH32 = SizedBox(height: 32);
+
+// Row等でスペース（横幅）を作るときに使用
+const sizedBoxW2 = SizedBox(width: 2);
+const sizedBoxW4 = SizedBox(width: 4);
+const sizedBoxW8 = SizedBox(width: 8);
+const sizedBoxW12 = SizedBox(width: 12);
+const sizedBoxW16 = SizedBox(width: 16);
+const sizedBoxW24 = SizedBox(width: 24);
+const sizedBoxW32 = SizedBox(width: 32);
 
 final borderRadius4 = BorderRadius.circular(4);
 final borderRadius6 = BorderRadius.circular(6);

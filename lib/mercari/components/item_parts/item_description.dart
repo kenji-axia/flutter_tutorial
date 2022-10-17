@@ -24,12 +24,12 @@ class ItemDescription extends StatelessWidget {
           name,
           style: fontWeight600TextStyle,
         ),
-        sizedBox4,
+        sizedBoxH4,
         Text(
           price,
           style: fontWeight600TextStyle,
         ),
-        sizedBox4,
+        sizedBoxH4,
         Row(
           children: [
             const Icon(
@@ -37,7 +37,7 @@ class ItemDescription extends StatelessWidget {
               size: 17,
               color: Colors.blueAccent,
             ),
-            sizedBox4,
+            sizedBoxW4,
             Text(
               '$searchingNumが探しています',
               style: TextStyle(

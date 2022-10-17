@@ -57,7 +57,7 @@ class ShortcutButton extends StatelessWidget {
               iconData,
               size: 30,
             ),
-            sizedBox8,
+            sizedBoxH8,
             Expanded(
               child: Center(
                 child: Text(

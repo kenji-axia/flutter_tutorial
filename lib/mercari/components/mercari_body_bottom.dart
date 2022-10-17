@@ -17,7 +17,7 @@ class MercariBodyBottom extends StatelessWidget {
       child: Column(
         children: const [
           ItemListHeader(),
-          sizedBox8,
+          sizedBoxH8,
           MercariItem(
             name: 'NikonD5500',
             price: '¥51,000',
@@ -57,7 +57,7 @@ class ItemListHeader extends StatelessWidget {
                 '売れやすい持ち物',
                 style: fontWeightBoldTextStyle,
               ),
-              sizedBox2,
+              sizedBoxH2,
               Text(
                 '使わないモノを出品してみよう！',
                 style: TextStyle(
@@ -88,7 +88,7 @@ class ItemListHeader extends StatelessWidget {
             ],
           ),
         ),
-        sizedBox16,
+        sizedBoxW16,
       ],
     );
   }
