@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 import 'item_parts/item_image.dart';
-import 'item_parts/item_info.dart';
+import 'item_parts/item_description.dart';
 import 'item_parts/item_button.dart';
 
 class MercariItem extends StatelessWidget {
@@ -35,7 +35,7 @@ class MercariItem extends StatelessWidget {
             sizedBox12,
             Expanded(
               // 商品名・商品価格・その商品を探している人の数を表示
-              child: ItemInfo(
+              child: ItemDescription(
                 name: name,
                 price: price,
                 searchingNum: searchingNum,

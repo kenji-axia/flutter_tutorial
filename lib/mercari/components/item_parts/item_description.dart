@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_tutorial/constants.dart';
 
-class ItemInfo extends StatelessWidget {
-  const ItemInfo(
+class ItemDescription extends StatelessWidget {
+  const ItemDescription(
       {required this.name,
       required this.price,
       required this.searchingNum,
