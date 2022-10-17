@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_tutorial/constants.dart';
 
-import 'residence_info.dart';
+import 'data_class/residence_metadata.dart';
 import 'components/residence_app_bar.dart';
 import 'components/category_filtering_section.dart';
 import 'components/category_content.dart';
@@ -12,8 +12,8 @@ import 'components/residence_bottom_navigation_bar.dart';
 class ResidenceScreen extends StatelessWidget {
   ResidenceScreen({Key? key}) : super(key: key);
 
-  final List<ResidenceInfo> _dummyResidenceInfoData = [
-    ResidenceInfo(
+  final List<ResidenceMetadata> _dummyResidenceMetadata = [
+    ResidenceMetadata(
       name: 'Rising place川崎',
       price: '2,000万円',
       place: '京急本線 京急川崎駅 より 徒歩9分',
@@ -22,7 +22,7 @@ class ResidenceScreen extends StatelessWidget {
       residenceInsideImagePath: 'images/residence_inside.jpg',
       residenceOutsideImagePath: 'images/residence_outside.jpg',
     ),
-    ResidenceInfo(
+    ResidenceMetadata(
       name: 'Rising place川崎',
       price: '2,000万円',
       place: '京急本線 京急川崎駅 より 徒歩9分',
@@ -47,17 +47,18 @@ class ResidenceScreen extends StatelessWidget {
           child: ListView(
             children: [
               CategoryFilteringSection(),
-              for (ResidenceInfo residenceInfo in _dummyResidenceInfoData) ...{
+              for (ResidenceMetadata residenceMetadata
+                  in _dummyResidenceMetadata) ...{
                 CategoryContent(
-                  name: residenceInfo.name,
-                  price: residenceInfo.price,
-                  place: residenceInfo.place,
-                  size: residenceInfo.size,
-                  buildingInfo: residenceInfo.buildingInfo,
+                  name: residenceMetadata.name,
+                  price: residenceMetadata.price,
+                  place: residenceMetadata.place,
+                  size: residenceMetadata.size,
+                  buildingInfo: residenceMetadata.buildingInfo,
                   residenceInsideImagePath:
-                      residenceInfo.residenceInsideImagePath,
+                      residenceMetadata.residenceInsideImagePath,
                   residenceOutsideImagePath:
-                      residenceInfo.residenceOutsideImagePath,
+                      residenceMetadata.residenceOutsideImagePath,
                 )
               }
             ],

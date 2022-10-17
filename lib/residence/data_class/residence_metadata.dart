@@ -1,4 +1,4 @@
-class ResidenceInfo {
+class ResidenceMetadata {
   final String name;
   final String price;
   final String place;
@@ -7,7 +7,7 @@ class ResidenceInfo {
   final String residenceInsideImagePath;
   final String residenceOutsideImagePath;
 
-  ResidenceInfo({
+  ResidenceMetadata({
     required this.name,
     required this.price,
     required this.place,
