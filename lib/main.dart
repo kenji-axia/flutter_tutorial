@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'async_screen.dart';
 import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
 import 'youtube/youtube_screen.dart';
 import 'residence/residence_screen.dart';
 import 'mercari/mercari_screen.dart';
+import 'async/async_screen.dart';
 
 void main() {
   runApp(const MyApp());
