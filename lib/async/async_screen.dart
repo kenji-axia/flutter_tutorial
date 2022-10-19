@@ -18,7 +18,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
   String _age = '未設定';
   String _birthday = '未設定';
 
-  Future<void> _getSharedPreferences() async {
+  Future<void> _getUserProperty() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
       _name = prefs.getString('name') ?? '未設定';
@@ -27,7 +27,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
     });
   }
 
-  Future<void> _setSharedPreferences() async {
+  Future<void> _storeUserProperty() async {
     final SharedPreferences prefs = await _prefs;
     prefs
       ..setString('name', _name)
@@ -38,7 +38,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
   @override
   void initState() {
     super.initState();
-    _getSharedPreferences();
+    _getUserProperty();
   }
 
   @override
@@ -111,7 +111,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
                   setState(() {
                     _formKey.currentState!.save();
                   });
-                  _setSharedPreferences();
+                  _storeUserProperty();
                   Navigator.pop(context);
                 }
               },
