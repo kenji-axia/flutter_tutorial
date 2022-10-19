@@ -39,7 +39,7 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             TransitionScreenButton(
               'Tutorial1',
               BuildingLayoutScreen(),
