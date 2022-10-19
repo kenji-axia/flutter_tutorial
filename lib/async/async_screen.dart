@@ -79,41 +79,23 @@ class _AsyncScreenState extends State<AsyncScreen> {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(labelText: "名前"),
-                  onSaved: (value) {
-                    _name = value!;
-                  },
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '未入力です';
-                    }
-                    return null;
-                  },
+                  onSaved: (value) => _name = value!,
+                  validator: (value) =>
+                      (value == null || value.isEmpty) ? '未入力です' : null,
                 ),
                 TextFormField(
                   decoration: const InputDecoration(labelText: "年齢"),
-                  onSaved: (value) {
-                    _age = value!;
-                  },
+                  onSaved: (value) => _age = value!,
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '未入力です';
-                    }
-                    return null;
-                  },
+                  validator: (value) =>
+                      (value == null || value.isEmpty) ? '未入力です' : null,
                 ),
                 TextFormField(
                   decoration: const InputDecoration(labelText: "誕生日"),
-                  onSaved: (value) {
-                    _birthday = value!;
-                  },
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '未入力です';
-                    }
-                    return null;
-                  },
+                  onSaved: (value) => _birthday = value!,
+                  validator: (value) =>
+                      (value == null || value.isEmpty) ? '未入力です' : null,
                 ),
               ],
             ),
