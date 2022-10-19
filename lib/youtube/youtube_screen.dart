@@ -18,9 +18,9 @@ class YoutubeScreen extends StatelessWidget {
         child: DefaultTextStyle(
           style: const TextStyle(color: Colors.white),
           child: ListView(
-            children: const [
-              YoutubeAppBar(),
-              YoutubeCategoriesSection(),
+            children: [
+              const YoutubeAppBar(),
+              const YoutubeCategoriesSection(),
               YoutubeVideosSection(),
             ],
           ),
