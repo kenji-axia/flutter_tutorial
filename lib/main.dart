@@ -4,6 +4,7 @@ import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
 import 'youtube/youtube_screen.dart';
 import 'residence/residence_screen.dart';
+import 'mercari/mercari_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,6 +55,10 @@ class MyHomePage extends StatelessWidget {
             TransitionScreenButton(
               'Tutorial2.2',
               ResidenceScreen(),
+            ),
+            TransitionScreenButton(
+              'Mercari',
+              MercariScreen(),
             ),
           ],
         ),

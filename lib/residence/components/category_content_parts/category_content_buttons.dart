@@ -38,7 +38,7 @@ class CategoryContentButtons extends StatelessWidget {
             ),
           ),
         ),
-        sizedBox8,
+        sizedBoxW8,
         Expanded(
           child: Container(
             decoration: BoxDecoration(
