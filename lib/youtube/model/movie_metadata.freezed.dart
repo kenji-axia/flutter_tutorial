@@ -23,13 +23,13 @@ class _$MovieMetadataTearOff {
   const _$MovieMetadataTearOff();
 
   _MovieMetadata call(
-      {@JsonKey(name: "imagePath") String? imagePath,
-      @JsonKey(name: "iconPath") String? iconPath,
-      @JsonKey(name: "title") String? title,
-      @JsonKey(name: "channelName") String? channelName,
-      @JsonKey(name: "numOfViews") int? numOfViews,
-      @JsonKey(name: "yearsAgo") int? yearsAgo,
-      @JsonKey(name: "duration") String? duration}) {
+      {String? imagePath,
+      String? iconPath,
+      String? title,
+      String? channelName,
+      int? numOfViews,
+      int? yearsAgo,
+      String? duration}) {
     return _MovieMetadata(
       imagePath: imagePath,
       iconPath: iconPath,
@@ -51,19 +51,12 @@ const $MovieMetadata = _$MovieMetadataTearOff();
 
 /// @nodoc
 mixin _$MovieMetadata {
-  @JsonKey(name: "imagePath")
   String? get imagePath => throw _privateConstructorUsedError;
-  @JsonKey(name: "iconPath")
   String? get iconPath => throw _privateConstructorUsedError;
-  @JsonKey(name: "title")
   String? get title => throw _privateConstructorUsedError;
-  @JsonKey(name: "channelName")
   String? get channelName => throw _privateConstructorUsedError;
-  @JsonKey(name: "numOfViews")
   int? get numOfViews => throw _privateConstructorUsedError;
-  @JsonKey(name: "yearsAgo")
   int? get yearsAgo => throw _privateConstructorUsedError;
-  @JsonKey(name: "duration")
   String? get duration => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -78,13 +71,13 @@ abstract class $MovieMetadataCopyWith<$Res> {
           MovieMetadata value, $Res Function(MovieMetadata) then) =
       _$MovieMetadataCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: "imagePath") String? imagePath,
-      @JsonKey(name: "iconPath") String? iconPath,
-      @JsonKey(name: "title") String? title,
-      @JsonKey(name: "channelName") String? channelName,
-      @JsonKey(name: "numOfViews") int? numOfViews,
-      @JsonKey(name: "yearsAgo") int? yearsAgo,
-      @JsonKey(name: "duration") String? duration});
+      {String? imagePath,
+      String? iconPath,
+      String? title,
+      String? channelName,
+      int? numOfViews,
+      int? yearsAgo,
+      String? duration});
 }
 
 /// @nodoc
@@ -147,13 +140,13 @@ abstract class _$MovieMetadataCopyWith<$Res>
       __$MovieMetadataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: "imagePath") String? imagePath,
-      @JsonKey(name: "iconPath") String? iconPath,
-      @JsonKey(name: "title") String? title,
-      @JsonKey(name: "channelName") String? channelName,
-      @JsonKey(name: "numOfViews") int? numOfViews,
-      @JsonKey(name: "yearsAgo") int? yearsAgo,
-      @JsonKey(name: "duration") String? duration});
+      {String? imagePath,
+      String? iconPath,
+      String? title,
+      String? channelName,
+      int? numOfViews,
+      int? yearsAgo,
+      String? duration});
 }
 
 /// @nodoc
@@ -214,37 +207,30 @@ class __$MovieMetadataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MovieMetadata implements _MovieMetadata {
   const _$_MovieMetadata(
-      {@JsonKey(name: "imagePath") this.imagePath,
-      @JsonKey(name: "iconPath") this.iconPath,
-      @JsonKey(name: "title") this.title,
-      @JsonKey(name: "channelName") this.channelName,
-      @JsonKey(name: "numOfViews") this.numOfViews,
-      @JsonKey(name: "yearsAgo") this.yearsAgo,
-      @JsonKey(name: "duration") this.duration});
+      {this.imagePath,
+      this.iconPath,
+      this.title,
+      this.channelName,
+      this.numOfViews,
+      this.yearsAgo,
+      this.duration});
 
   factory _$_MovieMetadata.fromJson(Map<String, dynamic> json) =>
       _$$_MovieMetadataFromJson(json);
 
   @override
-  @JsonKey(name: "imagePath")
   final String? imagePath;
   @override
-  @JsonKey(name: "iconPath")
   final String? iconPath;
   @override
-  @JsonKey(name: "title")
   final String? title;
   @override
-  @JsonKey(name: "channelName")
   final String? channelName;
   @override
-  @JsonKey(name: "numOfViews")
   final int? numOfViews;
   @override
-  @JsonKey(name: "yearsAgo")
   final int? yearsAgo;
   @override
-  @JsonKey(name: "duration")
   final String? duration;
 
   @override
@@ -292,37 +278,30 @@ class _$_MovieMetadata implements _MovieMetadata {
 
 abstract class _MovieMetadata implements MovieMetadata {
   const factory _MovieMetadata(
-      {@JsonKey(name: "imagePath") String? imagePath,
-      @JsonKey(name: "iconPath") String? iconPath,
-      @JsonKey(name: "title") String? title,
-      @JsonKey(name: "channelName") String? channelName,
-      @JsonKey(name: "numOfViews") int? numOfViews,
-      @JsonKey(name: "yearsAgo") int? yearsAgo,
-      @JsonKey(name: "duration") String? duration}) = _$_MovieMetadata;
+      {String? imagePath,
+      String? iconPath,
+      String? title,
+      String? channelName,
+      int? numOfViews,
+      int? yearsAgo,
+      String? duration}) = _$_MovieMetadata;
 
   factory _MovieMetadata.fromJson(Map<String, dynamic> json) =
       _$_MovieMetadata.fromJson;
 
   @override
-  @JsonKey(name: "imagePath")
   String? get imagePath;
   @override
-  @JsonKey(name: "iconPath")
   String? get iconPath;
   @override
-  @JsonKey(name: "title")
   String? get title;
   @override
-  @JsonKey(name: "channelName")
   String? get channelName;
   @override
-  @JsonKey(name: "numOfViews")
   int? get numOfViews;
   @override
-  @JsonKey(name: "yearsAgo")
   int? get yearsAgo;
   @override
-  @JsonKey(name: "duration")
   String? get duration;
   @override
   @JsonKey(ignore: true)
