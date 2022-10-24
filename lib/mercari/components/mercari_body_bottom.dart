@@ -1,11 +1,33 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_tutorial/constants.dart';
+import 'package:flutter_tutorial/mercari/dataclass/item_metadata.dart';
 
 import 'mercari_item.dart';
 
 class MercariBodyBottom extends StatelessWidget {
-  const MercariBodyBottom({Key? key}) : super(key: key);
+  MercariBodyBottom({Key? key}) : super(key: key);
+
+  final List<ItemMetadata> _dummyItemMetadata = [
+    ItemMetadata(
+      name: 'NikonD5500',
+      price: '¥51,000',
+      searchingNum: '446人',
+      imagePath: 'images/mercari_sample.jpg',
+    ),
+    ItemMetadata(
+      name: 'NikonD5500',
+      price: '¥51,000',
+      searchingNum: '446人',
+      imagePath: 'images/mercari_sample.jpg',
+    ),
+    ItemMetadata(
+      name: 'NikonD5500',
+      price: '¥51,000',
+      searchingNum: '446人',
+      imagePath: 'images/mercari_sample.jpg',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -15,27 +37,17 @@ class MercariBodyBottom extends StatelessWidget {
         left: spacing2,
       ),
       child: Column(
-        children: const [
+        children: [
           ItemListHeader(),
           sizedBoxH8,
-          MercariItem(
-            name: 'NikonD5500',
-            price: '¥51,000',
-            searchingNum: '446人',
-            imagePath: 'images/mercari_sample.jpg',
-          ),
-          MercariItem(
-            name: 'NikonD5500',
-            price: '¥51,000',
-            searchingNum: '446人',
-            imagePath: 'images/mercari_sample.jpg',
-          ),
-          MercariItem(
-            name: 'NikonD5500',
-            price: '¥51,000',
-            searchingNum: '446人',
-            imagePath: 'images/mercari_sample.jpg',
-          ),
+          for (ItemMetadata itemMetadata in _dummyItemMetadata) ...{
+            MercariItem(
+              name: itemMetadata.name,
+              price: itemMetadata.price,
+              searchingNum: itemMetadata.searchingNum,
+              imagePath: itemMetadata.imagePath,
+            )
+          }
         ],
       ),
     );
