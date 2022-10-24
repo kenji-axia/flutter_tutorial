@@ -12,27 +12,6 @@ import 'mercari_item.dart';
 class MercariBodyBottom extends ConsumerWidget {
   MercariBodyBottom({Key? key}) : super(key: key);
 
-  // final List<ItemMetadata> _dummyItemMetadata = [
-  //   ItemMetadata(
-  //     name: 'NikonD5500',
-  //     price: '¥51,000',
-  //     searchingNum: '446人',
-  //     imagePath: 'images/mercari_sample.jpg',
-  //   ),
-  //   ItemMetadata(
-  //     name: 'NikonD5500',
-  //     price: '¥51,000',
-  //     searchingNum: '446人',
-  //     imagePath: 'images/mercari_sample.jpg',
-  //   ),
-  //   ItemMetadata(
-  //     name: 'NikonD5500',
-  //     price: '¥51,000',
-  //     searchingNum: '446人',
-  //     imagePath: 'images/mercari_sample.jpg',
-  //   ),
-  // ];
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(mercariClientStateNotifier);
