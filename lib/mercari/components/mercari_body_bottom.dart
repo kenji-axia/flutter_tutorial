@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
 
+import 'package:intl/intl.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter_tutorial/constants.dart';
-import 'package:flutter_tutorial/mercari/dataclass/item_metadata.dart';
+import 'package:flutter_tutorial/mercari/mercari_client_state_notifier.dart';
+import 'package:flutter_tutorial/mercari/model/item_metadata.dart';
 
 import 'mercari_item.dart';
 
-class MercariBodyBottom extends StatelessWidget {
+class MercariBodyBottom extends ConsumerWidget {
   MercariBodyBottom({Key? key}) : super(key: key);
 
-  final List<ItemMetadata> _dummyItemMetadata = [
-    ItemMetadata(
-      name: 'NikonD5500',
-      price: '¥51,000',
-      searchingNum: '446人',
-      imagePath: 'images/mercari_sample.jpg',
-    ),
-    ItemMetadata(
-      name: 'NikonD5500',
-      price: '¥51,000',
-      searchingNum: '446人',
-      imagePath: 'images/mercari_sample.jpg',
-    ),
-    ItemMetadata(
-      name: 'NikonD5500',
-      price: '¥51,000',
-      searchingNum: '446人',
-      imagePath: 'images/mercari_sample.jpg',
-    ),
-  ];
+  // final List<ItemMetadata> _dummyItemMetadata = [
+  //   ItemMetadata(
+  //     name: 'NikonD5500',
+  //     price: '¥51,000',
+  //     searchingNum: '446人',
+  //     imagePath: 'images/mercari_sample.jpg',
+  //   ),
+  //   ItemMetadata(
+  //     name: 'NikonD5500',
+  //     price: '¥51,000',
+  //     searchingNum: '446人',
+  //     imagePath: 'images/mercari_sample.jpg',
+  //   ),
+  //   ItemMetadata(
+  //     name: 'NikonD5500',
+  //     price: '¥51,000',
+  //     searchingNum: '446人',
+  //     imagePath: 'images/mercari_sample.jpg',
+  //   ),
+  // ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(mercariClientStateNotifier);
+
     return Padding(
       padding: const EdgeInsets.only(
         top: spacing2,
@@ -40,14 +46,26 @@ class MercariBodyBottom extends StatelessWidget {
         children: [
           ItemListHeader(),
           sizedBoxH8,
-          for (ItemMetadata itemMetadata in _dummyItemMetadata) ...{
+          for (ItemMetadata itemMetadata in state.itemMetadataList) ...{
             MercariItem(
-              name: itemMetadata.name,
-              price: itemMetadata.price,
-              searchingNum: itemMetadata.searchingNum,
-              imagePath: itemMetadata.imagePath,
+              name: itemMetadata.name!,
+              // intlパッケージで商品価格に三桁ごとにカンマを入れる
+              price: '¥${NumberFormat("#,###").format(
+                itemMetadata.price!,
+              )}',
+              // intlパッケージで商品を探している人数に三桁ごとにカンマを入れる
+              searchingNum: '${NumberFormat("#,###").format(
+                itemMetadata.searchingNum!,
+              )}人',
+              imagePath: itemMetadata.imagePath!,
             )
-          }
+          },
+          Visibility(
+            visible: state.isLoading,
+            child: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
         ],
       ),
     );
