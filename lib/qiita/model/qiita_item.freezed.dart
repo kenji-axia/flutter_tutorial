@@ -22,10 +22,7 @@ QiitaItem _$QiitaItemFromJson(Map<String, dynamic> json) {
 class _$QiitaItemTearOff {
   const _$QiitaItemTearOff();
 
-  _QiitaItem call(
-      {@JsonKey(name: "title") String? title,
-      @JsonKey(name: "url") String? url,
-      @JsonKey(name: "user") QiitaUser? user}) {
+  _QiitaItem call({String? title, String? url, QiitaUser? user}) {
     return _QiitaItem(
       title: title,
       url: url,
@@ -43,11 +40,8 @@ const $QiitaItem = _$QiitaItemTearOff();
 
 /// @nodoc
 mixin _$QiitaItem {
-  @JsonKey(name: "title")
   String? get title => throw _privateConstructorUsedError;
-  @JsonKey(name: "url")
   String? get url => throw _privateConstructorUsedError;
-  @JsonKey(name: "user")
   QiitaUser? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -60,10 +54,7 @@ mixin _$QiitaItem {
 abstract class $QiitaItemCopyWith<$Res> {
   factory $QiitaItemCopyWith(QiitaItem value, $Res Function(QiitaItem) then) =
       _$QiitaItemCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: "title") String? title,
-      @JsonKey(name: "url") String? url,
-      @JsonKey(name: "user") QiitaUser? user});
+  $Res call({String? title, String? url, QiitaUser? user});
 
   $QiitaUserCopyWith<$Res>? get user;
 }
@@ -116,10 +107,7 @@ abstract class _$QiitaItemCopyWith<$Res> implements $QiitaItemCopyWith<$Res> {
           _QiitaItem value, $Res Function(_QiitaItem) then) =
       __$QiitaItemCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: "title") String? title,
-      @JsonKey(name: "url") String? url,
-      @JsonKey(name: "user") QiitaUser? user});
+  $Res call({String? title, String? url, QiitaUser? user});
 
   @override
   $QiitaUserCopyWith<$Res>? get user;
@@ -160,22 +148,16 @@ class __$QiitaItemCopyWithImpl<$Res> extends _$QiitaItemCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_QiitaItem implements _QiitaItem {
-  const _$_QiitaItem(
-      {@JsonKey(name: "title") this.title,
-      @JsonKey(name: "url") this.url,
-      @JsonKey(name: "user") this.user});
+  const _$_QiitaItem({this.title, this.url, this.user});
 
   factory _$_QiitaItem.fromJson(Map<String, dynamic> json) =>
       _$$_QiitaItemFromJson(json);
 
   @override
-  @JsonKey(name: "title")
   final String? title;
   @override
-  @JsonKey(name: "url")
   final String? url;
   @override
-  @JsonKey(name: "user")
   final QiitaUser? user;
 
   @override
@@ -212,22 +194,17 @@ class _$_QiitaItem implements _QiitaItem {
 }
 
 abstract class _QiitaItem implements QiitaItem {
-  const factory _QiitaItem(
-      {@JsonKey(name: "title") String? title,
-      @JsonKey(name: "url") String? url,
-      @JsonKey(name: "user") QiitaUser? user}) = _$_QiitaItem;
+  const factory _QiitaItem({String? title, String? url, QiitaUser? user}) =
+      _$_QiitaItem;
 
   factory _QiitaItem.fromJson(Map<String, dynamic> json) =
       _$_QiitaItem.fromJson;
 
   @override
-  @JsonKey(name: "title")
   String? get title;
   @override
-  @JsonKey(name: "url")
   String? get url;
   @override
-  @JsonKey(name: "user")
   QiitaUser? get user;
   @override
   @JsonKey(ignore: true)

@@ -18,7 +18,7 @@ class QiitaClientStateNotifier extends StateNotifier<QiitaClientState> {
     final qiitaItems =
         await _read(qiitaRepositoryProvider).fetchQiitaItems(tag);
 
-    if (qiitaItems.length != 0) {
+    if (qiitaItems.isNotEmpty) {
       state = state.copyWith(
           isLoading: false,
           isReadyData: true,

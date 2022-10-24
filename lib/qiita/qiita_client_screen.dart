@@ -10,9 +10,8 @@ class QiitaClientScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(qiitaClientStateNotifier);
 
-    return
-        // 戻るボタンの挙動
-        WillPopScope(
+    return WillPopScope(
+      // 戻るボタンの挙動
       onWillPop: state.isReadyData
           ? () {
               ref.read(qiitaClientStateNotifier.notifier).onBackHome();
@@ -35,7 +34,7 @@ class QiitaClientScreen extends ConsumerWidget {
             ),
             Visibility(
               visible: state.isLoading,
-              child: Container(
+              child: ColoredBox(
                 color: Color(0x88000000),
                 child: Center(
                   child: CircularProgressIndicator(),
@@ -56,7 +55,7 @@ class QiitaClientScreen extends ConsumerWidget {
         final item = qiitaItems[index];
 
         return Container(
-          padding: EdgeInsets.only(top: 4, bottom: 4, left: 8, right: 8),
+          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           constraints: BoxConstraints(minHeight: 96, maxHeight: 96),
           child: Card(
             elevation: 8,
