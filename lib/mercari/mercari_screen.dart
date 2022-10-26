@@ -31,7 +31,7 @@ class MercariScreen extends StatelessWidget {
             fontSize: 15,
           ),
           child: ListView(
-            children: const [
+            children: [
               // Body上部の作成　画像と複数のショートカットボタンを表示
               MercariBodyTop(),
               // Body下部の作成「売れやすい持ち物」リストを表示
