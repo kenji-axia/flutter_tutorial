@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
@@ -6,9 +7,14 @@ import 'youtube/youtube_screen.dart';
 import 'residence/residence_screen.dart';
 import 'mercari/mercari_screen.dart';
 import 'async/async_screen.dart';
+import 'qiita/qiita_client_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -64,6 +70,10 @@ class MyHomePage extends StatelessWidget {
             TransitionScreenButton(
               'Async',
               AsyncScreen(),
+            ),
+            TransitionScreenButton(
+              'Qiita',
+              QiitaClientScreen(),
             ),
           ],
         ),
