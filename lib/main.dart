@@ -7,6 +7,7 @@ import 'youtube/youtube_screen.dart';
 import 'residence/residence_screen.dart';
 import 'mercari/mercari_screen.dart';
 import 'async/async_screen.dart';
+import 'qiita/qiita_client_screen.dart';
 
 void main() {
   runApp(
@@ -69,6 +70,10 @@ class MyHomePage extends StatelessWidget {
             TransitionScreenButton(
               'Async',
               AsyncScreen(),
+            ),
+            TransitionScreenButton(
+              'Qiita',
+              QiitaClientScreen(),
             ),
           ],
         ),
