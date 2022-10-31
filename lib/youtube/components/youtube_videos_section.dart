@@ -1,50 +1,37 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter_tutorial/constants.dart';
+import 'package:flutter_tutorial/youtube/youtube_client_state_notifier.dart';
+import 'package:flutter_tutorial/youtube/model/movie_metadata.dart';
 
-import 'package:flutter_tutorial/youtube/data_class/movie_metadata.dart';
-
-class YoutubeVideosSection extends StatelessWidget {
-  YoutubeVideosSection({Key? key}) : super(key: key);
-
-  final List<MovieMetadata> _dummyMovieMetadata = [
-    MovieMetadata(
-      imagePath: 'images/youtube_video_thumbnail.jpg',
-      iconPath: 'images/youtube_channel_icon.jpg',
-      title: '今週のウィジェットが登場！',
-      subTitle: 'Flutter・48万 回視聴・3年前',
-      duration: '0:56',
-    ),
-    MovieMetadata(
-      imagePath: 'images/youtube_video_thumbnail.jpg',
-      iconPath: 'images/youtube_channel_icon.jpg',
-      title: '今週のウィジェットが登場！',
-      subTitle: 'Flutter・48万 回視聴・3年前',
-      duration: '0:56',
-    ),
-    MovieMetadata(
-      imagePath: 'images/youtube_video_thumbnail.jpg',
-      iconPath: 'images/youtube_channel_icon.jpg',
-      title: '今週のウィジェットが登場！',
-      subTitle: 'Flutter・48万 回視聴・3年前',
-      duration: '0:56',
-    ),
-  ];
-
+class YoutubeVideosSection extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(youtubeClientStateNotifier);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         YoutubeVideosSectionTitle(),
-        for (MovieMetadata movieMetadata in _dummyMovieMetadata) ...{
+        for (MovieMetadata movieMetadata in state.movieMetadataList) ...{
           VideoThumbnail(
-            imagePath: movieMetadata.imagePath,
-            iconPath: movieMetadata.iconPath,
-            title: movieMetadata.title,
-            subTitle: movieMetadata.subTitle,
-            duration: movieMetadata.duration,
-          )
-        }
+            imagePath: movieMetadata.imagePath!,
+            iconPath: movieMetadata.iconPath!,
+            title: movieMetadata.title!,
+            channelName: movieMetadata.channelName!,
+            numOfViews: movieMetadata.numOfViews!,
+            yearsAgo: movieMetadata.yearsAgo!,
+            duration: movieMetadata.duration!,
+          ),
+        },
+        Visibility(
+          visible: state.isLoading,
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
       ],
     );
   }
@@ -62,9 +49,7 @@ class YoutubeVideosSectionTitle extends StatelessWidget {
       child: Text(
         title,
         textAlign: TextAlign.start,
-        style: const TextStyle(
-          fontSize: 18,
-        ),
+        style: const TextStyle(fontSize: 18),
       ),
     );
   }
@@ -75,7 +60,9 @@ class VideoThumbnail extends StatelessWidget {
       {required this.imagePath,
       required this.iconPath,
       required this.title,
-      required this.subTitle,
+      required this.channelName,
+      required this.numOfViews,
+      required this.yearsAgo,
       required this.duration,
       Key? key})
       : super(key: key);
@@ -83,7 +70,9 @@ class VideoThumbnail extends StatelessWidget {
   final String imagePath;
   final String iconPath;
   final String title;
-  final String subTitle;
+  final String channelName;
+  final int numOfViews;
+  final int yearsAgo;
   final String duration;
 
   @override
@@ -94,7 +83,7 @@ class VideoThumbnail extends StatelessWidget {
           alignment: AlignmentDirectional.bottomEnd,
           children: [
             Image.asset(imagePath),
-            Container(
+            Padding(
               padding: const EdgeInsets.only(right: spacing1, bottom: spacing1),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -122,7 +111,7 @@ class VideoThumbnail extends StatelessWidget {
             )
           ],
         ),
-        Container(
+        Padding(
           padding: const EdgeInsets.fromLTRB(10, 15, 10, 35),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,24 +127,18 @@ class VideoThumbnail extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                width: spacing1,
-              ),
+              sizedBoxW8,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
-                        fontSize: 17,
-                      ),
+                      style: const TextStyle(fontSize: 17),
                     ),
-                    const SizedBox(
-                      height: spacingMin,
-                    ),
+                    sizedBoxH2,
                     Text(
-                      subTitle,
+                      '$channelName・$numOfViews万回視聴・$yearsAgo年前',
                       style: const TextStyle(
                         color: Colors.white60,
                         fontSize: 12,
@@ -171,7 +154,7 @@ class VideoThumbnail extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
