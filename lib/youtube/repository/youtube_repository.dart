@@ -6,10 +6,10 @@ import 'package:flutter_tutorial/youtube/api/youtube_api_client.dart';
 import 'package:flutter_tutorial/youtube/model/movie_metadata.dart';
 
 final youtubeRepositoryProvider =
-    Provider<FirebaseRepository>((_) => FirebaseRepository());
+    Provider<YoutubeRepository>((_) => YoutubeRepository());
 
-class FirebaseRepository {
-  FirebaseRepository() {
+class YoutubeRepository {
+  YoutubeRepository() {
     final dio = Dio();
     dio.interceptors.add(PrettyDioLogger());
     _api = YoutubeApiClient(dio);
