@@ -7,6 +7,8 @@ import 'package:flutter_tutorial/youtube/youtube_client_state_notifier.dart';
 import 'package:flutter_tutorial/youtube/model/movie_metadata.dart';
 
 class YoutubeVideosSection extends ConsumerWidget {
+  const YoutubeVideosSection({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(youtubeClientStateNotifier);
@@ -14,7 +16,7 @@ class YoutubeVideosSection extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        YoutubeVideosSectionTitle(),
+        const YoutubeVideosSectionTitle(),
         for (MovieMetadata movieMetadata in state.movieMetadataList) ...{
           VideoThumbnail(
             imagePath: movieMetadata.imagePath!,
@@ -38,9 +40,9 @@ class YoutubeVideosSection extends ConsumerWidget {
 }
 
 class YoutubeVideosSectionTitle extends StatelessWidget {
-  const YoutubeVideosSectionTitle({Key? key}) : super(key: key);
+  const YoutubeVideosSectionTitle({super.key});
 
-  final String title = '急上昇動画';
+  String get title => '急上昇動画';
 
   @override
   Widget build(BuildContext context) {
@@ -56,16 +58,16 @@ class YoutubeVideosSectionTitle extends StatelessWidget {
 }
 
 class VideoThumbnail extends StatelessWidget {
-  const VideoThumbnail(
-      {required this.imagePath,
-      required this.iconPath,
-      required this.title,
-      required this.channelName,
-      required this.numOfViews,
-      required this.yearsAgo,
-      required this.duration,
-      Key? key})
-      : super(key: key);
+  const VideoThumbnail({
+    required this.imagePath,
+    required this.iconPath,
+    required this.title,
+    required this.channelName,
+    required this.numOfViews,
+    required this.yearsAgo,
+    required this.duration,
+    super.key,
+  });
 
   final String imagePath;
   final String iconPath;
@@ -163,8 +165,8 @@ class VideoThumbnail extends StatelessWidget {
 class PlayIndicatorPart extends StatelessWidget {
   const PlayIndicatorPart({
     required this.height,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final double height;
 

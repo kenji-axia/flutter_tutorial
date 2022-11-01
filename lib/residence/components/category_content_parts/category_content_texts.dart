@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class CategoryContentTexts extends StatelessWidget {
-  const CategoryContentTexts(
-      {required this.residenceName,
-      required this.residencePrice,
-      required this.residencePlace,
-      required this.residenceSize,
-      required this.residenceInfo,
-      Key? key})
-      : super(key: key);
+  const CategoryContentTexts({
+    required this.residenceName,
+    required this.residencePrice,
+    required this.residencePlace,
+    required this.residenceSize,
+    required this.residenceInfo,
+    super.key,
+  });
 
   final String residenceName;
   final String residencePrice;

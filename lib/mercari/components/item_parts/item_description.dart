@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class ItemDescription extends StatelessWidget {
-  const ItemDescription(
-      {required this.name,
-      required this.price,
-      required this.searchingNum,
-      Key? key})
-      : super(key: key);
+  const ItemDescription({
+    required this.name,
+    required this.price,
+    required this.searchingNum,
+    super.key,
+  });
 
   final String name;
   final String price;

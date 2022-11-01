@@ -8,7 +8,7 @@ import 'components/mercari_floating_action_button.dart';
 import 'components/mercari_bottom_navigation_bar.dart';
 
 class MercariScreen extends StatelessWidget {
-  const MercariScreen({Key? key}) : super(key: key);
+  const MercariScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class MercariScreen extends StatelessWidget {
             fontSize: 15,
           ),
           child: ListView(
-            children: [
+            children: const [
               // Body上部の作成　画像と複数のショートカットボタンを表示
               MercariBodyTop(),
               // Body下部の作成「売れやすい持ち物」リストを表示

@@ -10,7 +10,7 @@ import 'package:flutter_tutorial/mercari/model/item_metadata.dart';
 import 'mercari_item.dart';
 
 class MercariBodyBottom extends ConsumerWidget {
-  MercariBodyBottom({Key? key}) : super(key: key);
+  const MercariBodyBottom({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,18 +23,18 @@ class MercariBodyBottom extends ConsumerWidget {
       ),
       child: Column(
         children: [
-          ItemListHeader(),
+          const ItemListHeader(),
           sizedBoxH8,
           for (ItemMetadata itemMetadata in state.itemMetadataList) ...{
             MercariItem(
               name: itemMetadata.name!,
               // intlパッケージで商品価格に三桁ごとにカンマを入れる
               price: '¥${NumberFormat("#,###").format(
-                itemMetadata.price!,
+                itemMetadata.price,
               )}',
               // intlパッケージで商品を探している人数に三桁ごとにカンマを入れる
               searchingNum: '${NumberFormat("#,###").format(
-                itemMetadata.searchingNum!,
+                itemMetadata.searchingNum,
               )}人',
               imagePath: itemMetadata.imagePath!,
             )
@@ -52,7 +52,7 @@ class MercariBodyBottom extends ConsumerWidget {
 }
 
 class ItemListHeader extends StatelessWidget {
-  const ItemListHeader({Key? key}) : super(key: key);
+  const ItemListHeader({super.key});
 
   @override
   Widget build(BuildContext context) {

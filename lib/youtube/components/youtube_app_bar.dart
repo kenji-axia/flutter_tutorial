@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class YoutubeAppBar extends StatelessWidget {
-  const YoutubeAppBar({Key? key}) : super(key: key);
+  const YoutubeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class YoutubeAppBar extends StatelessWidget {
 }
 
 class YoutubeLogo extends StatelessWidget {
-  const YoutubeLogo({Key? key}) : super(key: key);
+  const YoutubeLogo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class YoutubeLogo extends StatelessWidget {
 }
 
 class YoutubeAppBarIcon extends StatelessWidget {
-  const YoutubeAppBarIcon(this._iconData, {Key? key}) : super(key: key);
+  const YoutubeAppBarIcon(this._iconData, {super.key});
 
   final IconData _iconData;
 
@@ -73,7 +73,7 @@ class YoutubeAppBarIcon extends StatelessWidget {
 }
 
 class YoutubeAppBarUserIcon extends StatelessWidget {
-  const YoutubeAppBarUserIcon({Key? key}) : super(key: key);
+  const YoutubeAppBarUserIcon({super.key});
 
   @override
   Widget build(BuildContext context) {

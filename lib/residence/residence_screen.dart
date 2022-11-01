@@ -14,7 +14,7 @@ import 'components/residence_floating_action_button.dart';
 import 'components/residence_bottom_navigation_bar.dart';
 
 class ResidenceScreen extends ConsumerWidget {
-  ResidenceScreen({Key? key}) : super(key: key);
+  const ResidenceScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,14 +31,14 @@ class ResidenceScreen extends ConsumerWidget {
           ),
           child: ListView(
             children: [
-              CategoryFilteringSection(),
+              const CategoryFilteringSection(),
               for (ResidenceMetadata residenceMetadata
                   in state.residenceMetadataList) ...{
                 CategoryContent(
                   name: residenceMetadata.name!,
                   // intlパッケージを使用して不動産価格に三桁ごとにカンマを入れる
                   price: '${NumberFormat("#,###").format(
-                    residenceMetadata.price!,
+                    residenceMetadata.price,
                   )}万円',
                   place: residenceMetadata.place!,
                   size: residenceMetadata.size!,

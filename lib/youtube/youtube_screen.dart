@@ -6,9 +6,9 @@ import 'components/youtube_videos_section.dart';
 import 'components/youtube_bottom_navigation_bar_items.dart';
 
 class YoutubeScreen extends StatelessWidget {
-  const YoutubeScreen({Key? key}) : super(key: key);
+  const YoutubeScreen({super.key});
 
-  final _mainBackgroundColor = const Color.fromRGBO(42, 39, 44, 1);
+  Color get _mainBackgroundColor => const Color.fromRGBO(42, 39, 44, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class YoutubeScreen extends StatelessWidget {
         child: DefaultTextStyle(
           style: const TextStyle(color: Colors.white),
           child: ListView(
-            children: [
-              const YoutubeAppBar(),
-              const YoutubeCategoriesSection(),
+            children: const [
+              YoutubeAppBar(),
+              YoutubeCategoriesSection(),
               YoutubeVideosSection(),
             ],
           ),

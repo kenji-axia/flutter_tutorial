@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'building/building_layout_screen.dart';
 import 'animation/animation_screen.dart';
-import 'youtube/youtube_screen.dart';
-import 'residence/residence_screen.dart';
-import 'mercari/mercari_screen.dart';
 import 'async/async_screen.dart';
+import 'building/building_layout_screen.dart';
+import 'mercari/mercari_screen.dart';
 import 'qiita/qiita_client_screen.dart';
+import 'residence/residence_screen.dart';
+import 'youtube/youtube_screen.dart';
 
 void main() {
   runApp(
@@ -18,7 +18,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({
+    super.key,
+    required this.title,
+  });
 
   final String title;
 
@@ -46,7 +49,7 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: const [
             TransitionScreenButton(
               'Tutorial1',
               BuildingLayoutScreen(),
@@ -83,8 +86,7 @@ class MyHomePage extends StatelessWidget {
 }
 
 class TransitionScreenButton extends StatelessWidget {
-  const TransitionScreenButton(this.text, this.newScreen, {Key? key})
-      : super(key: key);
+  const TransitionScreenButton(this.text, this.newScreen, {super.key});
   final String text;
   final Widget newScreen;
 
@@ -92,7 +94,7 @@ class TransitionScreenButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.of(context).push(
+        Navigator.of(context).push<MaterialPageRoute<dynamic>>(
           MaterialPageRoute(
             builder: (context) => newScreen,
           ),

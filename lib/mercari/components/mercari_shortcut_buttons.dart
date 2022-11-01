@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class MercariShortcutButtons extends StatelessWidget {
-  const MercariShortcutButtons({Key? key}) : super(key: key);
+  const MercariShortcutButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,11 @@ class MercariShortcutButtons extends StatelessWidget {
 }
 
 class ShortcutButton extends StatelessWidget {
-  const ShortcutButton(
-      {required this.iconData, required this.iconLabel, Key? key})
-      : super(key: key);
+  const ShortcutButton({
+    required this.iconData,
+    required this.iconLabel,
+    super.key,
+  });
 
   final IconData iconData;
   final String iconLabel;

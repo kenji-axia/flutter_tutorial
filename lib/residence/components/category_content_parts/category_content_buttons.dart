@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class CategoryContentButtons extends StatelessWidget {
-  const CategoryContentButtons({Key? key}) : super(key: key);
+  const CategoryContentButtons({super.key});
 
-  final String _unlikeButtonText = '興味なし';
-  final String _favoriteButtonText = 'お気に入り';
+  String get _unlikeButtonText => '興味なし';
+  String get _favoriteButtonText => 'お気に入り';
 
   @override
   Widget build(BuildContext context) {

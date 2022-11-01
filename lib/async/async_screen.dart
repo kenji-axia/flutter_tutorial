@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AsyncScreen extends StatefulWidget {
-  const AsyncScreen({Key? key}) : super(key: key);
+  const AsyncScreen({super.key});
 
   @override
   State<AsyncScreen> createState() => _AsyncScreenState();
@@ -19,7 +19,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
   String _birthday = '未設定';
 
   Future<void> _getUserProperty() async {
-    final SharedPreferences prefs = await _prefs;
+    final prefs = await _prefs;
     setState(() {
       _name = prefs.getString('name') ?? '未設定';
       _age = prefs.getString('age') ?? '未設定';
@@ -28,11 +28,10 @@ class _AsyncScreenState extends State<AsyncScreen> {
   }
 
   Future<void> _storeUserProperty() async {
-    final SharedPreferences prefs = await _prefs;
-    prefs
-      ..setString('name', _name)
-      ..setString('age', _age)
-      ..setString('birthday', _birthday);
+    final prefs = await _prefs;
+    await prefs.setString('name', _name);
+    await prefs.setString('age', _age);
+    await prefs.setString('birthday', _birthday);
   }
 
   @override
@@ -78,13 +77,13 @@ class _AsyncScreenState extends State<AsyncScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextFormField(
-                  decoration: const InputDecoration(labelText: "名前"),
+                  decoration: const InputDecoration(labelText: '名前'),
                   onSaved: (value) => _name = value!,
                   validator: (value) =>
                       (value == null || value.isEmpty) ? '未入力です' : null,
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(labelText: "年齢"),
+                  decoration: const InputDecoration(labelText: '年齢'),
                   onSaved: (value) => _age = value!,
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -92,7 +91,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
                       (value == null || value.isEmpty) ? '未入力です' : null,
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(labelText: "誕生日"),
+                  decoration: const InputDecoration(labelText: '誕生日'),
                   onSaved: (value) => _birthday = value!,
                   validator: (value) =>
                       (value == null || value.isEmpty) ? '未入力です' : null,

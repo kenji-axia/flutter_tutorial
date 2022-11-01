@@ -14,8 +14,8 @@ class CategoryContent extends StatelessWidget {
     required this.buildingInfo,
     required this.residenceInsideImagePath,
     required this.residenceOutsideImagePath,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String name;
   final String price;
@@ -68,7 +68,7 @@ class CategoryContent extends StatelessWidget {
                 ),
                 sizedBox16,
                 // 興味なし / お気に入り ボタンを横並びに表示
-                CategoryContentButtons(),
+                const CategoryContentButtons(),
                 sizedBox4,
               ],
             ),

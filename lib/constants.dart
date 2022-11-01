@@ -48,9 +48,9 @@ const fontWeightBoldTextStyle = TextStyle(
 const blueAccent = Colors.blueAccent;
 const black87 = Colors.black87;
 const white = Colors.white;
-var grey400 = Colors.grey[400];
-var grey600 = Colors.grey[600];
-var grey700 = Colors.grey[700];
+Color? grey400 = Colors.grey[400];
+Color? grey600 = Colors.grey[600];
+Color? grey700 = Colors.grey[700];
 
 const residenceMainBackgroundColor = Color.fromRGBO(250, 248, 245, 1);
 const residenceMainAccentColor = Color.fromRGBO(82, 164, 154, 1);

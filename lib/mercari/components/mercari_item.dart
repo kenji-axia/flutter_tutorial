@@ -7,13 +7,13 @@ import 'item_parts/item_description.dart';
 import 'item_parts/item_button.dart';
 
 class MercariItem extends StatelessWidget {
-  const MercariItem(
-      {required this.name,
-      required this.price,
-      required this.searchingNum,
-      required this.imagePath,
-      Key? key})
-      : super(key: key);
+  const MercariItem({
+    required this.name,
+    required this.price,
+    required this.searchingNum,
+    required this.imagePath,
+    super.key,
+  });
 
   final String name;
   final String price;

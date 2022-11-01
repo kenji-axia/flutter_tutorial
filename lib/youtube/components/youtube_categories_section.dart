@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class YoutubeCategoriesSection extends StatelessWidget {
-  const YoutubeCategoriesSection({Key? key}) : super(key: key);
+  const YoutubeCategoriesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DecoratedBox(
       decoration: const BoxDecoration(
         color: Color.fromRGBO(28, 25, 30, 1),
       ),
@@ -63,16 +63,18 @@ class YoutubeCategoriesSection extends StatelessWidget {
 
 class CategoryButton extends StatelessWidget {
   const CategoryButton(
-      this._categoryText, this._categoryColor, this._categoryIcon,
-      {Key? key})
-      : super(key: key);
+    this._categoryText,
+    this._categoryColor,
+    this._categoryIcon, {
+    super.key,
+  });
 
   final String _categoryText;
   final Color _categoryColor;
   final IconData _categoryIcon;
 
-  final double _categoryIconSize = 26;
-  final double _categoryTextSize = 15;
+  double get _categoryIconSize => 26;
+  double get _categoryTextSize => 15;
 
   @override
   Widget build(BuildContext context) {
