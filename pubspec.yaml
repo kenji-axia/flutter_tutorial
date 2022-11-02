@@ -36,6 +36,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^1.0.3
+  flutter_slidable: ^2.0.0
   flutter_state_notifier: ^0.7.1
   flutter_svg: ^1.1.5
   freezed_annotation: ^1.1.0
