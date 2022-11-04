@@ -1,19 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import 'package:flutter_tutorial/utils/dio_provider.dart';
 import 'package:flutter_tutorial/youtube/api/youtube_api_client.dart';
 import 'package:flutter_tutorial/youtube/model/movie_metadata.dart';
 
 final youtubeRepositoryProvider =
-    Provider<YoutubeRepository>((_) => YoutubeRepository());
+    Provider<YoutubeRepository>((ref) => YoutubeRepository(ref.read));
 
 class YoutubeRepository {
-  YoutubeRepository() {
-    final dio = Dio();
-    dio.interceptors.add(PrettyDioLogger());
-    _api = YoutubeApiClient(dio);
+  YoutubeRepository(this._read) {
+    _api = YoutubeApiClient(_read(dioProvider));
   }
+
+  final Reader _read;
   late final YoutubeApiClient _api;
 
   Future<List<MovieMetadata>> fetchMovieMetadata() async {
