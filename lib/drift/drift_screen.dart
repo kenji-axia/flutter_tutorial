@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:flutter_tutorial/constants.dart';
 import 'package:intl/intl.dart';
 
-import 'drift_database.dart';
+import 'components/todo_list.dart';
+import 'drift_client_state_notifier.dart';
 
 class DriftScreen extends ConsumerStatefulWidget {
   const DriftScreen({super.key});
@@ -19,11 +20,10 @@ class DriftScreenState extends ConsumerState<DriftScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final database = ref.watch(tutorial8DatabaseProvider);
     return Scaffold(
       body: const TodoList(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _displayInputDialog(context, database),
+        onPressed: () => _displayInputDialog(context),
         child: const Icon(Icons.edit),
       ),
     );
@@ -34,10 +34,7 @@ class DriftScreenState extends ConsumerState<DriftScreen> {
     super.initState();
   }
 
-  Future<void> _displayInputDialog(
-    BuildContext context,
-    Tutorial8Database database,
-  ) {
+  Future<void> _displayInputDialog(BuildContext context) {
     return showDialog(
       context: context,
       builder: (context) {
@@ -108,13 +105,11 @@ class DriftScreenState extends ConsumerState<DriftScreen> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  final todo = TodosCompanion.insert(
-                    title: titleInput.text,
-                    content: bodyInput.text,
-                    dueDate: DateTime.parse(dateInput.text),
-                    createdAt: DateTime.now(),
-                  );
-                  database.into(database.todos).insert(todo);
+                  ref.read(driftClientStateNotifier.notifier).addTodo(
+                        titleInput.text,
+                        bodyInput.text,
+                        dateInput.text,
+                      );
                   Navigator.pop(context);
                 }
               },
@@ -123,120 +118,6 @@ class DriftScreenState extends ConsumerState<DriftScreen> {
           ],
         );
       },
-    );
-  }
-}
-
-class TodoList extends ConsumerWidget {
-  const TodoList({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final database = ref.watch(tutorial8DatabaseProvider);
-    return StreamBuilder(
-      stream: database.watchAllTodosByDueAsc(),
-      builder: (context, AsyncSnapshot<List<Todo>> snapshot) {
-        final todos = snapshot.data ?? [];
-
-        if (todos.isEmpty) {
-          return const Center(
-            child: Text(
-              '登録しているTodoはありません',
-              style: fontWeightBoldTextStyle,
-            ),
-          );
-        }
-
-        return ListView.builder(
-          itemCount: todos.length,
-          itemBuilder: (_, index) {
-            final todo = todos[index];
-            return TodoListItem(todo, database);
-          },
-        );
-      },
-    );
-  }
-}
-
-class TodoListItem extends StatelessWidget {
-  const TodoListItem(this.todo, this.database, {super.key});
-
-  final Todo todo;
-  final Tutorial8Database database;
-
-  @override
-  Widget build(BuildContext context) {
-    return Slidable(
-      key: ValueKey(todo.id),
-      endActionPane: ActionPane(
-        motion: const ScrollMotion(),
-        children: [
-          SlidableAction(
-            onPressed: (_) {
-              database.deleteTodo(todo);
-            },
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
-            icon: Icons.delete,
-            label: 'Delete',
-          ),
-        ],
-      ),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: spacing2),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Colors.grey.shade300,
-            ),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: spacing2),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'タイトル：${todo.title}',
-                style: const TextStyle(fontSize: 12),
-              ),
-              Text(
-                todo.content,
-                style: const TextStyle(fontSize: 16),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: spacing3),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        '作成日：'
-                        '${DateFormat('yyyy-MM-dd').format(todo.createdAt)}',
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        '期日：${DateFormat('yyyy-MM-dd').format(todo.dueDate)}',
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.amber,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

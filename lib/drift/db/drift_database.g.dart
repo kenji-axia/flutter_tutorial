@@ -7,21 +7,21 @@ part of 'drift_database.dart';
 // **************************************************************************
 
 // ignore_for_file: type=lint
-class Todo extends DataClass implements Insertable<Todo> {
+class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
   final int id;
   final String title;
   final String content;
   final DateTime createdAt;
   final DateTime dueDate;
-  Todo(
+  DatabaseTodo(
       {required this.id,
       required this.title,
       required this.content,
       required this.createdAt,
       required this.dueDate});
-  factory Todo.fromData(Map<String, dynamic> data, {String? prefix}) {
+  factory DatabaseTodo.fromData(Map<String, dynamic> data, {String? prefix}) {
     final effectivePrefix = prefix ?? '';
-    return Todo(
+    return DatabaseTodo(
       id: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
       title: const StringType()
@@ -45,8 +45,8 @@ class Todo extends DataClass implements Insertable<Todo> {
     return map;
   }
 
-  TodosCompanion toCompanion(bool nullToAbsent) {
-    return TodosCompanion(
+  DatabaseTodosCompanion toCompanion(bool nullToAbsent) {
+    return DatabaseTodosCompanion(
       id: Value(id),
       title: Value(title),
       content: Value(content),
@@ -55,10 +55,10 @@ class Todo extends DataClass implements Insertable<Todo> {
     );
   }
 
-  factory Todo.fromJson(Map<String, dynamic> json,
+  factory DatabaseTodo.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return Todo(
+    return DatabaseTodo(
       id: serializer.fromJson<int>(json['id']),
       title: serializer.fromJson<String>(json['title']),
       content: serializer.fromJson<String>(json['content']),
@@ -78,13 +78,13 @@ class Todo extends DataClass implements Insertable<Todo> {
     };
   }
 
-  Todo copyWith(
+  DatabaseTodo copyWith(
           {int? id,
           String? title,
           String? content,
           DateTime? createdAt,
           DateTime? dueDate}) =>
-      Todo(
+      DatabaseTodo(
         id: id ?? this.id,
         title: title ?? this.title,
         content: content ?? this.content,
@@ -93,7 +93,7 @@ class Todo extends DataClass implements Insertable<Todo> {
       );
   @override
   String toString() {
-    return (StringBuffer('Todo(')
+    return (StringBuffer('DatabaseTodo(')
           ..write('id: $id, ')
           ..write('title: $title, ')
           ..write('content: $content, ')
@@ -108,7 +108,7 @@ class Todo extends DataClass implements Insertable<Todo> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is Todo &&
+      (other is DatabaseTodo &&
           other.id == this.id &&
           other.title == this.title &&
           other.content == this.content &&
@@ -116,20 +116,20 @@ class Todo extends DataClass implements Insertable<Todo> {
           other.dueDate == this.dueDate);
 }
 
-class TodosCompanion extends UpdateCompanion<Todo> {
+class DatabaseTodosCompanion extends UpdateCompanion<DatabaseTodo> {
   final Value<int> id;
   final Value<String> title;
   final Value<String> content;
   final Value<DateTime> createdAt;
   final Value<DateTime> dueDate;
-  const TodosCompanion({
+  const DatabaseTodosCompanion({
     this.id = const Value.absent(),
     this.title = const Value.absent(),
     this.content = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.dueDate = const Value.absent(),
   });
-  TodosCompanion.insert({
+  DatabaseTodosCompanion.insert({
     this.id = const Value.absent(),
     required String title,
     required String content,
@@ -139,7 +139,7 @@ class TodosCompanion extends UpdateCompanion<Todo> {
         content = Value(content),
         createdAt = Value(createdAt),
         dueDate = Value(dueDate);
-  static Insertable<Todo> custom({
+  static Insertable<DatabaseTodo> custom({
     Expression<int>? id,
     Expression<String>? title,
     Expression<String>? content,
@@ -155,13 +155,13 @@ class TodosCompanion extends UpdateCompanion<Todo> {
     });
   }
 
-  TodosCompanion copyWith(
+  DatabaseTodosCompanion copyWith(
       {Value<int>? id,
       Value<String>? title,
       Value<String>? content,
       Value<DateTime>? createdAt,
       Value<DateTime>? dueDate}) {
-    return TodosCompanion(
+    return DatabaseTodosCompanion(
       id: id ?? this.id,
       title: title ?? this.title,
       content: content ?? this.content,
@@ -193,7 +193,7 @@ class TodosCompanion extends UpdateCompanion<Todo> {
 
   @override
   String toString() {
-    return (StringBuffer('TodosCompanion(')
+    return (StringBuffer('DatabaseTodosCompanion(')
           ..write('id: $id, ')
           ..write('title: $title, ')
           ..write('content: $content, ')
@@ -204,11 +204,12 @@ class TodosCompanion extends UpdateCompanion<Todo> {
   }
 }
 
-class $TodosTable extends Todos with TableInfo<$TodosTable, Todo> {
+class $DatabaseTodosTable extends DatabaseTodos
+    with TableInfo<$DatabaseTodosTable, DatabaseTodo> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $TodosTable(this.attachedDatabase, [this._alias]);
+  $DatabaseTodosTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int?> id = GeneratedColumn<int?>(
@@ -246,11 +247,11 @@ class $TodosTable extends Todos with TableInfo<$TodosTable, Todo> {
   List<GeneratedColumn> get $columns =>
       [id, title, content, createdAt, dueDate];
   @override
-  String get aliasedName => _alias ?? 'todos';
+  String get aliasedName => _alias ?? 'database_todos';
   @override
-  String get actualTableName => 'todos';
+  String get actualTableName => 'database_todos';
   @override
-  VerificationContext validateIntegrity(Insertable<Todo> instance,
+  VerificationContext validateIntegrity(Insertable<DatabaseTodo> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -287,23 +288,23 @@ class $TodosTable extends Todos with TableInfo<$TodosTable, Todo> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  Todo map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return Todo.fromData(data,
+  DatabaseTodo map(Map<String, dynamic> data, {String? tablePrefix}) {
+    return DatabaseTodo.fromData(data,
         prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
   @override
-  $TodosTable createAlias(String alias) {
-    return $TodosTable(attachedDatabase, alias);
+  $DatabaseTodosTable createAlias(String alias) {
+    return $DatabaseTodosTable(attachedDatabase, alias);
   }
 }
 
 abstract class _$Tutorial8Database extends GeneratedDatabase {
   _$Tutorial8Database(QueryExecutor e)
       : super(SqlTypeSystem.defaultInstance, e);
-  late final $TodosTable todos = $TodosTable(this);
+  late final $DatabaseTodosTable databaseTodos = $DatabaseTodosTable(this);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [todos];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [databaseTodos];
 }
