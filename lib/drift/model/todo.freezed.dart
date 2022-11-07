@@ -21,13 +21,13 @@ class _$TodoTearOff {
   _Todo call(
       {required int id,
       required String title,
-      required String content,
+      required String body,
       required DateTime dueDate,
       required DateTime createdAt}) {
     return _Todo(
       id: id,
       title: title,
-      content: content,
+      body: body,
       dueDate: dueDate,
       createdAt: createdAt,
     );
@@ -41,7 +41,7 @@ const $Todo = _$TodoTearOff();
 mixin _$Todo {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
+  String get body => throw _privateConstructorUsedError;
   DateTime get dueDate => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
@@ -56,7 +56,7 @@ abstract class $TodoCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      String content,
+      String body,
       DateTime dueDate,
       DateTime createdAt});
 }
@@ -73,7 +73,7 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
-    Object? content = freezed,
+    Object? body = freezed,
     Object? dueDate = freezed,
     Object? createdAt = freezed,
   }) {
@@ -86,9 +86,9 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      content: content == freezed
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      body: body == freezed
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
               as String,
       dueDate: dueDate == freezed
           ? _value.dueDate
@@ -110,7 +110,7 @@ abstract class _$TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      String content,
+      String body,
       DateTime dueDate,
       DateTime createdAt});
 }
@@ -128,7 +128,7 @@ class __$TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
-    Object? content = freezed,
+    Object? body = freezed,
     Object? dueDate = freezed,
     Object? createdAt = freezed,
   }) {
@@ -141,9 +141,9 @@ class __$TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      content: content == freezed
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      body: body == freezed
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
               as String,
       dueDate: dueDate == freezed
           ? _value.dueDate
@@ -163,7 +163,7 @@ class _$_Todo implements _Todo {
   const _$_Todo(
       {required this.id,
       required this.title,
-      required this.content,
+      required this.body,
       required this.dueDate,
       required this.createdAt});
 
@@ -172,7 +172,7 @@ class _$_Todo implements _Todo {
   @override
   final String title;
   @override
-  final String content;
+  final String body;
   @override
   final DateTime dueDate;
   @override
@@ -180,7 +180,7 @@ class _$_Todo implements _Todo {
 
   @override
   String toString() {
-    return 'Todo(id: $id, title: $title, content: $content, dueDate: $dueDate, createdAt: $createdAt)';
+    return 'Todo(id: $id, title: $title, body: $body, dueDate: $dueDate, createdAt: $createdAt)';
   }
 
   @override
@@ -190,7 +190,7 @@ class _$_Todo implements _Todo {
             other is _Todo &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality().equals(other.body, body) &&
             const DeepCollectionEquality().equals(other.dueDate, dueDate) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
@@ -200,7 +200,7 @@ class _$_Todo implements _Todo {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(body),
       const DeepCollectionEquality().hash(dueDate),
       const DeepCollectionEquality().hash(createdAt));
 
@@ -214,7 +214,7 @@ abstract class _Todo implements Todo {
   const factory _Todo(
       {required int id,
       required String title,
-      required String content,
+      required String body,
       required DateTime dueDate,
       required DateTime createdAt}) = _$_Todo;
 
@@ -223,7 +223,7 @@ abstract class _Todo implements Todo {
   @override
   String get title;
   @override
-  String get content;
+  String get body;
   @override
   DateTime get dueDate;
   @override

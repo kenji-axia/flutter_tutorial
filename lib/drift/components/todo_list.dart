@@ -75,7 +75,7 @@ class TodoListItem extends ConsumerWidget {
                 style: const TextStyle(fontSize: 12),
               ),
               Text(
-                todo.content,
+                todo.body,
                 style: const TextStyle(fontSize: 16),
               ),
               Padding(

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'drift_database.dart';
+part of 'app_database.dart';
 
 // **************************************************************************
 // MoorGenerator
@@ -10,13 +10,13 @@ part of 'drift_database.dart';
 class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
   final int id;
   final String title;
-  final String content;
+  final String body;
   final DateTime createdAt;
   final DateTime dueDate;
   DatabaseTodo(
       {required this.id,
       required this.title,
-      required this.content,
+      required this.body,
       required this.createdAt,
       required this.dueDate});
   factory DatabaseTodo.fromData(Map<String, dynamic> data, {String? prefix}) {
@@ -26,8 +26,8 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
           .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
       title: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}title'])!,
-      content: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}content'])!,
+      body: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}body'])!,
       createdAt: const DateTimeType()
           .mapFromDatabaseResponse(data['${effectivePrefix}created_at'])!,
       dueDate: const DateTimeType()
@@ -39,7 +39,7 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['title'] = Variable<String>(title);
-    map['content'] = Variable<String>(content);
+    map['body'] = Variable<String>(body);
     map['created_at'] = Variable<DateTime>(createdAt);
     map['due_date'] = Variable<DateTime>(dueDate);
     return map;
@@ -49,7 +49,7 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
     return DatabaseTodosCompanion(
       id: Value(id),
       title: Value(title),
-      content: Value(content),
+      body: Value(body),
       createdAt: Value(createdAt),
       dueDate: Value(dueDate),
     );
@@ -61,7 +61,7 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
     return DatabaseTodo(
       id: serializer.fromJson<int>(json['id']),
       title: serializer.fromJson<String>(json['title']),
-      content: serializer.fromJson<String>(json['content']),
+      body: serializer.fromJson<String>(json['body']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
       dueDate: serializer.fromJson<DateTime>(json['dueDate']),
     );
@@ -72,7 +72,7 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'title': serializer.toJson<String>(title),
-      'content': serializer.toJson<String>(content),
+      'body': serializer.toJson<String>(body),
       'createdAt': serializer.toJson<DateTime>(createdAt),
       'dueDate': serializer.toJson<DateTime>(dueDate),
     };
@@ -81,13 +81,13 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
   DatabaseTodo copyWith(
           {int? id,
           String? title,
-          String? content,
+          String? body,
           DateTime? createdAt,
           DateTime? dueDate}) =>
       DatabaseTodo(
         id: id ?? this.id,
         title: title ?? this.title,
-        content: content ?? this.content,
+        body: body ?? this.body,
         createdAt: createdAt ?? this.createdAt,
         dueDate: dueDate ?? this.dueDate,
       );
@@ -96,7 +96,7 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
     return (StringBuffer('DatabaseTodo(')
           ..write('id: $id, ')
           ..write('title: $title, ')
-          ..write('content: $content, ')
+          ..write('body: $body, ')
           ..write('createdAt: $createdAt, ')
           ..write('dueDate: $dueDate')
           ..write(')'))
@@ -104,14 +104,14 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
   }
 
   @override
-  int get hashCode => Object.hash(id, title, content, createdAt, dueDate);
+  int get hashCode => Object.hash(id, title, body, createdAt, dueDate);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is DatabaseTodo &&
           other.id == this.id &&
           other.title == this.title &&
-          other.content == this.content &&
+          other.body == this.body &&
           other.createdAt == this.createdAt &&
           other.dueDate == this.dueDate);
 }
@@ -119,37 +119,37 @@ class DatabaseTodo extends DataClass implements Insertable<DatabaseTodo> {
 class DatabaseTodosCompanion extends UpdateCompanion<DatabaseTodo> {
   final Value<int> id;
   final Value<String> title;
-  final Value<String> content;
+  final Value<String> body;
   final Value<DateTime> createdAt;
   final Value<DateTime> dueDate;
   const DatabaseTodosCompanion({
     this.id = const Value.absent(),
     this.title = const Value.absent(),
-    this.content = const Value.absent(),
+    this.body = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.dueDate = const Value.absent(),
   });
   DatabaseTodosCompanion.insert({
     this.id = const Value.absent(),
     required String title,
-    required String content,
+    required String body,
     required DateTime createdAt,
     required DateTime dueDate,
   })  : title = Value(title),
-        content = Value(content),
+        body = Value(body),
         createdAt = Value(createdAt),
         dueDate = Value(dueDate);
   static Insertable<DatabaseTodo> custom({
     Expression<int>? id,
     Expression<String>? title,
-    Expression<String>? content,
+    Expression<String>? body,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? dueDate,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (title != null) 'title': title,
-      if (content != null) 'content': content,
+      if (body != null) 'body': body,
       if (createdAt != null) 'created_at': createdAt,
       if (dueDate != null) 'due_date': dueDate,
     });
@@ -158,13 +158,13 @@ class DatabaseTodosCompanion extends UpdateCompanion<DatabaseTodo> {
   DatabaseTodosCompanion copyWith(
       {Value<int>? id,
       Value<String>? title,
-      Value<String>? content,
+      Value<String>? body,
       Value<DateTime>? createdAt,
       Value<DateTime>? dueDate}) {
     return DatabaseTodosCompanion(
       id: id ?? this.id,
       title: title ?? this.title,
-      content: content ?? this.content,
+      body: body ?? this.body,
       createdAt: createdAt ?? this.createdAt,
       dueDate: dueDate ?? this.dueDate,
     );
@@ -179,8 +179,8 @@ class DatabaseTodosCompanion extends UpdateCompanion<DatabaseTodo> {
     if (title.present) {
       map['title'] = Variable<String>(title.value);
     }
-    if (content.present) {
-      map['content'] = Variable<String>(content.value);
+    if (body.present) {
+      map['body'] = Variable<String>(body.value);
     }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
@@ -196,7 +196,7 @@ class DatabaseTodosCompanion extends UpdateCompanion<DatabaseTodo> {
     return (StringBuffer('DatabaseTodosCompanion(')
           ..write('id: $id, ')
           ..write('title: $title, ')
-          ..write('content: $content, ')
+          ..write('body: $body, ')
           ..write('createdAt: $createdAt, ')
           ..write('dueDate: $dueDate')
           ..write(')'))
@@ -225,10 +225,10 @@ class $DatabaseTodosTable extends DatabaseTodos
           GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 50),
       type: const StringType(),
       requiredDuringInsert: true);
-  final VerificationMeta _contentMeta = const VerificationMeta('content');
+  final VerificationMeta _bodyMeta = const VerificationMeta('body');
   @override
-  late final GeneratedColumn<String?> content = GeneratedColumn<String?>(
-      'content', aliasedName, false,
+  late final GeneratedColumn<String?> body = GeneratedColumn<String?>(
+      'body', aliasedName, false,
       additionalChecks:
           GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 50),
       type: const StringType(),
@@ -244,8 +244,7 @@ class $DatabaseTodosTable extends DatabaseTodos
       'due_date', aliasedName, false,
       type: const IntType(), requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, title, content, createdAt, dueDate];
+  List<GeneratedColumn> get $columns => [id, title, body, createdAt, dueDate];
   @override
   String get aliasedName => _alias ?? 'database_todos';
   @override
@@ -264,11 +263,11 @@ class $DatabaseTodosTable extends DatabaseTodos
     } else if (isInserting) {
       context.missing(_titleMeta);
     }
-    if (data.containsKey('content')) {
-      context.handle(_contentMeta,
-          content.isAcceptableOrUnknown(data['content']!, _contentMeta));
+    if (data.containsKey('body')) {
+      context.handle(
+          _bodyMeta, body.isAcceptableOrUnknown(data['body']!, _bodyMeta));
     } else if (isInserting) {
-      context.missing(_contentMeta);
+      context.missing(_bodyMeta);
     }
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
@@ -299,10 +298,10 @@ class $DatabaseTodosTable extends DatabaseTodos
   }
 }
 
-abstract class _$Tutorial8Database extends GeneratedDatabase {
-  _$Tutorial8Database(QueryExecutor e)
-      : super(SqlTypeSystem.defaultInstance, e);
+abstract class _$AppDatabase extends GeneratedDatabase {
+  _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   late final $DatabaseTodosTable databaseTodos = $DatabaseTodosTable(this);
+  late final Tutorial8 tutorial8 = Tutorial8(this as AppDatabase);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override

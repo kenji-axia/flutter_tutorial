@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:flutter_tutorial/db/app_database.dart';
 import 'package:flutter_tutorial/drift/model/todo.dart';
 
-import 'db/drift_database.dart';
 import 'repository/drift_repository.dart';
 import 'state/drift_client_state.dart';
 
@@ -26,7 +27,7 @@ class DriftClientStateNotifier extends StateNotifier<DriftClientState> {
           Todo(
             id: databaseTodo.id,
             title: databaseTodo.title,
-            content: databaseTodo.content,
+            body: databaseTodo.body,
             dueDate: databaseTodo.dueDate,
             createdAt: databaseTodo.createdAt,
           ),
@@ -38,8 +39,8 @@ class DriftClientStateNotifier extends StateNotifier<DriftClientState> {
     });
   }
 
-  void addTodo(String title, String content, String dueDate) {
-    _read(driftRepositoryProvider).addTodo(title, content, dueDate);
+  void addTodo(String title, String body, String dueDate) {
+    _read(driftRepositoryProvider).addTodo(title, body, dueDate);
   }
 
   void deleteTodo(Todo todo) {
@@ -47,7 +48,7 @@ class DriftClientStateNotifier extends StateNotifier<DriftClientState> {
       DatabaseTodo(
         id: todo.id,
         title: todo.title,
-        content: todo.content,
+        body: todo.body,
         createdAt: todo.createdAt,
         dueDate: todo.dueDate,
       ),

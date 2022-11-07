@@ -1,28 +1,28 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_tutorial/drift/db/drift_database.dart';
+import 'package:flutter_tutorial/db/app_database.dart';
 
 final driftRepositoryProvider =
     Provider<DriftRepository>((_) => DriftRepository());
 
 class DriftRepository {
-  final database = Tutorial8Database();
+  final dao = AppDatabase().tutorial8;
 
   Stream<List<DatabaseTodo>> watchTodos() {
-    return database.watchAllTodosByDueDate();
+    return dao.watchAllTodosByDueDate();
   }
 
-  void addTodo(String title, String content, String dueDate) {
+  void addTodo(String title, String body, String dueDate) {
     final todo = DatabaseTodosCompanion.insert(
       title: title,
-      content: content,
+      body: body,
       dueDate: DateTime.parse(dueDate),
       createdAt: DateTime.now(),
     );
-    database.into(database.databaseTodos).insert(todo);
+    dao.into(dao.databaseTodos).insert(todo);
   }
 
   void deleteTodo(DatabaseTodo databaseTodo) {
-    database.deleteTodo(databaseTodo);
+    dao.deleteTodo(databaseTodo);
   }
 }
