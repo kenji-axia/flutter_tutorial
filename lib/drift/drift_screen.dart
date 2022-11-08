@@ -29,11 +29,6 @@ class DriftScreenState extends ConsumerState<DriftScreen> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Future<void> _displayInputDialog(BuildContext context) {
     return showDialog(
       context: context,
