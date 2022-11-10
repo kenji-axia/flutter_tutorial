@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CategoryContentImages extends StatelessWidget {
-  const CategoryContentImages(
-      {required this.residenceOutsideImagePath,
-      required this.residenceInsideImagePath,
-      Key? key})
-      : super(key: key);
+  const CategoryContentImages({
+    required this.residenceOutsideImagePath,
+    required this.residenceInsideImagePath,
+    super.key,
+  });
 
   final String residenceOutsideImagePath;
   final String residenceInsideImagePath;

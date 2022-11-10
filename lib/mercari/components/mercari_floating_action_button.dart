@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class MercariFloatingActionButton extends StatelessWidget {
-  const MercariFloatingActionButton({Key? key}) : super(key: key);
+  const MercariFloatingActionButton({super.key});
 
   @override
   Widget build(BuildContext context) {

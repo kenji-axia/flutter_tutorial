@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class ResidenceFloatingActionButton extends StatelessWidget {
-  const ResidenceFloatingActionButton({Key? key}) : super(key: key);
+  const ResidenceFloatingActionButton({super.key});
 
   @override
   Widget build(BuildContext context) {

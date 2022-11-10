@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class ItemImage extends StatelessWidget {
-  const ItemImage({required this.imagePath, Key? key}) : super(key: key);
+  const ItemImage({required this.imagePath, super.key});
 
   final String imagePath;
 

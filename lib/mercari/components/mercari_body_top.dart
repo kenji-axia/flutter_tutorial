@@ -5,7 +5,7 @@ import 'package:flutter_tutorial/constants.dart';
 import 'mercari_shortcut_buttons.dart';
 
 class MercariBodyTop extends StatelessWidget {
-  const MercariBodyTop({Key? key}) : super(key: key);
+  const MercariBodyTop({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class CategoryFilteringSection extends StatelessWidget {
-  const CategoryFilteringSection({Key? key}) : super(key: key);
+  const CategoryFilteringSection({super.key});
 
-  final String _trainInfo = '東京駅・品川駅・川崎駅・横浜駅・目黒駅・恵比寿駅・渋谷駅・';
-  final String _priceInfo = '下限なし 〜 2,000万円';
-  final String _anotherInfo = '1R 〜 4LDK / 10㎡以上 / 徒歩20分';
+  String get _trainInfo => '東京駅・品川駅・川崎駅・横浜駅・目黒駅・恵比寿駅・渋谷駅・';
+  String get _priceInfo => '下限なし 〜 2,000万円';
+  String get _anotherInfo => '1R 〜 4LDK / 10㎡以上 / 徒歩20分';
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class CategoryFilteringSection extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   sizedBox8,
-                  Text(
+                  const Text(
                     '〇〇のおすすめ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

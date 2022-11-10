@@ -6,6 +6,8 @@ import 'model/qiita_item.dart';
 import 'qiita_client_state_notifier.dart';
 
 class QiitaClientScreen extends ConsumerWidget {
+  const QiitaClientScreen({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(qiitaClientStateNotifier);
@@ -22,7 +24,7 @@ class QiitaClientScreen extends ConsumerWidget {
         appBar: AppBar(
           title: state.isReadyData
               ? Text(state.currentTag)
-              : Text('QiitaClientSample'),
+              : const Text('QiitaClientSample'),
           centerTitle: true,
         ),
         body: Stack(
@@ -34,7 +36,7 @@ class QiitaClientScreen extends ConsumerWidget {
             ),
             Visibility(
               visible: state.isLoading,
-              child: ColoredBox(
+              child: const ColoredBox(
                 color: Color(0x88000000),
                 child: Center(
                   child: CircularProgressIndicator(),
@@ -55,13 +57,13 @@ class QiitaClientScreen extends ConsumerWidget {
         final item = qiitaItems[index];
 
         return Container(
-          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-          constraints: BoxConstraints(minHeight: 96, maxHeight: 96),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          constraints: const BoxConstraints(minHeight: 96, maxHeight: 96),
           child: Card(
             elevation: 8,
             child: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: ListTile(
                 leading: Image.network(item.user!.profileImageUrl!),
                 title: Text(item.title!),
@@ -82,19 +84,19 @@ class QiitaClientScreen extends ConsumerWidget {
           onPressed: () => ref
               .read(qiitaClientStateNotifier.notifier)
               .fetchQiitaItems('Flutter'),
-          child: Text('Flutter'),
+          child: const Text('Flutter'),
         ),
         ElevatedButton(
           onPressed: () => ref
               .read(qiitaClientStateNotifier.notifier)
               .fetchQiitaItems('android'),
-          child: Text('android'),
+          child: const Text('android'),
         ),
         ElevatedButton(
           onPressed: () => ref
               .read(qiitaClientStateNotifier.notifier)
               .fetchQiitaItems('ios'),
-          child: Text('ios'),
+          child: const Text('ios'),
         ),
       ],
     );

@@ -5,7 +5,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class ResidenceAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ResidenceAppBar({Key? key}) : super(key: key);
+  const ResidenceAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,26 +53,25 @@ class CategoryButton extends StatelessWidget {
     required this.categoryText,
     required this.isHighlight,
     required this.notificationNum,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String categoryText;
   final bool isHighlight;
   final int notificationNum;
 
-  final double _categoryTextSize = 13;
+  double get _categoryTextSize => 13;
 
-  final Color _normalBackgroundColor = const Color.fromRGBO(243, 243, 243, 1);
-  final Color _normalTextColor = Colors.black87;
+  Color get _normalBackgroundColor => const Color.fromRGBO(243, 243, 243, 1);
+  Color get _normalTextColor => Colors.black87;
 
-  final Color _highlightBackgroundColor =
-      const Color.fromRGBO(235, 239, 238, 1);
-  final Color _highlightTextColor = const Color.fromRGBO(94, 150, 140, 1);
+  Color get _highlightBackgroundColor => const Color.fromRGBO(235, 239, 238, 1);
+  Color get _highlightTextColor => const Color.fromRGBO(94, 150, 140, 1);
 
   @override
   Widget build(BuildContext context) {
     return Badge(
-      showBadge: notificationNum != 0 ? true : false,
+      showBadge: notificationNum != 0,
       position: BadgePosition.topEnd(end: 0),
       badgeContent: Text(
         notificationNum.toString(),

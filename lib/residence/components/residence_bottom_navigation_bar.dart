@@ -5,7 +5,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter_tutorial/constants.dart';
 
 class ResidenceBottomNavigationBar extends StatelessWidget {
-  const ResidenceBottomNavigationBar({Key? key}) : super(key: key);
+  const ResidenceBottomNavigationBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class ResidenceBottomNavigationBarItem extends BottomNavigationBarItem {
     required int notificationNum,
   }) : super(
           icon: Badge(
-            showBadge: notificationNum != 0 ? true : false,
+            showBadge: notificationNum != 0,
             badgeContent: Text(
               notificationNum.toString(),
               style: const TextStyle(color: Colors.white),
