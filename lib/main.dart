@@ -9,6 +9,7 @@ import 'mercari/mercari_screen.dart';
 import 'qiita/qiita_client_screen.dart';
 import 'residence/residence_screen.dart';
 import 'youtube/youtube_screen.dart';
+import 'calendar/calendar_screen.dart';
 
 void main() {
   runApp(
@@ -82,6 +83,10 @@ class MyHomePage extends StatelessWidget {
             TransitionScreenButton(
               'Drift',
               DriftScreen(),
+            ),
+            TransitionScreenButton(
+              'Calendar',
+              CalendarScreen(),
             ),
           ],
         ),
