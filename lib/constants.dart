@@ -33,6 +33,7 @@ const sizedBoxW32 = SizedBox(width: 32);
 final borderRadius4 = BorderRadius.circular(4);
 final borderRadius6 = BorderRadius.circular(6);
 final borderRadius10 = BorderRadius.circular(10);
+final borderRadius25 = BorderRadius.circular(25);
 
 // TextStyle
 const fontSize14TextStyle = TextStyle(
@@ -58,6 +59,23 @@ const residenceMainAccentColor = Color.fromRGBO(82, 164, 154, 1);
 const mercariMainAccentColor = Color.fromRGBO(34, 34, 34, 1);
 const mercariRedAccentColor = Color.fromRGBO(210, 82, 68, 1);
 const mercariBodyTopBackgroundColor = Color.fromRGBO(239, 239, 239, 1);
+
+// Tutorial9で使用する色
+const whiteColor = Color(0xffffffff);
+const calendarBackgroundColor = Color(0xfff4edea);
+const calendarAccentColor = Color(0xffc5d8d1);
+const calendarDarkBlueTextColor = Color(0xff12263a);
+const calendarNormalTextColor = Color(0xff565656);
+const calendarRadioColor = Color(0xff06bcc1);
+const calendarTextStyle = TextStyle(
+  color: calendarNormalTextColor,
+  fontSize: 12,
+  fontWeight: FontWeight.bold,
+);
+// カレンダー設定
+final today = DateTime.now();
+final calendarFirstDay = DateTime(today.year - 10, today.month, today.day);
+final calendarLastDay = DateTime(today.year + 10, today.month, today.day);
 
 // 以下 Tutorial2.2以前で使用
 const sizedBox4 = SizedBox(height: 4, width: 4);
