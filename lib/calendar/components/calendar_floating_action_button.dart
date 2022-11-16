@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_tutorial/constants.dart';
-
 import 'edit_schedule_dialog.dart';
 
 class CalendarFloatingActionButton extends StatelessWidget {
@@ -22,15 +21,10 @@ class CalendarFloatingActionButton extends StatelessWidget {
             ),
           );
         },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(
-              Icons.edit,
-              size: 40,
-              color: calendarDarkBlueTextColor,
-            ),
-          ],
+        child: const Icon(
+          Icons.edit,
+          size: 40,
+          color: calendarDarkBlueTextColor,
         ),
       ),
     );

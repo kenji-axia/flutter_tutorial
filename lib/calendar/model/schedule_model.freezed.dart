@@ -20,15 +20,13 @@ class _$ScheduleModelTearOff {
 
   _ScheduleModel call(
       {required int scheduleId,
-      required int tagId,
-      required String tagName,
+      required String tag,
       required String body,
       required DateTime date,
       required DateTime createdAt}) {
     return _ScheduleModel(
       scheduleId: scheduleId,
-      tagId: tagId,
-      tagName: tagName,
+      tag: tag,
       body: body,
       date: date,
       createdAt: createdAt,
@@ -42,8 +40,7 @@ const $ScheduleModel = _$ScheduleModelTearOff();
 /// @nodoc
 mixin _$ScheduleModel {
   int get scheduleId => throw _privateConstructorUsedError;
-  int get tagId => throw _privateConstructorUsedError;
-  String get tagName => throw _privateConstructorUsedError;
+  String get tag => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -60,8 +57,7 @@ abstract class $ScheduleModelCopyWith<$Res> {
       _$ScheduleModelCopyWithImpl<$Res>;
   $Res call(
       {int scheduleId,
-      int tagId,
-      String tagName,
+      String tag,
       String body,
       DateTime date,
       DateTime createdAt});
@@ -79,8 +75,7 @@ class _$ScheduleModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? scheduleId = freezed,
-    Object? tagId = freezed,
-    Object? tagName = freezed,
+    Object? tag = freezed,
     Object? body = freezed,
     Object? date = freezed,
     Object? createdAt = freezed,
@@ -90,13 +85,9 @@ class _$ScheduleModelCopyWithImpl<$Res>
           ? _value.scheduleId
           : scheduleId // ignore: cast_nullable_to_non_nullable
               as int,
-      tagId: tagId == freezed
-          ? _value.tagId
-          : tagId // ignore: cast_nullable_to_non_nullable
-              as int,
-      tagName: tagName == freezed
-          ? _value.tagName
-          : tagName // ignore: cast_nullable_to_non_nullable
+      tag: tag == freezed
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
               as String,
       body: body == freezed
           ? _value.body
@@ -123,8 +114,7 @@ abstract class _$ScheduleModelCopyWith<$Res>
   @override
   $Res call(
       {int scheduleId,
-      int tagId,
-      String tagName,
+      String tag,
       String body,
       DateTime date,
       DateTime createdAt});
@@ -144,8 +134,7 @@ class __$ScheduleModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? scheduleId = freezed,
-    Object? tagId = freezed,
-    Object? tagName = freezed,
+    Object? tag = freezed,
     Object? body = freezed,
     Object? date = freezed,
     Object? createdAt = freezed,
@@ -155,13 +144,9 @@ class __$ScheduleModelCopyWithImpl<$Res>
           ? _value.scheduleId
           : scheduleId // ignore: cast_nullable_to_non_nullable
               as int,
-      tagId: tagId == freezed
-          ? _value.tagId
-          : tagId // ignore: cast_nullable_to_non_nullable
-              as int,
-      tagName: tagName == freezed
-          ? _value.tagName
-          : tagName // ignore: cast_nullable_to_non_nullable
+      tag: tag == freezed
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
               as String,
       body: body == freezed
           ? _value.body
@@ -184,8 +169,7 @@ class __$ScheduleModelCopyWithImpl<$Res>
 class _$_ScheduleModel implements _ScheduleModel {
   const _$_ScheduleModel(
       {required this.scheduleId,
-      required this.tagId,
-      required this.tagName,
+      required this.tag,
       required this.body,
       required this.date,
       required this.createdAt});
@@ -193,9 +177,7 @@ class _$_ScheduleModel implements _ScheduleModel {
   @override
   final int scheduleId;
   @override
-  final int tagId;
-  @override
-  final String tagName;
+  final String tag;
   @override
   final String body;
   @override
@@ -205,7 +187,7 @@ class _$_ScheduleModel implements _ScheduleModel {
 
   @override
   String toString() {
-    return 'ScheduleModel(scheduleId: $scheduleId, tagId: $tagId, tagName: $tagName, body: $body, date: $date, createdAt: $createdAt)';
+    return 'ScheduleModel(scheduleId: $scheduleId, tag: $tag, body: $body, date: $date, createdAt: $createdAt)';
   }
 
   @override
@@ -215,8 +197,7 @@ class _$_ScheduleModel implements _ScheduleModel {
             other is _ScheduleModel &&
             const DeepCollectionEquality()
                 .equals(other.scheduleId, scheduleId) &&
-            const DeepCollectionEquality().equals(other.tagId, tagId) &&
-            const DeepCollectionEquality().equals(other.tagName, tagName) &&
+            const DeepCollectionEquality().equals(other.tag, tag) &&
             const DeepCollectionEquality().equals(other.body, body) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt));
@@ -226,8 +207,7 @@ class _$_ScheduleModel implements _ScheduleModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(scheduleId),
-      const DeepCollectionEquality().hash(tagId),
-      const DeepCollectionEquality().hash(tagName),
+      const DeepCollectionEquality().hash(tag),
       const DeepCollectionEquality().hash(body),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(createdAt));
@@ -241,8 +221,7 @@ class _$_ScheduleModel implements _ScheduleModel {
 abstract class _ScheduleModel implements ScheduleModel {
   const factory _ScheduleModel(
       {required int scheduleId,
-      required int tagId,
-      required String tagName,
+      required String tag,
       required String body,
       required DateTime date,
       required DateTime createdAt}) = _$_ScheduleModel;
@@ -250,9 +229,7 @@ abstract class _ScheduleModel implements ScheduleModel {
   @override
   int get scheduleId;
   @override
-  int get tagId;
-  @override
-  String get tagName;
+  String get tag;
   @override
   String get body;
   @override

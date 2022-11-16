@@ -1,29 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:flutter_tutorial/calendar/model/schedule_model.dart';
+import 'package:flutter_tutorial/calendar/view_model/calendar_state_providers.dart';
+import 'package:flutter_tutorial/calendar/view_model/all_schedules_stream_provider.dart';
 import 'build_schedule_item.dart';
 
-class BuildScheduleList extends StatelessWidget {
+class BuildScheduleList extends ConsumerWidget {
   const BuildScheduleList({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedDate = ref.watch(selectedDateStateProvider);
+    final allSchedules = ref.watch(allSchedulesStreamProvider).value;
+    List<ScheduleModel> selectedDateSchedules;
+
+    if (allSchedules == null) {
+      selectedDateSchedules = <ScheduleModel>[];
+    } else {
+      selectedDateSchedules = allSchedules[selectedDate] ?? <ScheduleModel>[];
+    }
+
+    if (selectedDateSchedules.isEmpty) {
+      return const SizedBox(
+        height: 200,
+        child: Center(
+          child: Text('登録しているTodoはありません'),
+        ),
+      );
+    }
+
     return Column(
-      children: const [
-        BuildScheduleItem(
-          tagName: '仕事',
-          body: '9:30 ミーティング\n13:00 昼食',
-        ),
-        BuildScheduleItem(
-          tagName: 'プライベート',
-          body: '買い物にいく\nプログラミング\n早寝',
-        ),
-        BuildScheduleItem(
-          tagName: 'プライベート',
-          body: '買い物にいく\nプログラミング\n早寝',
-        ),
-        BuildScheduleItem(
-          tagName: 'プライベート',
-          body: '買い物にいく\nプログラミング\n早寝',
-        ),
+      children: [
+        for (var schedule in selectedDateSchedules)
+          BuildScheduleItem(scheduleModel: schedule)
       ],
     );
   }

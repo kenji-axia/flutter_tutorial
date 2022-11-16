@@ -20,18 +20,14 @@ class CalendarHeader extends StatelessWidget {
         focusedDay.year == today.year && focusedDay.month == today.month;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 16),
+      padding: const EdgeInsets.only(left: spacing2),
       child: Row(
         children: [
           SizedBox(
             width: 80,
             child: Text(
               '${focusedDay.year}年 ${focusedDay.month}月',
-              style: const TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.bold,
-                color: calendarDarkBlueTextColor,
-              ),
+              style: const TextStyle(fontSize: 13),
             ),
           ),
           if (!onCurrentMonth)

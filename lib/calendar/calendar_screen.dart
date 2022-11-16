@@ -23,27 +23,37 @@ class CalendarScreen extends StatelessWidget {
           scaffoldBackgroundColor: calendarBackgroundColor,
           dialogTheme: DialogTheme(
             shape: RoundedRectangleBorder(
-              borderRadius: borderRadius10,
+              borderRadius: borderRadius25,
+            ),
+            contentTextStyle: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: calendarDarkBlueTextColor,
+              fontSize: 15,
             ),
           ),
         ),
         child: Scaffold(
           floatingActionButton: const CalendarFloatingActionButton(),
           body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: spacing2,
-                vertical: spacing1,
+            child: DefaultTextStyle(
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: calendarDarkBlueTextColor,
               ),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    BuildTagButton(),
-                    BuildCalendar(),
-                    BuildDateLabel(),
-                    BuildScheduleList(),
-                  ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: spacing1,
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      BuildTagButton(),
+                      BuildCalendar(),
+                      BuildDateLabel(),
+                      BuildScheduleList(),
+                    ],
+                  ),
                 ),
               ),
             ),
