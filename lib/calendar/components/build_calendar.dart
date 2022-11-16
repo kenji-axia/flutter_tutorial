@@ -1,10 +1,11 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/calendar/schedules_view_model.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_tutorial/constants.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'calendar_header.dart';
@@ -42,28 +43,25 @@ int getHashCode(DateTime key) {
 }
 
 List<Schedule> _getEventsForDay(DateTime day) {
+  print(day);
   return schedules[day] ?? [];
 }
 // ここまで
 
-class BuildCalendar extends StatefulWidget {
+class BuildCalendar extends ConsumerStatefulWidget {
   const BuildCalendar({super.key});
 
   @override
-  State<BuildCalendar> createState() => _BuildCalendarState();
+  BuildCalendarState createState() => BuildCalendarState();
 }
 
-class _BuildCalendarState extends State<BuildCalendar> {
+class BuildCalendarState extends ConsumerState<BuildCalendar> {
   final ValueNotifier<DateTime> _focusedDay = ValueNotifier(DateTime.now());
   late PageController _pageController;
   DateTime? _selectedDay;
 
   @override
   void initState() {
-    // カレンダー上部を[月, 火, 水, ...]表示するために必要
-    // （変更前：[Mon, Tue, Wed, ...]）
-    initializeDateFormatting('ja_JP');
-
     super.initState();
   }
 
@@ -124,50 +122,64 @@ class _BuildCalendarState extends State<BuildCalendar> {
               );
             },
           ),
-          TableCalendar<dynamic>(
-            headerVisible: false,
-            eventLoader: _getEventsForDay,
-            firstDay: calendarFirstDay,
-            lastDay: calendarLastDay,
-            focusedDay: _focusedDay.value,
-            startingDayOfWeek: StartingDayOfWeek.monday,
-            daysOfWeekHeight: 30,
-            rowHeight: 40,
-            availableGestures: AvailableGestures.horizontalSwipe,
-            daysOfWeekStyle: DaysOfWeekStyle(
-              dowTextFormatter: (DateTime date, dynamic locale) {
-                return DateFormat.E('ja').format(date);
-              },
-              weekdayStyle: calendarTextStyle,
-              weekendStyle: calendarTextStyle,
-            ),
-            calendarStyle: const CalendarStyle(
-              todayDecoration: BoxDecoration(
-                color: calendarAccentColor,
-                shape: BoxShape.circle,
-              ),
-              todayTextStyle: calendarTextStyle,
-              defaultTextStyle: calendarTextStyle,
-              weekendTextStyle: calendarTextStyle,
-              outsideDaysVisible: false,
-            ),
-            calendarBuilders: CalendarBuilders<dynamic>(
-              markerBuilder: buildMarker,
-            ),
-            selectedDayPredicate: (day) {
-              return false;
-            },
-            onDaySelected: (selectedDay, focusedDay) {
-              if (!isSameDay(_selectedDay, selectedDay)) {
-                _selectedDay = selectedDay;
-                _focusedDay.value = focusedDay;
-              }
-            },
-            onPageChanged: (focusedDay) {
-              _focusedDay.value = focusedDay;
-            },
-            onCalendarCreated: (controller) => _pageController = controller,
-          ),
+          StreamBuilder<bool>(
+              stream: ref
+                  .watch(calendarViewModel.notifier)
+                  .rebuildTableCalendarController
+                  .stream,
+              builder: (context, snapshot) {
+                print('rebuild!');
+                return TableCalendar<dynamic>(
+                  headerVisible: false,
+                  // eventLoader: _getEventsForDay,
+                  eventLoader:
+                      ref.watch(calendarViewModel.notifier).fetchSchedules,
+                  firstDay: calendarFirstDay,
+                  lastDay: calendarLastDay,
+                  focusedDay: _focusedDay.value,
+                  startingDayOfWeek: StartingDayOfWeek.monday,
+                  daysOfWeekHeight: 30,
+                  rowHeight: 40,
+                  availableGestures: AvailableGestures.horizontalSwipe,
+                  daysOfWeekStyle: DaysOfWeekStyle(
+                    dowTextFormatter: (DateTime date, dynamic locale) {
+                      return DateFormat.E('ja').format(date);
+                    },
+                    weekdayStyle: calendarTextStyle,
+                    weekendStyle: calendarTextStyle,
+                  ),
+                  calendarStyle: const CalendarStyle(
+                    todayDecoration: BoxDecoration(
+                      color: calendarAccentColor,
+                      shape: BoxShape.circle,
+                    ),
+                    todayTextStyle: calendarTextStyle,
+                    defaultTextStyle: calendarTextStyle,
+                    weekendTextStyle: calendarTextStyle,
+                    outsideDaysVisible: false,
+                  ),
+                  calendarBuilders: CalendarBuilders<dynamic>(
+                    markerBuilder: buildMarker,
+                  ),
+                  selectedDayPredicate: (day) {
+                    return false;
+                  },
+                  onDaySelected: (selectedDay, focusedDay) {
+                    if (!isSameDay(_selectedDay, selectedDay)) {
+                      _selectedDay = selectedDay;
+                      _focusedDay.value = focusedDay;
+                      ref
+                          .read(calendarViewModel.notifier)
+                          .selectDate(selectedDay);
+                    }
+                  },
+                  onPageChanged: (focusedDay) {
+                    _focusedDay.value = focusedDay;
+                  },
+                  onCalendarCreated: (controller) =>
+                      _pageController = controller,
+                );
+              }),
         ],
       ),
     );

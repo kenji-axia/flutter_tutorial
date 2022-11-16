@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'animation/animation_screen.dart';
 import 'async/async_screen.dart';
@@ -11,7 +12,9 @@ import 'residence/residence_screen.dart';
 import 'youtube/youtube_screen.dart';
 import 'calendar/calendar_screen.dart';
 
-void main() {
+void main() async {
+  // DateTimeの日本語表示
+  await initializeDateFormatting('ja_JP');
   runApp(
     const ProviderScope(
       child: MyApp(),

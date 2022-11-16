@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_tutorial/calendar/schedules_view_model.dart';
+
 import 'package:flutter_tutorial/constants.dart';
 
 import 'switch_tag_dialog.dart';
 
-class BuildTagButton extends StatelessWidget {
+class BuildTagButton extends ConsumerWidget {
   const BuildTagButton({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    const tagName = '全て';
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tagName = ref.watch(calendarViewModel).selectedTag;
     return TextButton.icon(
       onPressed: () {
         showDialog<void>(
@@ -24,9 +27,9 @@ class BuildTagButton extends StatelessWidget {
         color: calendarDarkBlueTextColor,
         size: 30,
       ),
-      label: const Text(
+      label: Text(
         '# $tagName',
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: calendarDarkBlueTextColor,

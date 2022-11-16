@@ -1,25 +1,21 @@
-import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorial/constants.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:dotted_line/dotted_line.dart';
 
-class SwitchTagDialog extends StatefulWidget {
+import 'package:flutter_tutorial/constants.dart';
+import 'package:flutter_tutorial/calendar/schedules_view_model.dart';
+
+class SwitchTagDialog extends ConsumerWidget {
   const SwitchTagDialog({super.key});
 
   @override
-  State<SwitchTagDialog> createState() => _SwitchTagDialogState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedTag = ref.watch(calendarViewModel).selectedTag;
 
-class _SwitchTagDialogState extends State<SwitchTagDialog> {
-  String _selectedTag = '全て';
+    void setTag(String newTag) {
+      ref.watch(calendarViewModel.notifier).switchTag(newTag);
+    }
 
-  void setTag(String newTag) {
-    setState(() {
-      _selectedTag = newTag;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
           // inputDecorationTheme: const InputDecorationTheme(
@@ -64,7 +60,7 @@ class _SwitchTagDialogState extends State<SwitchTagDialog> {
                   shrinkWrap: true,
                   children: [
                     TagRadioButton(
-                      groupValue: _selectedTag,
+                      groupValue: selectedTag,
                       value: '全て',
                       onChanged: setTag,
                     ),
@@ -72,13 +68,13 @@ class _SwitchTagDialogState extends State<SwitchTagDialog> {
                     const DottedLine(),
                     sizedBoxH8,
                     TagRadioButton(
-                      groupValue: _selectedTag,
-                      value: '# 仕事',
+                      groupValue: selectedTag,
+                      value: '仕事',
                       onChanged: setTag,
                     ),
                     TagRadioButton(
-                      groupValue: _selectedTag,
-                      value: '# プライベート',
+                      groupValue: selectedTag,
+                      value: 'プライベート',
                       onChanged: setTag,
                     ),
                   ],
@@ -124,7 +120,7 @@ class TagRadioButton extends StatelessWidget {
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           Text(
-            value,
+            '# $value',
             style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
