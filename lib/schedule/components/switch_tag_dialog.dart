@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dotted_line/dotted_line.dart';
 
 import 'package:flutter_tutorial/constants.dart';
-import 'package:flutter_tutorial/calendar/view_model/calendar_state_providers.dart';
+import 'package:flutter_tutorial/schedule/view_model/calendar_state_providers.dart';
 
 class SwitchTagDialog extends ConsumerWidget {
   const SwitchTagDialog({super.key});

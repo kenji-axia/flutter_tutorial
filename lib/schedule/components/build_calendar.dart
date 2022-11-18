@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'package:flutter_tutorial/constants.dart';
-import 'package:flutter_tutorial/calendar/view_model/calendar_state_providers.dart';
-import 'package:flutter_tutorial/calendar/view_model/all_schedules_stream_provider.dart';
+import 'package:flutter_tutorial/schedule/view_model/calendar_state_providers.dart';
+import 'package:flutter_tutorial/schedule/view_model/all_schedules_stream_provider.dart';
 import 'calendar_header.dart';
 
 class BuildCalendar extends ConsumerStatefulWidget {

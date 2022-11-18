@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_tutorial/calendar/model/schedule_model.dart';
-import 'package:flutter_tutorial/calendar/view_model/calendar_state_providers.dart';
-import 'package:flutter_tutorial/calendar/view_model/all_schedules_stream_provider.dart';
+import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
+import 'package:flutter_tutorial/schedule/view_model/calendar_state_providers.dart';
+import 'package:flutter_tutorial/schedule/view_model/all_schedules_stream_provider.dart';
 import 'build_schedule_item.dart';
 
 class BuildScheduleList extends ConsumerWidget {

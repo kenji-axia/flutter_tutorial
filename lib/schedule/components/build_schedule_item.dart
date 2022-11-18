@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:flutter_tutorial/constants.dart';
-import 'package:flutter_tutorial/calendar/model/schedule_model.dart';
-import 'package:flutter_tutorial/calendar/view_model/schedule_service.dart';
+import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
+import 'package:flutter_tutorial/schedule/view_model/schedule_service.dart';
 import 'edit_schedule_dialog.dart';
 
 class BuildScheduleItem extends ConsumerWidget {

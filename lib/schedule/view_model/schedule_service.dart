@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_tutorial/db/app_database.dart';
-import 'package:flutter_tutorial/calendar/model/schedule_model.dart';
-import 'package:flutter_tutorial/calendar/repository/db_repository.dart';
+import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
+import 'package:flutter_tutorial/schedule/repository/db_repository.dart';
 
 final scheduleService =
     Provider<ScheduleService>((ref) => ScheduleService(ref.read));

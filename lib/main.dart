@@ -10,7 +10,7 @@ import 'mercari/mercari_screen.dart';
 import 'qiita/qiita_client_screen.dart';
 import 'residence/residence_screen.dart';
 import 'youtube/youtube_screen.dart';
-import 'calendar/calendar_screen.dart';
+import 'schedule/schedule_screen.dart';
 
 void main() async {
   // DateTimeの日本語表示
@@ -88,7 +88,7 @@ class MyHomePage extends StatelessWidget {
               DriftScreen(),
             ),
             TransitionScreenButton(
-              'Calendar',
+              'Schedule',
               CalendarScreen(),
             ),
           ],
