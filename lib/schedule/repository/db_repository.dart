@@ -1,14 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_tutorial/db/app_database.dart';
+import 'package:flutter_tutorial/db/app_database_provider.dart';
 
-final dbRepositoryProvider = Provider<DBRepository>((_) => DBRepository());
+final dbRepositoryProvider =
+    Provider.autoDispose<DBRepository>((ref) => DBRepository(ref.read));
 
 class DBRepository {
-  final dao = AppDatabase().tutorial9;
+  DBRepository(this._reader);
+
+  final Reader _reader;
+
+  // late final dao = _reader(appDatabaseProvider).;
 
   Stream<List<Schedule>> watchAllSchedules() {
-    return dao.watchAllSchedules();
+    return _reader(appDatabaseProvider).tutorial9.watchAllSchedules();
   }
 
   void addSchedule(DateTime date, String tag, String body) {
@@ -18,7 +24,10 @@ class DBRepository {
       body: body,
       createdAt: DateTime.now(),
     );
-    dao.into(dao.schedules).insert(schedule);
+    _reader(appDatabaseProvider)
+        .tutorial9
+        .into(_reader(appDatabaseProvider).tutorial9.schedules)
+        .insert(schedule);
   }
 
   void updateSchedule(
@@ -27,14 +36,15 @@ class DBRepository {
     String tag,
     String body,
   ) {
-    dao.updateSchedule(
-      before.copyWith(
-        date: date,
-        tag: tag,
-        body: body,
-      ),
-    );
+    _reader(appDatabaseProvider).tutorial9.updateSchedule(
+          before.copyWith(
+            date: date,
+            tag: tag,
+            body: body,
+          ),
+        );
   }
 
-  void deleteSchedule(Schedule schedule) => dao.deleteSchedule(schedule);
+  void deleteSchedule(Schedule schedule) =>
+      _reader(appDatabaseProvider).tutorial9.deleteSchedule(schedule);
 }
