@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tutorial/constants.dart';
+import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 
-class CalendarHeader extends StatelessWidget {
+class CalendarHeader extends ConsumerWidget {
   const CalendarHeader({
     super.key,
-    required this.focusedDay,
     required this.onLeftArrowTap,
     required this.onRightArrowTap,
-    required this.onTodayButtonTap,
   });
-  final DateTime focusedDay;
   final VoidCallback onLeftArrowTap;
   final VoidCallback onRightArrowTap;
-  final VoidCallback onTodayButtonTap;
 
   @override
-  Widget build(BuildContext context) {
-    final onCurrentMonth =
-        focusedDay.year == today.year && focusedDay.month == today.month;
+  Widget build(BuildContext context, WidgetRef ref) {
+    // カレンダーが表示している月
+    final focusedMonth = ref.watch(
+      scheduleStateNotifier.select((state) => state.focusedMonth),
+    );
+    // カレンダーの表示している月が今月かどうか
+    final isOnThisMonth =
+        focusedMonth.year == today.year && focusedMonth.month == today.month;
 
     return Padding(
       padding: const EdgeInsets.only(left: spacing2),
@@ -26,15 +29,18 @@ class CalendarHeader extends StatelessWidget {
           SizedBox(
             width: 80,
             child: Text(
-              '${focusedDay.year}年 ${focusedDay.month}月',
+              '${focusedMonth.year}年 ${focusedMonth.month}月',
               style: const TextStyle(fontSize: 13),
             ),
           ),
-          if (!onCurrentMonth)
+          // 表示している月が今月ではない時、今月に戻るボタンを表示
+          if (!isOnThisMonth)
             IconButton(
               icon: const Icon(Icons.calendar_today, size: 20),
               visualDensity: VisualDensity.compact,
-              onPressed: onTodayButtonTap,
+              onPressed: () => ref
+                  .read(scheduleStateNotifier.notifier)
+                  .updateFocusedMonth(today),
             ),
           const Spacer(),
           IconButton(

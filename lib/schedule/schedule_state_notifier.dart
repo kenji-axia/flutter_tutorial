@@ -13,7 +13,12 @@ final scheduleStateNotifier =
 
 class ScheduleStateNotifier extends StateNotifier<ScheduleState> {
   ScheduleStateNotifier(this._reader)
-      : super(ScheduleState(selectedDate: DateTime.now())) {
+      : super(
+          ScheduleState(
+            selectedDate: DateTime.now(),
+            focusedMonth: DateTime.now(),
+          ),
+        ) {
     watchAllSchedules();
   }
 
@@ -59,6 +64,12 @@ class ScheduleStateNotifier extends StateNotifier<ScheduleState> {
   void updateSelectedDate(DateTime selectedDate) {
     state = state.copyWith(
       selectedDate: selectedDate,
+    );
+  }
+
+  void updateFocusedMonth(DateTime currentMonth) {
+    state = state.copyWith(
+      focusedMonth: currentMonth,
     );
   }
 

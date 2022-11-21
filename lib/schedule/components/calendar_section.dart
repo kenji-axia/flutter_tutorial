@@ -17,9 +17,9 @@ class CalendarSection extends ConsumerStatefulWidget {
 }
 
 class BuildCalendarState extends ConsumerState<CalendarSection> {
-  final ValueNotifier<DateTime> _focusedDay = ValueNotifier(DateTime.now());
   late PageController _pageController;
 
+  // 予定のある日にマークをつける際に使用
   Widget? buildMarker(
     BuildContext context,
     DateTime day,
@@ -38,6 +38,11 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
 
   @override
   Widget build(BuildContext context) {
+    // カレンダーが表示している月
+    final focusedMonth = ref.watch(
+      scheduleStateNotifier.select((state) => state.focusedMonth),
+    );
+
     final allSchedules =
         ref.watch(scheduleStateNotifier).getAllSchedulesHashMap();
 
@@ -61,26 +66,17 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ValueListenableBuilder<DateTime>(
-            valueListenable: _focusedDay,
-            builder: (context, value, _) {
-              return CalendarHeader(
-                focusedDay: value,
-                onTodayButtonTap: () {
-                  setState(() => _focusedDay.value = DateTime.now());
-                },
-                onLeftArrowTap: () {
-                  _pageController.previousPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeOut,
-                  );
-                },
-                onRightArrowTap: () {
-                  _pageController.nextPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeOut,
-                  );
-                },
+          CalendarHeader(
+            onLeftArrowTap: () {
+              _pageController.previousPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOut,
+              );
+            },
+            onRightArrowTap: () {
+              _pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOut,
               );
             },
           ),
@@ -89,7 +85,8 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
             eventLoader: loadSchedules,
             firstDay: calendarFirstDay,
             lastDay: calendarLastDay,
-            focusedDay: _focusedDay.value,
+            // カレンダーが表示する月を設定
+            focusedDay: focusedMonth,
             startingDayOfWeek: StartingDayOfWeek.monday,
             daysOfWeekHeight: 30,
             rowHeight: 40,
@@ -112,21 +109,23 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
               outsideDaysVisible: false,
             ),
             calendarBuilders: CalendarBuilders<dynamic>(
+              // 予定のある日にマークをつける
               markerBuilder: buildMarker,
             ),
             selectedDayPredicate: (_) => false,
-            onDaySelected: (selectedDay, focusedDay) {
-              final beforeSelectedDate = ref.watch(
-                scheduleStateNotifier.select((state) => state.selectedDate),
-              );
+            onDaySelected: (selectedDay, _) {
+              // 選択した日付が、現在選択されている日付と異なれば更新
+              final beforeSelectedDate =
+                  ref.read(scheduleStateNotifier).selectedDate;
               if (!isSameDay(beforeSelectedDate, selectedDay)) {
-                _focusedDay.value = focusedDay;
                 ref
                     .read(scheduleStateNotifier.notifier)
                     .updateSelectedDate(selectedDay);
               }
             },
-            onPageChanged: (focusedDay) => _focusedDay.value = focusedDay,
+            onPageChanged: (newFocusedMonth) => ref
+                .read(scheduleStateNotifier.notifier)
+                .updateFocusedMonth(newFocusedMonth),
             onCalendarCreated: (controller) => _pageController = controller,
           ),
         ],

@@ -20,11 +20,13 @@ class _$ScheduleStateTearOff {
 
   _ScheduleState call(
       {required DateTime selectedDate,
+      required DateTime focusedMonth,
       String selectedTag = '全て',
       Set<String> allTags = const <String>{},
       List<ScheduleModel> allSchedules = const <ScheduleModel>[]}) {
     return _ScheduleState(
       selectedDate: selectedDate,
+      focusedMonth: focusedMonth,
       selectedTag: selectedTag,
       allTags: allTags,
       allSchedules: allSchedules,
@@ -38,6 +40,7 @@ const $ScheduleState = _$ScheduleStateTearOff();
 /// @nodoc
 mixin _$ScheduleState {
   DateTime get selectedDate => throw _privateConstructorUsedError;
+  DateTime get focusedMonth => throw _privateConstructorUsedError;
   String get selectedTag => throw _privateConstructorUsedError;
   Set<String> get allTags => throw _privateConstructorUsedError;
   List<ScheduleModel> get allSchedules => throw _privateConstructorUsedError;
@@ -54,6 +57,7 @@ abstract class $ScheduleStateCopyWith<$Res> {
       _$ScheduleStateCopyWithImpl<$Res>;
   $Res call(
       {DateTime selectedDate,
+      DateTime focusedMonth,
       String selectedTag,
       Set<String> allTags,
       List<ScheduleModel> allSchedules});
@@ -71,6 +75,7 @@ class _$ScheduleStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedDate = freezed,
+    Object? focusedMonth = freezed,
     Object? selectedTag = freezed,
     Object? allTags = freezed,
     Object? allSchedules = freezed,
@@ -79,6 +84,10 @@ class _$ScheduleStateCopyWithImpl<$Res>
       selectedDate: selectedDate == freezed
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      focusedMonth: focusedMonth == freezed
+          ? _value.focusedMonth
+          : focusedMonth // ignore: cast_nullable_to_non_nullable
               as DateTime,
       selectedTag: selectedTag == freezed
           ? _value.selectedTag
@@ -105,6 +114,7 @@ abstract class _$ScheduleStateCopyWith<$Res>
   @override
   $Res call(
       {DateTime selectedDate,
+      DateTime focusedMonth,
       String selectedTag,
       Set<String> allTags,
       List<ScheduleModel> allSchedules});
@@ -124,6 +134,7 @@ class __$ScheduleStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedDate = freezed,
+    Object? focusedMonth = freezed,
     Object? selectedTag = freezed,
     Object? allTags = freezed,
     Object? allSchedules = freezed,
@@ -132,6 +143,10 @@ class __$ScheduleStateCopyWithImpl<$Res>
       selectedDate: selectedDate == freezed
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      focusedMonth: focusedMonth == freezed
+          ? _value.focusedMonth
+          : focusedMonth // ignore: cast_nullable_to_non_nullable
               as DateTime,
       selectedTag: selectedTag == freezed
           ? _value.selectedTag
@@ -154,6 +169,7 @@ class __$ScheduleStateCopyWithImpl<$Res>
 class _$_ScheduleState extends _ScheduleState {
   const _$_ScheduleState(
       {required this.selectedDate,
+      required this.focusedMonth,
       this.selectedTag = '全て',
       this.allTags = const <String>{},
       this.allSchedules = const <ScheduleModel>[]})
@@ -161,6 +177,8 @@ class _$_ScheduleState extends _ScheduleState {
 
   @override
   final DateTime selectedDate;
+  @override
+  final DateTime focusedMonth;
   @JsonKey()
   @override
   final String selectedTag;
@@ -173,7 +191,7 @@ class _$_ScheduleState extends _ScheduleState {
 
   @override
   String toString() {
-    return 'ScheduleState(selectedDate: $selectedDate, selectedTag: $selectedTag, allTags: $allTags, allSchedules: $allSchedules)';
+    return 'ScheduleState(selectedDate: $selectedDate, focusedMonth: $focusedMonth, selectedTag: $selectedTag, allTags: $allTags, allSchedules: $allSchedules)';
   }
 
   @override
@@ -183,6 +201,8 @@ class _$_ScheduleState extends _ScheduleState {
             other is _ScheduleState &&
             const DeepCollectionEquality()
                 .equals(other.selectedDate, selectedDate) &&
+            const DeepCollectionEquality()
+                .equals(other.focusedMonth, focusedMonth) &&
             const DeepCollectionEquality()
                 .equals(other.selectedTag, selectedTag) &&
             const DeepCollectionEquality().equals(other.allTags, allTags) &&
@@ -194,6 +214,7 @@ class _$_ScheduleState extends _ScheduleState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(selectedDate),
+      const DeepCollectionEquality().hash(focusedMonth),
       const DeepCollectionEquality().hash(selectedTag),
       const DeepCollectionEquality().hash(allTags),
       const DeepCollectionEquality().hash(allSchedules));
@@ -207,6 +228,7 @@ class _$_ScheduleState extends _ScheduleState {
 abstract class _ScheduleState extends ScheduleState {
   const factory _ScheduleState(
       {required DateTime selectedDate,
+      required DateTime focusedMonth,
       String selectedTag,
       Set<String> allTags,
       List<ScheduleModel> allSchedules}) = _$_ScheduleState;
@@ -214,6 +236,8 @@ abstract class _ScheduleState extends ScheduleState {
 
   @override
   DateTime get selectedDate;
+  @override
+  DateTime get focusedMonth;
   @override
   String get selectedTag;
   @override

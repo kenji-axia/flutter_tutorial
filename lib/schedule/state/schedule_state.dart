@@ -11,6 +11,7 @@ part 'schedule_state.freezed.dart';
 class ScheduleState with _$ScheduleState {
   const factory ScheduleState({
     required DateTime selectedDate,
+    required DateTime focusedMonth,
     @Default('全て') String selectedTag,
     @Default(<String>{}) Set<String> allTags,
     @Default(<ScheduleModel>[]) List<ScheduleModel> allSchedules,
