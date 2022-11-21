@@ -4,17 +4,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dotted_line/dotted_line.dart';
 
 import 'package:flutter_tutorial/constants.dart';
-import 'package:flutter_tutorial/schedule/view_model/calendar_state_providers.dart';
+import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 
 class SwitchTagDialog extends ConsumerWidget {
   const SwitchTagDialog({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedTag = ref.watch(tagStateProvider);
+    final selectedTag =
+        ref.watch(scheduleStateNotifier.select((state) => state.selectedTag));
+
+    final allTags =
+        ref.watch(scheduleStateNotifier.select((state) => state.allTags));
 
     void setTag(String newTag) {
-      ref.watch(tagStateProvider.notifier).state = newTag;
+      ref.read(scheduleStateNotifier.notifier).updateTag(newTag);
     }
 
     return AlertDialog(
@@ -38,7 +42,7 @@ class SwitchTagDialog extends ConsumerWidget {
               sizedBoxH8,
               const DottedLine(),
               sizedBoxH8,
-              for (var tag in ref.watch(tagSetStateProvider))
+              for (var tag in allTags)
                 TagRadioButton(
                   groupValue: selectedTag,
                   value: tag,

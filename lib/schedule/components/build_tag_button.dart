@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_tutorial/constants.dart';
-import 'package:flutter_tutorial/schedule/view_model/calendar_state_providers.dart';
+import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 import 'switch_tag_dialog.dart';
 
 class BuildTagButton extends ConsumerWidget {
@@ -10,7 +10,8 @@ class BuildTagButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tagName = ref.watch(tagStateProvider);
+    final tagName =
+        ref.watch(scheduleStateNotifier.select((state) => state.selectedTag));
 
     return TextButton.icon(
       onPressed: () {

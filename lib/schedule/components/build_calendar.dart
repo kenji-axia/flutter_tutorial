@@ -5,8 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'package:flutter_tutorial/constants.dart';
-import 'package:flutter_tutorial/schedule/view_model/calendar_state_providers.dart';
-import 'package:flutter_tutorial/schedule/view_model/all_schedules_stream_provider.dart';
+import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 import 'calendar_header.dart';
 
 class BuildCalendar extends ConsumerStatefulWidget {
@@ -19,7 +18,6 @@ class BuildCalendar extends ConsumerStatefulWidget {
 class BuildCalendarState extends ConsumerState<BuildCalendar> {
   final ValueNotifier<DateTime> _focusedDay = ValueNotifier(DateTime.now());
   late PageController _pageController;
-  DateTime? _selectedDay;
 
   Widget? buildMarker(
     BuildContext context,
@@ -39,7 +37,9 @@ class BuildCalendarState extends ConsumerState<BuildCalendar> {
 
   @override
   Widget build(BuildContext context) {
-    final allSchedules = ref.watch(allSchedulesStreamProvider).value;
+    // final allSchedules = ref.watch(allSchedulesStreamProvider).value;
+    final allSchedules =
+        ref.watch(scheduleStateNotifier).getAllSchedulesHashMap();
 
     List<dynamic> Function(DateTime) loadSchedules;
 
@@ -124,11 +124,14 @@ class BuildCalendarState extends ConsumerState<BuildCalendar> {
             ),
             selectedDayPredicate: (_) => false,
             onDaySelected: (selectedDay, focusedDay) {
-              if (!isSameDay(_selectedDay, selectedDay)) {
-                _selectedDay = selectedDay;
+              final beforeSelectedDate = ref.watch(
+                scheduleStateNotifier.select((state) => state.selectedDate),
+              );
+              if (!isSameDay(beforeSelectedDate, selectedDay)) {
                 _focusedDay.value = focusedDay;
-                ref.read(selectedDateStateProvider.notifier).state =
-                    selectedDay;
+                ref
+                    .read(scheduleStateNotifier.notifier)
+                    .updateSelectedDate(selectedDay);
               }
             },
             onPageChanged: (focusedDay) => _focusedDay.value = focusedDay,

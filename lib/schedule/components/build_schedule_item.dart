@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:flutter_tutorial/constants.dart';
+import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
-import 'package:flutter_tutorial/schedule/view_model/schedule_service.dart';
 import 'edit_schedule_dialog.dart';
 
 class BuildScheduleItem extends ConsumerWidget {
@@ -24,8 +24,9 @@ class BuildScheduleItem extends ConsumerWidget {
         motion: const ScrollMotion(),
         children: [
           SlidableAction(
-            onPressed: (_) =>
-                ref.read(scheduleService).deleteSchedule(scheduleModel),
+            onPressed: (_) => ref
+                .read(scheduleStateNotifier.notifier)
+                .deleteSchedule(scheduleModel),
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,
             icon: Icons.delete,

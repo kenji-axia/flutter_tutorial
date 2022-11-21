@@ -4,9 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_tutorial/constants.dart';
+import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
-import 'package:flutter_tutorial/schedule/view_model/schedule_service.dart';
-import 'package:flutter_tutorial/schedule/view_model/calendar_state_providers.dart';
 
 enum EditDialogMode {
   update(buttonText: '変更'),
@@ -30,7 +29,10 @@ class EditScheduleDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final dateInput = TextEditingController(
       text: DateFormat('yyyy-MM-dd').format(
-        editingScheduleModel?.date ?? ref.watch(selectedDateStateProvider),
+        editingScheduleModel?.date ??
+            ref.watch(
+              scheduleStateNotifier.select((state) => state.selectedDate),
+            ),
       ),
     );
     final tagInput = TextEditingController(
@@ -78,14 +80,14 @@ class EditScheduleDialog extends ConsumerWidget {
                 if (formKey.currentState!.validate()) {
                   switch (mode) {
                     case EditDialogMode.add:
-                      ref.read(scheduleService).addSchedule(
+                      ref.read(scheduleStateNotifier.notifier).addSchedule(
                             DateTime.parse(dateInput.text),
                             tagInput.text,
                             bodyInput.text,
                           );
                       break;
                     case EditDialogMode.update:
-                      ref.read(scheduleService).updateSchedule(
+                      ref.read(scheduleStateNotifier.notifier).updateSchedule(
                             editingScheduleModel!,
                             DateTime.parse(dateInput.text),
                             tagInput.text,
