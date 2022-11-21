@@ -48,10 +48,12 @@ class ScheduleStateNotifier extends StateNotifier<ScheduleState> {
         newAllSchedules.add(scheduleModel);
       }
 
-      state = state.copyWith(
-        allTags: newAllTags,
-        allSchedules: newAllSchedules,
-      );
+      if (mounted) {
+        state = state.copyWith(
+          allTags: newAllTags,
+          allSchedules: newAllSchedules,
+        );
+      }
     });
   }
 
