@@ -9,7 +9,7 @@ import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
 
 enum EditDialogMode {
   update(buttonText: '変更'),
-  add(buttonText: '追加');
+  newEntry(buttonText: '追加');
 
   const EditDialogMode({required this.buttonText});
   final String buttonText;
@@ -23,16 +23,18 @@ class EditScheduleDialog extends ConsumerWidget {
   });
 
   final EditDialogMode mode;
+
+  // 予定の変更時（EditDialogMode.update時）のみ使用します
+  // （変更前のデータを表示させるため）
   final ScheduleModel? editingScheduleModel;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selectedDate = ref.watch(scheduleStateNotifier).selectedDate;
+
     final dateInput = TextEditingController(
       text: DateFormat('yyyy-MM-dd').format(
-        editingScheduleModel?.date ??
-            ref.watch(
-              scheduleStateNotifier.select((state) => state.selectedDate),
-            ),
+        editingScheduleModel?.date ?? selectedDate,
       ),
     );
     final tagInput = TextEditingController(
@@ -44,11 +46,11 @@ class EditScheduleDialog extends ConsumerWidget {
     final formKey = GlobalKey<FormState>();
 
     return Theme(
+      // 日付・タグ・予定本文のテキストインプットに重複するスタイルをあらかじめ指定
       data: _createDialogTheme(context),
       child: GestureDetector(
         // キーボードを閉じるためのGestureDetector
         // （複数行のTextFieldのキーボードは改行ボタンが表示されるため）
-        // （ => 普通なら完了ボタンでキーボードを閉じることができる）
         onTap: () => primaryFocus?.unfocus(),
         child: AlertDialog(
           insetPadding: const EdgeInsets.all(spacing1),
@@ -60,7 +62,6 @@ class EditScheduleDialog extends ConsumerWidget {
             tagInput: tagInput,
             bodyInput: bodyInput,
           ),
-          // キャンセルボタン・変更（追加）ボタンの作成
           actions: <Widget>[
             ElevatedButton(
               onPressed: () => Navigator.pop(context),
@@ -69,17 +70,16 @@ class EditScheduleDialog extends ConsumerWidget {
               ),
               child: const Text(
                 'キャンセル',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: calendarDarkBlueTextColor,
-                ),
+                style: editScheduleDialogActionButtonTextStyle,
               ),
             ),
+            // 変更or追加ボタンの作成
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
+                  // 予定の追加or予定の更新処理
                   switch (mode) {
-                    case EditDialogMode.add:
+                    case EditDialogMode.newEntry:
                       ref.read(scheduleStateNotifier.notifier).addSchedule(
                             DateTime.parse(dateInput.text),
                             tagInput.text,
@@ -104,10 +104,7 @@ class EditScheduleDialog extends ConsumerWidget {
               child: Text(
                 // Dialogのモードによって '変更'or'追加'が入る
                 mode.buttonText,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: calendarDarkBlueTextColor,
-                ),
+                style: editScheduleDialogActionButtonTextStyle,
               ),
             ),
           ],

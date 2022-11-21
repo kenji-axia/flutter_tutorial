@@ -89,7 +89,7 @@ class MyHomePage extends StatelessWidget {
             ),
             TransitionScreenButton(
               'Schedule',
-              CalendarScreen(),
+              ScheduleScreen(),
             ),
           ],
         ),

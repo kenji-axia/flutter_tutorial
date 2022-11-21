@@ -5,8 +5,8 @@ import 'package:flutter_tutorial/constants.dart';
 import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 import 'switch_tag_dialog.dart';
 
-class BuildTagButton extends ConsumerWidget {
-  const BuildTagButton({super.key});
+class SelectTagButton extends ConsumerWidget {
+  const SelectTagButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

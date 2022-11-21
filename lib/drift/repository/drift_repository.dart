@@ -7,8 +7,6 @@ final driftRepositoryProvider =
     Provider.autoDispose<DriftRepository>((ref) => DriftRepository(ref.read));
 
 class DriftRepository {
-  // final dao = AppDatabase().tutorial8;
-
   DriftRepository(this._reader);
 
   final Reader _reader;

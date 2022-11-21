@@ -1,35 +1,36 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:flutter_tutorial/db/app_database.dart';
 import 'package:flutter_tutorial/schedule/repository/db_repository.dart';
 import 'package:flutter_tutorial/schedule/state/schedule_state.dart';
 
-import '../db/app_database.dart';
 import 'model/schedule_model.dart';
 
 final scheduleStateNotifier =
     StateNotifierProvider.autoDispose<ScheduleStateNotifier, ScheduleState>(
-        (ref) {
-  return ScheduleStateNotifier(ref);
-});
+  (ref) => ScheduleStateNotifier(ref.read),
+);
 
 class ScheduleStateNotifier extends StateNotifier<ScheduleState> {
-  ScheduleStateNotifier(this._ref)
+  ScheduleStateNotifier(this._reader)
       : super(ScheduleState(selectedDate: DateTime.now())) {
     watchAllSchedules();
   }
 
-  final Ref _ref;
+  final Reader _reader;
 
   void watchAllSchedules() {
-    // DBの全ての予定を監視
-    // driftで生成されたSchedule型を、viewで使うためにimmutableなScheduleModel型に変換
-    _ref.read(dbRepositoryProvider).watchAllSchedules().listen((schedules) {
-      final allTags = <String>{}; // タグ一覧を格納するSet
-      final convertedAllSchedule = <ScheduleModel>[];
+    // DBの全ての予定をlisten
+    // 変更が送られてきたらstate（allTags・allSchedules）を更新
+    _reader(dbRepositoryProvider).watchAllSchedules().listen((schedules) {
+      final newAllTags = <String>{};
+      final newAllSchedules = <ScheduleModel>[];
 
       for (var i = 0; i < schedules.length; i++) {
         final schedule = schedules[i];
 
-        // ScheduleModel型に変換
+        // driftで自動生成された各予定のSchedule型を、
+        // viewで使うためにimmutableなScheduleModel型に変換
         final scheduleModel = ScheduleModel(
           scheduleId: schedule.id,
           tag: schedule.tag,
@@ -38,26 +39,18 @@ class ScheduleStateNotifier extends StateNotifier<ScheduleState> {
           createdAt: schedule.createdAt,
         );
 
-        allTags.add(schedule.tag);
-        convertedAllSchedule.add(scheduleModel);
+        newAllTags.add(schedule.tag);
+        newAllSchedules.add(scheduleModel);
       }
 
       state = state.copyWith(
-        allTags: allTags,
-        allSchedules: convertedAllSchedule,
+        allTags: newAllTags,
+        allSchedules: newAllSchedules,
       );
     });
   }
 
-  // tagSet（タグ一覧）
-  void updateTagSet(Set<String> allTags) {
-    state = state.copyWith(
-      allTags: allTags,
-    );
-  }
-
-  // 現在選択されているタグを更新
-  void updateTag(String selectedTag) {
+  void updateSelectedTag(String selectedTag) {
     state = state.copyWith(
       selectedTag: selectedTag,
     );
@@ -70,19 +63,20 @@ class ScheduleStateNotifier extends StateNotifier<ScheduleState> {
   }
 
   void addSchedule(DateTime date, String tag, String body) {
-    _ref.read(dbRepositoryProvider).addSchedule(date, tag, body);
+    _reader(dbRepositoryProvider).addSchedule(date, tag, body);
   }
 
   void deleteSchedule(ScheduleModel scheduleModel) {
-    _ref.read(dbRepositoryProvider).deleteSchedule(
-          Schedule(
-            id: scheduleModel.scheduleId,
-            date: scheduleModel.date,
-            tag: scheduleModel.tag,
-            body: scheduleModel.body,
-            createdAt: scheduleModel.createdAt,
-          ),
-        );
+    _reader(dbRepositoryProvider).deleteSchedule(
+      // DB側で扱うSchedule型に変換
+      Schedule(
+        id: scheduleModel.scheduleId,
+        date: scheduleModel.date,
+        tag: scheduleModel.tag,
+        body: scheduleModel.body,
+        createdAt: scheduleModel.createdAt,
+      ),
+    );
   }
 
   void updateSchedule(
@@ -91,17 +85,18 @@ class ScheduleStateNotifier extends StateNotifier<ScheduleState> {
     String newTag,
     String newBody,
   ) {
-    _ref.read(dbRepositoryProvider).updateSchedule(
-          Schedule(
-            id: before.scheduleId,
-            date: before.date,
-            tag: before.tag,
-            body: before.body,
-            createdAt: before.createdAt,
-          ),
-          newDate,
-          newTag,
-          newBody,
-        );
+    _reader(dbRepositoryProvider).updateSchedule(
+      // DB側で扱うSchedule型に変換
+      Schedule(
+        id: before.scheduleId,
+        date: before.date,
+        tag: before.tag,
+        body: before.body,
+        createdAt: before.createdAt,
+      ),
+      newDate,
+      newTag,
+      newBody,
+    );
   }
 }

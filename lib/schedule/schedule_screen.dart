@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/constants.dart';
 
-import 'components/build_calendar.dart';
+import 'components/calendar_section.dart';
 import 'components/calendar_floating_action_button.dart';
-import 'components/build_tag_button.dart';
-import 'components/build_date_label.dart';
-import 'components/build_schedule_list.dart';
+import 'components/select_tag_button.dart';
+import 'components/selected_date_label.dart';
+import 'components/schedule_list_section.dart';
 
-class CalendarScreen extends StatelessWidget {
-  const CalendarScreen({super.key});
+class ScheduleScreen extends StatelessWidget {
+  const ScheduleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(
         scaffoldBackgroundColor: calendarBackgroundColor,
+        // 複数のダイアログを使用するので、ここで定義しておくとコードの削減ができます
         dialogTheme: DialogTheme(
           shape: RoundedRectangleBorder(
             borderRadius: borderRadius25,
@@ -27,14 +28,14 @@ class CalendarScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-        floatingActionButton: const CalendarFloatingActionButton(),
         appBar: AppBar(
           backgroundColor: calendarBackgroundColor,
           centerTitle: false,
-          title: const BuildTagButton(),
+          title: const SelectTagButton(),
           elevation: 0,
           automaticallyImplyLeading: false,
         ),
+        floatingActionButton: const ScheduleFloatingActionButton(),
         body: SafeArea(
           child: DefaultTextStyle(
             style: const TextStyle(
@@ -47,9 +48,9 @@ class CalendarScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
-                    BuildCalendar(),
-                    BuildDateLabel(),
-                    BuildScheduleList(),
+                    CalendarSection(),
+                    SelectedDateLabel(),
+                    ScheduleListSection(),
                   ],
                 ),
               ),

@@ -17,8 +17,8 @@ class SwitchTagDialog extends ConsumerWidget {
     final allTags =
         ref.watch(scheduleStateNotifier.select((state) => state.allTags));
 
-    void setTag(String newTag) {
-      ref.read(scheduleStateNotifier.notifier).updateTag(newTag);
+    void updateSelectedTag(String newTag) {
+      ref.read(scheduleStateNotifier.notifier).updateSelectedTag(newTag);
     }
 
     return AlertDialog(
@@ -37,7 +37,7 @@ class SwitchTagDialog extends ConsumerWidget {
               TagRadioButton(
                 groupValue: selectedTag,
                 value: '全て',
-                onChanged: setTag,
+                onChanged: updateSelectedTag,
               ),
               sizedBoxH8,
               const DottedLine(),
@@ -46,7 +46,7 @@ class SwitchTagDialog extends ConsumerWidget {
                 TagRadioButton(
                   groupValue: selectedTag,
                   value: tag,
-                  onChanged: setTag,
+                  onChanged: updateSelectedTag,
                 ),
             ],
           ),

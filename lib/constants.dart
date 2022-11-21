@@ -72,6 +72,10 @@ const calendarTextStyle = TextStyle(
   fontSize: 12,
   fontWeight: FontWeight.bold,
 );
+const editScheduleDialogActionButtonTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  color: calendarDarkBlueTextColor,
+);
 // カレンダー設定
 final today = DateTime.now();
 final calendarFirstDay = DateTime(today.year - 10, today.month, today.day);

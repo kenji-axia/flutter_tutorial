@@ -1,9 +1,9 @@
 import 'dart:collection';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 part 'schedule_state.freezed.dart';
 
@@ -17,7 +17,8 @@ class ScheduleState with _$ScheduleState {
   }) = _ScheduleState;
   const ScheduleState._();
 
-  // stateに保存されている全ての予定リストを、Viewで扱うためにHashMapにして返す
+  // List型のallSchedulesを、Viewで扱うためにHashMapにして返す
+  // key: 日付（DateTime型）,  value: keyの予定のリスト（List<ScheduleModel>）
   // （HashMapにすると普通のMapより効率的に使用できます）
   HashMap<DateTime, List<ScheduleModel>> getAllSchedulesHashMap() {
     int getHashCode(DateTime key) {

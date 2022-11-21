@@ -6,16 +6,17 @@ import 'package:table_calendar/table_calendar.dart';
 
 import 'package:flutter_tutorial/constants.dart';
 import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
+import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
 import 'calendar_header.dart';
 
-class BuildCalendar extends ConsumerStatefulWidget {
-  const BuildCalendar({super.key});
+class CalendarSection extends ConsumerStatefulWidget {
+  const CalendarSection({super.key});
 
   @override
   BuildCalendarState createState() => BuildCalendarState();
 }
 
-class BuildCalendarState extends ConsumerState<BuildCalendar> {
+class BuildCalendarState extends ConsumerState<CalendarSection> {
   final ValueNotifier<DateTime> _focusedDay = ValueNotifier(DateTime.now());
   late PageController _pageController;
 
@@ -37,20 +38,11 @@ class BuildCalendarState extends ConsumerState<BuildCalendar> {
 
   @override
   Widget build(BuildContext context) {
-    // final allSchedules = ref.watch(allSchedulesStreamProvider).value;
     final allSchedules =
         ref.watch(scheduleStateNotifier).getAllSchedulesHashMap();
 
-    List<dynamic> Function(DateTime) loadSchedules;
-
-    if (allSchedules == null) {
-      loadSchedules = (DateTime date) {
-        return <dynamic>[];
-      };
-    } else {
-      loadSchedules = (DateTime date) {
-        return allSchedules[date] ?? <dynamic>[];
-      };
+    List<ScheduleModel> loadSchedules(DateTime date) {
+      return allSchedules[date] ?? <ScheduleModel>[];
     }
 
     return Container(

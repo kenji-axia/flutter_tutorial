@@ -11,8 +11,6 @@ class DBRepository {
 
   final Reader _reader;
 
-  // late final dao = _reader(appDatabaseProvider).;
-
   Stream<List<Schedule>> watchAllSchedules() {
     return _reader(appDatabaseProvider).tutorial9.watchAllSchedules();
   }

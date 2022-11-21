@@ -8,8 +8,8 @@ import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
 import 'edit_schedule_dialog.dart';
 
-class BuildScheduleItem extends ConsumerWidget {
-  const BuildScheduleItem({
+class ScheduleItem extends ConsumerWidget {
+  const ScheduleItem({
     required this.scheduleModel,
     super.key,
   });
