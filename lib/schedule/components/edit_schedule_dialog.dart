@@ -26,7 +26,7 @@ class EditScheduleDialog extends ConsumerStatefulWidget {
 
   final EditDialogMode mode;
 
-  // 予定の編集時（EditDialogMode.edit時）に、変更前のデータを表示させるために使用
+  // 予定の編集時（EditDialogMode.edit時）に、編集するデータを受け取る
   final ScheduleModel? editingScheduleModel;
 
   @override
@@ -34,9 +34,9 @@ class EditScheduleDialog extends ConsumerStatefulWidget {
 }
 
 class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
-  final dateField = TextEditingController();
-  final tagField = TextEditingController();
-  final bodyField = TextEditingController();
+  final dateFieldController = TextEditingController();
+  final tagFieldController = TextEditingController();
+  final bodyFieldController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -45,30 +45,31 @@ class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
 
     final selectedDate = ref.read(scheduleStateNotifier).selectedDate;
 
-    // 編集時のみ、変更前のデータを表示させる
-    dateField.text = DateFormat('yyyy-MM-dd').format(
+    // 編集時のみ、編集するデータを表示させる
+    dateFieldController.text = DateFormat('yyyy-MM-dd').format(
       widget.editingScheduleModel?.date ?? selectedDate,
     );
-    tagField.text = widget.editingScheduleModel?.tag ?? '';
-    bodyField.text = widget.editingScheduleModel?.body ?? '';
+    tagFieldController.text = widget.editingScheduleModel?.tag ?? '';
+    bodyFieldController.text = widget.editingScheduleModel?.body ?? '';
   }
 
   @override
   void dispose() {
-    dateField.dispose();
-    tagField.dispose();
-    bodyField.dispose();
+    dateFieldController.dispose();
+    tagFieldController.dispose();
+    bodyFieldController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Theme(
-      // 日付・タグ・予定本文のテキストインプットに重複するスタイルをあらかじめ指定
+      // 日付・タグ・予定本文のテキストフィールドに共通するスタイルを指定
       data: _createDialogTheme(context),
       child: GestureDetector(
         // キーボードを閉じるためのGestureDetector
-        // （複数行のTextFieldのキーボードは改行ボタンが表示されるため）
+        // 複数行のTextFieldのキーボードは改行ボタンが表示されるため、
+        // ダイアログの余白をタップするとキーボードが閉じるようにしたい
         onTap: () => primaryFocus?.unfocus(),
         child: AlertDialog(
           insetPadding: const EdgeInsets.all(spacing1),
@@ -76,9 +77,9 @@ class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
           // 予定・タグ・予定入力テキストフィールドを作成
           content: EditDialogFields(
             formKey: formKey,
-            dateField: dateField,
-            tagField: tagField,
-            bodyField: bodyField,
+            dateFieldController: dateFieldController,
+            tagFieldController: tagFieldController,
+            bodyFieldController: bodyFieldController,
           ),
           actions: <Widget>[
             ElevatedButton(
@@ -99,17 +100,17 @@ class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
                   switch (widget.mode) {
                     case EditDialogMode.newEntry:
                       ref.read(scheduleStateNotifier.notifier).addSchedule(
-                            DateTime.parse(dateField.text),
-                            tagField.text,
-                            bodyField.text,
+                            DateTime.parse(dateFieldController.text),
+                            tagFieldController.text,
+                            bodyFieldController.text,
                           );
                       break;
                     case EditDialogMode.edit:
                       ref.read(scheduleStateNotifier.notifier).updateSchedule(
                             widget.editingScheduleModel!,
-                            DateTime.parse(dateField.text),
-                            tagField.text,
-                            bodyField.text,
+                            DateTime.parse(dateFieldController.text),
+                            tagFieldController.text,
+                            bodyFieldController.text,
                           );
                       break;
                   }

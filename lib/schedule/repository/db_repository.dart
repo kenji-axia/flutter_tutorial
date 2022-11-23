@@ -22,10 +22,7 @@ class DBRepository {
       body: body,
       createdAt: DateTime.now(),
     );
-    _reader(appDatabaseProvider)
-        .tutorial9
-        .into(_reader(appDatabaseProvider).tutorial9.schedules)
-        .insert(schedule);
+    _reader(appDatabaseProvider).tutorial9.insertSchedule(schedule);
   }
 
   void updateSchedule(

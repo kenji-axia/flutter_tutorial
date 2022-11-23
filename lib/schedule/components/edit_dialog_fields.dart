@@ -7,16 +7,16 @@ import 'package:flutter_tutorial/constants.dart';
 class EditDialogFields extends StatelessWidget {
   const EditDialogFields({
     required this.formKey,
-    required this.dateField,
-    required this.tagField,
-    required this.bodyField,
+    required this.dateFieldController,
+    required this.tagFieldController,
+    required this.bodyFieldController,
     super.key,
   });
 
   final GlobalKey<FormState> formKey;
-  final TextEditingController dateField;
-  final TextEditingController tagField;
-  final TextEditingController bodyField;
+  final TextEditingController dateFieldController;
+  final TextEditingController tagFieldController;
+  final TextEditingController bodyFieldController;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class EditDialogFields extends StatelessWidget {
             // 日付選択
             TextFormField(
               readOnly: true,
-              controller: dateField,
+              controller: dateFieldController,
               decoration: const InputDecoration(
                 icon: Icon(Icons.calendar_today),
                 hintText: '日付',
@@ -43,13 +43,13 @@ class EditDialogFields extends StatelessWidget {
                 if (pickedDate != null) {
                   final formattedDate =
                       DateFormat('yyyy-MM-dd').format(pickedDate);
-                  dateField.text = formattedDate;
+                  dateFieldController.text = formattedDate;
                 }
               },
             ),
             // タグ入力テキストフィールド
             TextFormField(
-              controller: tagField,
+              controller: tagFieldController,
               decoration: const InputDecoration(
                 icon: Icon(
                   Icons.tag,
@@ -61,7 +61,7 @@ class EditDialogFields extends StatelessWidget {
             ),
             // 予定入力テキストフィールド（複数行）
             TextFormField(
-              controller: bodyField,
+              controller: bodyFieldController,
               decoration: const InputDecoration(
                 icon: Icon(Icons.notes),
                 hintText: '予定',

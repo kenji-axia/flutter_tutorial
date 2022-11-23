@@ -67,18 +67,14 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
         mainAxisSize: MainAxisSize.min,
         children: [
           CalendarHeader(
-            onLeftArrowTap: () {
-              _pageController.previousPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOut,
-              );
-            },
-            onRightArrowTap: () {
-              _pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOut,
-              );
-            },
+            onLeftArrowTap: () => _pageController.previousPage(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+            ),
+            onRightArrowTap: () => _pageController.nextPage(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+            ),
           ),
           TableCalendar<dynamic>(
             headerVisible: false,
@@ -92,9 +88,8 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
             rowHeight: 40,
             availableGestures: AvailableGestures.horizontalSwipe,
             daysOfWeekStyle: DaysOfWeekStyle(
-              dowTextFormatter: (DateTime date, dynamic locale) {
-                return DateFormat.E('ja').format(date);
-              },
+              dowTextFormatter: (DateTime date, dynamic _) =>
+                  DateFormat.E('ja').format(date),
               weekdayStyle: calendarTextStyle,
               weekendStyle: calendarTextStyle,
             ),

@@ -18,7 +18,7 @@ class Tutorial9 extends DatabaseAccessor<AppDatabase> with _$Tutorial9Mixin {
         ))
       .watch();
 
-  Future<int> insertSchedule(Schedule schedule) =>
+  Future<int> insertSchedule(SchedulesCompanion schedule) =>
       into(schedules).insert(schedule);
 
   Future<bool> updateSchedule(Schedule schedule) =>
