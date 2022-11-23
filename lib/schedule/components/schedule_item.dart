@@ -58,7 +58,7 @@ class ScheduleItem extends ConsumerWidget {
                           showDialog<void>(
                             context: context,
                             builder: (_) => EditScheduleDialog(
-                              mode: EditDialogMode.update,
+                              mode: EditDialogMode.edit,
                               editingScheduleModel: scheduleModel,
                             ),
                           );

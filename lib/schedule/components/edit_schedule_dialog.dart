@@ -7,15 +7,17 @@ import 'package:flutter_tutorial/constants.dart';
 import 'package:flutter_tutorial/schedule/schedule_state_notifier.dart';
 import 'package:flutter_tutorial/schedule/model/schedule_model.dart';
 
+import 'edit_dialog_fields.dart';
+
 enum EditDialogMode {
-  update(buttonText: '変更'),
+  edit(buttonText: '変更'),
   newEntry(buttonText: '追加');
 
   const EditDialogMode({required this.buttonText});
   final String buttonText;
 }
 
-class EditScheduleDialog extends ConsumerWidget {
+class EditScheduleDialog extends ConsumerStatefulWidget {
   const EditScheduleDialog({
     required this.mode,
     this.editingScheduleModel,
@@ -24,27 +26,43 @@ class EditScheduleDialog extends ConsumerWidget {
 
   final EditDialogMode mode;
 
-  // 予定の変更時（EditDialogMode.update時）のみ使用します
-  // （変更前のデータを表示させるため）
+  // 予定の編集時（EditDialogMode.edit時）に、変更前のデータを表示させるために使用
   final ScheduleModel? editingScheduleModel;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final selectedDate = ref.watch(scheduleStateNotifier).selectedDate;
+  EditScheduleDialogState createState() => EditScheduleDialogState();
+}
 
-    final dateInput = TextEditingController(
-      text: DateFormat('yyyy-MM-dd').format(
-        editingScheduleModel?.date ?? selectedDate,
-      ),
-    );
-    final tagInput = TextEditingController(
-      text: editingScheduleModel?.tag,
-    );
-    final bodyInput = TextEditingController(
-      text: editingScheduleModel?.body,
-    );
-    final formKey = GlobalKey<FormState>();
+class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
+  final dateField = TextEditingController();
+  final tagField = TextEditingController();
+  final bodyField = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
+  @override
+  void initState() {
+    super.initState();
+
+    final selectedDate = ref.read(scheduleStateNotifier).selectedDate;
+
+    // 編集時のみ、変更前のデータを表示させる
+    dateField.text = DateFormat('yyyy-MM-dd').format(
+      widget.editingScheduleModel?.date ?? selectedDate,
+    );
+    tagField.text = widget.editingScheduleModel?.tag ?? '';
+    bodyField.text = widget.editingScheduleModel?.body ?? '';
+  }
+
+  @override
+  void dispose() {
+    dateField.dispose();
+    tagField.dispose();
+    bodyField.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Theme(
       // 日付・タグ・予定本文のテキストインプットに重複するスタイルをあらかじめ指定
       data: _createDialogTheme(context),
@@ -56,11 +74,11 @@ class EditScheduleDialog extends ConsumerWidget {
           insetPadding: const EdgeInsets.all(spacing1),
           actionsPadding: const EdgeInsets.only(right: 10, bottom: 10),
           // 予定・タグ・予定入力テキストフィールドを作成
-          content: BuildEditDialogContents(
+          content: EditDialogFields(
             formKey: formKey,
-            dateInput: dateInput,
-            tagInput: tagInput,
-            bodyInput: bodyInput,
+            dateField: dateField,
+            tagField: tagField,
+            bodyField: bodyField,
           ),
           actions: <Widget>[
             ElevatedButton(
@@ -77,21 +95,21 @@ class EditScheduleDialog extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  // 予定の追加or予定の更新処理
-                  switch (mode) {
+                  // 追加 or 更新 処理
+                  switch (widget.mode) {
                     case EditDialogMode.newEntry:
                       ref.read(scheduleStateNotifier.notifier).addSchedule(
-                            DateTime.parse(dateInput.text),
-                            tagInput.text,
-                            bodyInput.text,
+                            DateTime.parse(dateField.text),
+                            tagField.text,
+                            bodyField.text,
                           );
                       break;
-                    case EditDialogMode.update:
+                    case EditDialogMode.edit:
                       ref.read(scheduleStateNotifier.notifier).updateSchedule(
-                            editingScheduleModel!,
-                            DateTime.parse(dateInput.text),
-                            tagInput.text,
-                            bodyInput.text,
+                            widget.editingScheduleModel!,
+                            DateTime.parse(dateField.text),
+                            tagField.text,
+                            bodyField.text,
                           );
                       break;
                   }
@@ -103,7 +121,7 @@ class EditScheduleDialog extends ConsumerWidget {
               ),
               child: Text(
                 // Dialogのモードによって '変更'or'追加'が入る
-                mode.buttonText,
+                widget.mode.buttonText,
                 style: editScheduleDialogActionButtonTextStyle,
               ),
             ),
@@ -126,101 +144,6 @@ class EditScheduleDialog extends ConsumerWidget {
       ),
       textSelectionTheme: const TextSelectionThemeData(
         cursorColor: calendarDarkBlueTextColor,
-      ),
-    );
-  }
-}
-
-class BuildEditDialogContents extends StatelessWidget {
-  const BuildEditDialogContents({
-    required this.formKey,
-    required this.dateInput,
-    required this.tagInput,
-    required this.bodyInput,
-    super.key,
-  });
-
-  final GlobalKey<FormState> formKey;
-  final TextEditingController dateInput;
-  final TextEditingController tagInput;
-  final TextEditingController bodyInput;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 250,
-      padding: const EdgeInsets.symmetric(vertical: spacing3),
-      child: Form(
-        key: formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // 日付選択
-            TextFormField(
-              readOnly: true,
-              controller: dateInput,
-              decoration: const InputDecoration(
-                icon: Icon(Icons.calendar_today),
-                hintText: '日付',
-              ),
-              validator: (value) =>
-                  (value == null || value.isEmpty) ? '値を入力してください' : null,
-              onTap: () async {
-                final pickedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2022),
-                  lastDate: DateTime(2200),
-                  builder: (context, child) {
-                    return Theme(
-                      data: Theme.of(context).copyWith(
-                        colorScheme: const ColorScheme.light(
-                          primary: calendarBackgroundColor,
-                          onPrimary: calendarDarkBlueTextColor,
-                        ),
-                        textButtonTheme: TextButtonThemeData(
-                          style: TextButton.styleFrom(
-                            primary: calendarDarkBlueTextColor,
-                          ),
-                        ),
-                      ),
-                      child: child!,
-                    );
-                  },
-                );
-                if (pickedDate != null) {
-                  final formattedDate =
-                      DateFormat('yyyy-MM-dd').format(pickedDate);
-                  dateInput.text = formattedDate;
-                }
-              },
-            ),
-            // タグ入力テキストフィールド
-            TextFormField(
-              controller: tagInput,
-              decoration: const InputDecoration(
-                icon: Icon(
-                  Icons.tag,
-                ),
-                hintText: 'タグ',
-              ),
-              validator: (value) =>
-                  (value == null || value.isEmpty) ? '値を入力してください' : null,
-            ),
-            // 予定入力テキストフィールド（複数行）
-            TextFormField(
-              controller: bodyInput,
-              decoration: const InputDecoration(
-                icon: Icon(Icons.notes),
-                hintText: '予定',
-              ),
-              keyboardType: TextInputType.multiline,
-              maxLines: 5,
-              validator: (value) =>
-                  (value == null || value.isEmpty) ? '値を入力してください' : null,
-            ),
-          ],
-        ),
       ),
     );
   }
