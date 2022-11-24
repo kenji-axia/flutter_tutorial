@@ -20,12 +20,17 @@ class ScheduleState with _$ScheduleState {
 
   // List型のallSchedulesを、Viewで扱うためにHashMapにして返す
   // key: 日付（DateTime型）,  value: keyの予定のリスト（List<ScheduleModel>）
-  // （HashMapにすると普通のMapより効率的に使用できます）
   HashMap<DateTime, List<ScheduleModel>> getAllSchedulesHashMap() {
     int getHashCode(DateTime key) {
       return key.day * 1000000 + key.month * 10000 + key.year;
     }
 
+    // HashMapにequalsとhashCodeを設定すると、
+    // HashMapで追加や指定されたkeyの値をとってくる際、
+    // 1.直接keyを比較するのではなくkeyから作成されたhashCodeを用いて比較
+    // 2.hashCodeが同じ場合、equalsを用いて同じかどうか判断を行う
+    // ため、keyが複雑なオブジェクトで比較するのにコストがかかる場合に効率的になります
+    // (table_calendarパッケージが設定を推奨）
     final allSchedulesHashMap = HashMap<DateTime, List<ScheduleModel>>(
       equals: isSameDay,
       hashCode: getHashCode,

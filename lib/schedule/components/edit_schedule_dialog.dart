@@ -68,7 +68,8 @@ class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
       data: _createDialogTheme(context),
       child: GestureDetector(
         // キーボードを閉じるためのGestureDetector
-        // 複数行のTextFieldのキーボードは改行ボタンが表示されるため、
+        // 複数行のTextFieldの入力時、
+        // キーボードに完了ボタンではなく改行ボタンが表示されるため、
         // ダイアログの余白をタップするとキーボードが閉じるようにしたい
         onTap: () => primaryFocus?.unfocus(),
         child: AlertDialog(
