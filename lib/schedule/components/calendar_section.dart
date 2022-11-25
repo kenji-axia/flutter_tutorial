@@ -13,10 +13,10 @@ class CalendarSection extends ConsumerStatefulWidget {
   const CalendarSection({super.key});
 
   @override
-  BuildCalendarState createState() => BuildCalendarState();
+  CalendarSectionState createState() => CalendarSectionState();
 }
 
-class BuildCalendarState extends ConsumerState<CalendarSection> {
+class CalendarSectionState extends ConsumerState<CalendarSection> {
   late PageController _pageController;
 
   // 予定のある日にマークをつける際に使用
