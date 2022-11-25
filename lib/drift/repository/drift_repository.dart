@@ -1,15 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_tutorial/db/app_database.dart';
+import 'package:flutter_tutorial/db/app_database_provider.dart';
 
-final driftRepositoryProvider =
-    Provider<DriftRepository>((_) => DriftRepository());
+final driftRepositoryProvider = Provider.autoDispose<DriftRepository>(
+  (ref) => DriftRepository(ref.read(appDatabaseProvider)),
+);
 
 class DriftRepository {
-  final dao = AppDatabase().tutorial8;
+  DriftRepository(this._appDatabase);
+
+  final AppDatabase _appDatabase;
 
   Stream<List<DatabaseTodo>> watchTodos() {
-    return dao.watchAllTodosByDueDate();
+    return _appDatabase.tutorial8.watchAllTodosByDueDate();
   }
 
   void addTodo(String title, String body, String dueDate) {
@@ -19,10 +23,12 @@ class DriftRepository {
       dueDate: DateTime.parse(dueDate),
       createdAt: DateTime.now(),
     );
-    dao.into(dao.databaseTodos).insert(todo);
+    _appDatabase.tutorial8
+        .into(_appDatabase.tutorial8.databaseTodos)
+        .insert(todo);
   }
 
   void deleteTodo(DatabaseTodo databaseTodo) {
-    dao.deleteTodo(databaseTodo);
+    _appDatabase.tutorial8.deleteTodo(databaseTodo);
   }
 }
