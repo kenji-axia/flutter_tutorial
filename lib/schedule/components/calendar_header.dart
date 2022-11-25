@@ -16,14 +16,14 @@ class CalendarHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // カレンダーが表示している月
     final focusedMonth = ref.watch(
-      scheduleStateNotifier.select((state) => state.focusedMonth),
+      scheduleStateNotifierProvider.select((state) => state.focusedMonth),
     );
     // カレンダーの表示している月が今月かどうか
     final isOnThisMonth =
         focusedMonth.year == today.year && focusedMonth.month == today.month;
 
     return Padding(
-      padding: const EdgeInsets.only(left: spacing2),
+      padding: const EdgeInsets.only(left: space16),
       child: Row(
         children: [
           SizedBox(
@@ -39,7 +39,7 @@ class CalendarHeader extends ConsumerWidget {
               icon: const Icon(Icons.calendar_today, size: 20),
               visualDensity: VisualDensity.compact,
               onPressed: () => ref
-                  .read(scheduleStateNotifier.notifier)
+                  .read(scheduleStateNotifierProvider.notifier)
                   .updateFocusedMonth(today),
             ),
           const Spacer(),

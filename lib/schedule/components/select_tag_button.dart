@@ -10,8 +10,9 @@ class SelectTagButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tagName =
-        ref.watch(scheduleStateNotifier.select((state) => state.selectedTag));
+    final tagName = ref.watch(
+      scheduleStateNotifierProvider.select((state) => state.selectedTag),
+    );
 
     return TextButton.icon(
       onPressed: () {

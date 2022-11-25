@@ -25,26 +25,25 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
     DateTime day,
     List<dynamic> events,
   ) {
-    if (events.isNotEmpty) {
-      return const Icon(
-        Icons.circle,
-        color: calendarAccentColor,
-        size: 12,
-      );
-    } else {
+    if (events.isEmpty) {
       return null;
     }
+    return const Icon(
+      Icons.circle,
+      color: calendarAccentColor,
+      size: 12,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     // カレンダーが表示している月
     final focusedMonth = ref.watch(
-      scheduleStateNotifier.select((state) => state.focusedMonth),
+      scheduleStateNotifierProvider.select((state) => state.focusedMonth),
     );
 
     final allSchedules =
-        ref.watch(scheduleStateNotifier).getAllSchedulesHashMap();
+        ref.watch(scheduleStateNotifierProvider).getAllSchedulesHashMap();
 
     List<ScheduleModel> loadSchedules(DateTime date) {
       return allSchedules[date] ?? <ScheduleModel>[];
@@ -56,12 +55,12 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
         borderRadius: borderRadius25,
       ),
       height: 360,
-      padding: const EdgeInsets.all(spacing2),
+      padding: const EdgeInsets.all(space16),
       margin: const EdgeInsets.fromLTRB(
-        spacing2,
-        spacing1,
-        spacing2,
-        spacing4,
+        space16,
+        space8,
+        space16,
+        space32,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -111,15 +110,15 @@ class BuildCalendarState extends ConsumerState<CalendarSection> {
             onDaySelected: (selectedDay, _) {
               // 選択した日付が、現在選択されている日付と異なれば更新
               final beforeSelectedDate =
-                  ref.read(scheduleStateNotifier).selectedDate;
+                  ref.read(scheduleStateNotifierProvider).selectedDate;
               if (!isSameDay(beforeSelectedDate, selectedDay)) {
                 ref
-                    .read(scheduleStateNotifier.notifier)
+                    .read(scheduleStateNotifierProvider.notifier)
                     .updateSelectedDate(selectedDay);
               }
             },
             onPageChanged: (newFocusedMonth) => ref
-                .read(scheduleStateNotifier.notifier)
+                .read(scheduleStateNotifierProvider.notifier)
                 .updateFocusedMonth(newFocusedMonth),
             onCalendarCreated: (controller) => _pageController = controller,
           ),

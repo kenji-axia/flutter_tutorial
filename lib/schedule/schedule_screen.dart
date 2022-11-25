@@ -43,7 +43,7 @@ class ScheduleScreen extends StatelessWidget {
               color: calendarDarkBlueTextColor,
             ),
             child: Padding(
-              padding: const EdgeInsets.only(top: spacingHalf),
+              padding: const EdgeInsets.only(top: space4),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

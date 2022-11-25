@@ -11,22 +11,25 @@ class SwitchTagDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedTag =
-        ref.watch(scheduleStateNotifier.select((state) => state.selectedTag));
+    final selectedTag = ref.watch(
+      scheduleStateNotifierProvider.select((state) => state.selectedTag),
+    );
 
-    final allTags =
-        ref.watch(scheduleStateNotifier.select((state) => state.allTags));
+    final allTags = ref
+        .watch(scheduleStateNotifierProvider.select((state) => state.allTags));
 
     void updateSelectedTag(String newTag) {
-      ref.read(scheduleStateNotifier.notifier).updateSelectedTag(newTag);
+      ref
+          .read(scheduleStateNotifierProvider.notifier)
+          .updateSelectedTag(newTag);
     }
 
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(spacing1),
+      insetPadding: const EdgeInsets.all(space8),
       content: Container(
         width: 250,
         height: 400,
-        padding: const EdgeInsets.only(top: spacing3),
+        padding: const EdgeInsets.only(top: space24),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

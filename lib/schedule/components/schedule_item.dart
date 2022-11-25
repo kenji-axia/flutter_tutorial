@@ -25,7 +25,7 @@ class ScheduleItem extends ConsumerWidget {
         children: [
           SlidableAction(
             onPressed: (_) => ref
-                .read(scheduleStateNotifier.notifier)
+                .read(scheduleStateNotifierProvider.notifier)
                 .deleteSchedule(scheduleModel),
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,
@@ -35,13 +35,13 @@ class ScheduleItem extends ConsumerWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: spacing2),
+        padding: const EdgeInsets.symmetric(horizontal: space16),
         child: Column(
           children: [
             sizedBoxH8,
             Container(
-              margin: const EdgeInsets.symmetric(vertical: spacingHalf),
-              padding: const EdgeInsets.all(spacing2),
+              margin: const EdgeInsets.symmetric(vertical: space4),
+              padding: const EdgeInsets.all(space16),
               decoration: BoxDecoration(
                 color: whiteColor,
                 borderRadius: borderRadius10,

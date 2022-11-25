@@ -43,7 +43,7 @@ class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
   void initState() {
     super.initState();
 
-    final selectedDate = ref.read(scheduleStateNotifier).selectedDate;
+    final selectedDate = ref.read(scheduleStateNotifierProvider).selectedDate;
 
     // 編集時のみ、編集するデータを表示させる
     dateFieldController.text = DateFormat('yyyy-MM-dd').format(
@@ -73,8 +73,8 @@ class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
         // ダイアログの余白をタップするとキーボードが閉じるようにしたい
         onTap: () => primaryFocus?.unfocus(),
         child: AlertDialog(
-          insetPadding: const EdgeInsets.all(spacing1),
-          actionsPadding: const EdgeInsets.only(right: 10, bottom: 10),
+          insetPadding: const EdgeInsets.all(space8),
+          actionsPadding: const EdgeInsets.only(right: space8, bottom: space8),
           // 予定・タグ・予定入力テキストフィールドを作成
           content: EditDialogFields(
             formKey: formKey,
@@ -100,14 +100,18 @@ class EditScheduleDialogState extends ConsumerState<EditScheduleDialog> {
                   // 追加 or 更新 処理
                   switch (widget.mode) {
                     case EditDialogMode.newEntry:
-                      ref.read(scheduleStateNotifier.notifier).addSchedule(
+                      ref
+                          .read(scheduleStateNotifierProvider.notifier)
+                          .addSchedule(
                             DateTime.parse(dateFieldController.text),
                             tagFieldController.text,
                             bodyFieldController.text,
                           );
                       break;
                     case EditDialogMode.edit:
-                      ref.read(scheduleStateNotifier.notifier).updateSchedule(
+                      ref
+                          .read(scheduleStateNotifierProvider.notifier)
+                          .updateSchedule(
                             widget.editingScheduleModel!,
                             DateTime.parse(dateFieldController.text),
                             tagFieldController.text,

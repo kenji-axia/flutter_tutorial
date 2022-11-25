@@ -22,7 +22,7 @@ class EditDialogFields extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      padding: const EdgeInsets.symmetric(vertical: spacing3),
+      padding: const EdgeInsets.symmetric(vertical: space24),
       child: Form(
         key: formKey,
         child: Column(
@@ -81,8 +81,8 @@ class EditDialogFields extends StatelessWidget {
     return showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2022),
-      lastDate: DateTime(2200),
+      firstDate: calendarFirstDay,
+      lastDate: calendarLastDay,
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(

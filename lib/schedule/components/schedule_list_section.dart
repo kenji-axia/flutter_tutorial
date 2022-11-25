@@ -10,10 +10,11 @@ class ScheduleListSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedDate =
-        ref.watch(scheduleStateNotifier.select((state) => state.selectedDate));
+    final selectedDate = ref.watch(
+      scheduleStateNotifierProvider.select((state) => state.selectedDate),
+    );
     final allSchedules =
-        ref.watch(scheduleStateNotifier).getAllSchedulesHashMap();
+        ref.watch(scheduleStateNotifierProvider).getAllSchedulesHashMap();
     final selectedDateSchedules =
         allSchedules[selectedDate] ?? <ScheduleModel>[];
 

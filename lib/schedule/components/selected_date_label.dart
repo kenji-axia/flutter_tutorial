@@ -12,8 +12,9 @@ class SelectedDateLabel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedDate =
-        ref.watch(scheduleStateNotifier.select((state) => state.selectedDate));
+    final selectedDate = ref.watch(
+      scheduleStateNotifierProvider.select((state) => state.selectedDate),
+    );
     var dateLabelText = '${DateFormat.MMMEd('ja').format(selectedDate)}の予定';
 
     if (isSameDay(selectedDate, today)) {
@@ -21,7 +22,7 @@ class SelectedDateLabel extends ConsumerWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: spacing2),
+      padding: const EdgeInsets.symmetric(horizontal: space16),
       child: Text(
         dateLabelText,
         style: const TextStyle(fontSize: 15),

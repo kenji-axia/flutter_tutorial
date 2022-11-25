@@ -6,7 +6,7 @@ import 'package:flutter_tutorial/schedule/state/schedule_state.dart';
 
 import 'model/schedule_model.dart';
 
-final scheduleStateNotifier =
+final scheduleStateNotifierProvider =
     StateNotifierProvider.autoDispose<ScheduleStateNotifier, ScheduleState>(
   (ref) => ScheduleStateNotifier(ref.read),
 );
